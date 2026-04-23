@@ -160,12 +160,8 @@
   <div class="animated-bg"></div>
   <div id="particlesWrapper" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></div>
 
-  <!-- Navbar -->
   <nav id="navbar" class="glass-nav fixed w-full top-0 left-0 z-50 px-5 py-3 transition-transform duration-300">
     <div class="max-w-6xl mx-auto flex flex-wrap justify-center md:justify-between items-center gap-3">
-      <div class="text-lg font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent hidden md:block">
-        &lt;JP /&gt;
-      </div>
       <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium">
         <a href="#home" class="hover:text-indigo-300 transition">Início</a>
         <a href="#sobre" class="hover:text-indigo-300 transition">Sobre</a>
@@ -179,7 +175,6 @@
 
   <main class="relative z-10 max-w-6xl mx-auto px-5 md:px-8 pt-28 pb-16">
     
-    <!-- Hero Section -->
     <section id="home" class="flex flex-col items-center text-center gap-5 py-8 md:py-14">
       <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
         <span id="typedName" class="bg-gradient-to-r from-white via-indigo-200 to-indigo-300 bg-clip-text text-transparent">João Pedro Carvalho</span>
@@ -200,7 +195,6 @@
           <span>&gt;_</span> terminal
         </button>
         
-        <!-- BOTÃO PARA BAIXAR O CURRÍCULO EM PDF -->
         <a id="downloadCurriculoBtn" href="#" download class="px-5 py-2.5 rounded-full btn-download-curriculo transition flex items-center gap-2 text-sm font-semibold">
           <span></span> Baixar Currículo (PDF)
         </a>
@@ -213,7 +207,6 @@
       </div>
     </section>
 
-    <!-- Sobre -->
     <section id="sobre" class="py-12 md:py-16 reveal">
       <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 shadow-xl">
         <h2 class="text-3xl md:text-4xl font-bold mb-5 flex items-center gap-3"><span class="w-8 h-1 bg-indigo-400 rounded-full"></span> Sobre mim</h2>
@@ -229,7 +222,6 @@
       </div>
     </section>
 
-    <!-- Experiência -->
     <section id="experiencia" class="py-12 md:py-16 reveal">
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20">
@@ -278,7 +270,6 @@
       
       <div class="grid md:grid-cols-2 gap-8">
 
-        <!-- Hard Skills -->
         <div>
           <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
             <span class="w-6 h-0.5 bg-indigo-400"></span> Hard Skills
@@ -317,7 +308,6 @@
       </div>
   </section>
 
-    <!-- Projetos -->
       <section id="projetos" class="py-12 md:py-16 reveal">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">
       Projetos & <span class="text-indigo-300">Iniciativas</span>
@@ -360,10 +350,10 @@
           <span class="text-4xl"></span>
         </div>
         <div class="p-5">
-          <h3 class="text-lg font-bold">Portfólio Web</h3>
+          <h3 class="text-lg font-bold">Plataformas Web</h3>
           <p class="text-xs text-indigo-300 mb-2">Front-end</p>
           <p class="text-slate-300 text-sm">
-            Desenvolvimento de site pessoal com design moderno, animações e foco em experiência do usuário.
+            Desenvolvimento de sites pessoais com design moderno, animações e foco em experiência do usuário.
           </p>
         </div>
       </div>
@@ -386,10 +376,10 @@
           <span class="text-4xl"></span>
         </div>
         <div class="p-5">
-          <h3 class="text-lg font-bold">Estudos com IA</h3>
-          <p class="text-xs text-indigo-300 mb-2">Inteligência Artificial</p>
+          <h3 class="text-lg font-bold">Estudos de Matemática</h3>
+          <p class="text-xs text-indigo-300 mb-2">Projeto Integrador</p>
           <p class="text-slate-300 text-sm">
-            Exploração de conceitos de IA, APIs e aplicações práticas para criação de soluções inteligentes.
+            Exploração de conceitos matemáticos simples, e aplicações práticas para criação de soluções inteligentes.
           </p>
         </div>
       </div>
@@ -402,7 +392,7 @@
           <h3 class="text-lg font-bold">Análise de Dados</h3>
           <p class="text-xs text-indigo-300 mb-2">Excel & Power Query</p>
           <p class="text-slate-300 text-sm">
-            Projetos de análise exploratória utilizando Excel avançado, limpeza de dados e geração de insights.
+            Projetos de análise exploratória utilizando Excel, limpeza de dados e geração de insights.
           </p>
         </div>
       </div>
@@ -410,7 +400,6 @@
     </div>
   </section>
 
-    <!-- Contato -->
     <section id="contato" class="py-12 reveal">
       <div class="bg-gradient-to-br from-indigo-950/40 to-slate-900/40 rounded-2xl p-8 text-center backdrop-blur-sm border border-white/10">
         <h2 class="text-3xl font-bold mb-4">Vamos nos conectar?</h2>
@@ -427,7 +416,6 @@
     </section>
   </main>
 
-  <!-- Terminal Modal -->
   <div id="terminalModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none">
     <div class="bg-slate-900 w-full max-w-md rounded-xl border border-indigo-500/40 overflow-hidden">
       <div class="flex justify-between items-center px-4 py-3 bg-slate-800 border-b border-indigo-500/30">
@@ -448,7 +436,6 @@
 
   <script>
     (function() {
-      // Partículas
       const wrapper = document.getElementById('particlesWrapper');
       for(let i = 0; i < 40; i++) {
         const p = document.createElement('div');
