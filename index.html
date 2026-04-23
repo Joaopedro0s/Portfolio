@@ -88,6 +88,7 @@
       backdrop-filter: blur(4px);
       border: 1px solid rgba(129, 140, 248, 0.2);
       transition: all 0.3s ease;
+      cursor: pointer;
     }
     .project-card:hover {
       transform: translateY(-6px);
@@ -143,6 +144,17 @@
       box-shadow: 0 8px 20px -8px rgba(16, 185, 129, 0.4);
     }
 
+    .btn-ver-mais {
+      background: rgba(79, 70, 229, 0.2);
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-ver-mais:hover {
+      background: rgba(79, 70, 229, 0.4);
+      border-color: #818cf8;
+      transform: scale(0.98);
+    }
+
     ::-webkit-scrollbar {
       width: 5px;
     }
@@ -166,7 +178,7 @@
         <a href="#home" class="hover:text-indigo-300 transition">Início</a>
         <a href="#sobre" class="hover:text-indigo-300 transition">Sobre</a>
         <a href="#experiencia" class="hover:text-indigo-300 transition">Experiência</a>
-        <a href="#habilidades" class="hover:text-indigo-300 transition">Habilidades</a>
+        <a href="#certificacoes-badges" class="hover:text-indigo-300 transition">Certificações</a>
         <a href="#projetos" class="hover:text-indigo-300 transition">Projetos</a>
         <a href="#contato" class="hover:text-indigo-300 transition">Contato</a>
       </div>
@@ -213,11 +225,6 @@
         <div class="space-y-4 text-slate-200 leading-relaxed">
           <p>Sou estudante de Análise e Desenvolvimento de Sistemas, com interesse em desenvolvimento de software, análise de dados e criação de soluções tecnológicas. Tenho perfil criativo e gosto de resolver problemas através da lógica e da programação.</p>
           <p>Atualmente curso <strong class="text-indigo-300">Análise e Desenvolvimento de Sistemas</strong> no SENAI Taubaté (previsão: 2027) e já concluí o ensino técnico na área (2025). Possuo experiência prática em ambientes administrativos e de TI, além de atuação como aprendiz em desenvolvimento de sistemas.</p>
-          <div class="flex flex-wrap gap-3 pt-2">
-            <span class="px-3 py-1 bg-indigo-900/40 rounded-full text-xs">Fascinado por IA</span>
-            <span class="px-3 py-1 bg-indigo-900/40 rounded-full text-xs">Aprendizado contínuo</span>
-            <span class="px-3 py-1 bg-indigo-900/40 rounded-full text-xs">Criatividade e lógica</span>
-          </div>
         </div>
       </div>
     </section>
@@ -227,178 +234,96 @@
         <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20">
           <h3 class="text-2xl font-bold mb-4">Experiência</h3>
           <div class="space-y-4">
-            <div>
-              <h4 class="font-semibold text-indigo-300">Aprendiz em Desenvolvimento - IOCHPE MAXION</h4>
-              <p class="text-xs text-slate-400">02/2024 até 12/2025</p>
-              <p class="text-sm text-slate-300 mt-1">Desenvolvimento web, sistemas e bancos de dados para soluções corporativas.</p>
-            </div>
-            <div>
-              <h4 class="font-semibold text-indigo-300">Estagiário de TI - UNISAL</h4>
-              <p class="text-xs text-slate-400">12/2023 até 02/2024</p>
-              <p class="text-sm text-slate-300 mt-1">Suporte laboratórios, preparação de ambientes e atividades técnicas.</p>
-            </div>
-            <div>
-              <h4 class="font-semibold text-indigo-300">Auxiliar Administrativo - Ascontec</h4>
-              <p class="text-xs text-slate-400">03/2023 até 12/2023</p>
-              <p class="text-sm text-slate-300 mt-1">Planilhas Excel, organização e gestão administrativa.</p>
-            </div>
+            <div><h4 class="font-semibold text-indigo-300">Aprendiz em Desenvolvimento - IOCHPE MAXION</h4><p class="text-xs text-slate-400">02/2024 até 12/2025</p><p class="text-sm text-slate-300 mt-1">Desenvolvimento web, sistemas e bancos de dados para soluções corporativas.</p></div>
+            <div><h4 class="font-semibold text-indigo-300">Estagiário de TI - UNISAL</h4><p class="text-xs text-slate-400">12/2023 até 02/2024</p><p class="text-sm text-slate-300 mt-1">Suporte laboratórios, preparação de ambientes e atividades técnicas.</p></div>
+            <div><h4 class="font-semibold text-indigo-300">Auxiliar Administrativo - Ascontec</h4><p class="text-xs text-slate-400">03/2023 até 12/2023</p><p class="text-sm text-slate-300 mt-1">Planilhas Excel, organização e gestão administrativa.</p></div>
           </div>
         </div>
-        
         <div class="bg-white/5 rounded-2xl p-6 border border-purple-500/20">
           <h3 class="text-2xl font-bold mb-4">Formação</h3>
           <div class="space-y-4">
-            <div>
-              <h4 class="font-semibold text-indigo-300">Análise e Desenvolvimento de Sistemas</h4>
-              <p class="text-sm text-slate-300">SENAI Taubaté</p>
-              <p class="text-xs text-slate-400">2025 - 2027 (cursando)</p>
-            </div>
-            <div>
-              <h4 class="font-semibold text-indigo-300">Técnico em ADS</h4>
-              <p class="text-sm text-slate-300">SENAI</p>
-              <p class="text-xs text-slate-400">Conclusão: 2025</p>
-            </div>
+            <div><h4 class="font-semibold text-indigo-300">Análise e Desenvolvimento de Sistemas</h4><p class="text-sm text-slate-300">SENAI Taubaté</p><p class="text-xs text-slate-400">2025 - 2027 (cursando)</p></div>
+            <div><h4 class="font-semibold text-indigo-300">Técnico em ADS</h4><p class="text-sm text-slate-300">SENAI</p><p class="text-xs text-slate-400">Conclusão: 2025</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="habilidades" class="py-12 md:py-16 reveal">
-      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-        Minhas <span class="text-indigo-300">Competências</span>
-      </h2>
-      
+    <!-- Seção Certificações + Badges -->
+    <section id="certificacoes-badges" class="py-12 md:py-16 reveal">
       <div class="grid md:grid-cols-2 gap-8">
-
-        <div>
-          <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
-            <span class="w-6 h-0.5 bg-indigo-400"></span> Hard Skills
-          </h3>
-          <div class="flex flex-wrap gap-3">
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Python</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">SQL / MySQL</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">HTML, CSS & JS</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">PHP</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Banco de Dados</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Power BI</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Excel Intermediário</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Análise de Dados</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Pacote Office</span>
+        <!-- Certificações -->
+        <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20">
+          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-indigo-400"></span> Certificações</h3>
+          <div class="space-y-3 mb-5">
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <span class="text-indigo-400 text-xl">📜</span>
+              <div><p class="font-semibold">Python Essentials 1</p><p class="text-xs text-slate-400">Cisco Networking Academy - 2024</p></div>
+            </div>
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <span class="text-indigo-400 text-xl">📊</span>
+              <div><p class="font-semibold">Power BI Data Analyst Associate</p><p class="text-xs text-slate-400">Microsoft Learn - 2025</p></div>
+            </div>
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <span class="text-indigo-400 text-xl">💾</span>
+              <div><p class="font-semibold">SQL Fundamentos</p><p class="text-xs text-slate-400">Bradesco Foundation - 2024</p></div>
+            </div>
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <span class="text-indigo-400 text-xl">🌐</span>
+              <div><p class="font-semibold">Desenvolvimento Web Front-end</p><p class="text-xs text-slate-400">SENAI - 2024</p></div>
+            </div>
           </div>
+          <a href="certificacoes.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-indigo-300 font-medium text-sm transition">📌 Clique para ver mais certificações →</a>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
-            <span class="w-6 h-0.5 bg-indigo-400"></span> Soft Skills & Idiomas
-          </h3>
-          
+
+        <!-- Badges -->
+        <div class="bg-white/5 rounded-2xl p-6 border border-purple-500/20">
+          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-purple-400"></span> Badges & Conquistas</h3>
           <div class="flex flex-wrap gap-3 mb-5">
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Organização</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Aprendizado Rápido</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Adaptabilidade</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Foco em Resultados</span>
-            <span class="skill-badge px-4 py-2 rounded-full text-sm">Pensamento Lógico</span>
+            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl">🐍</span><span class="text-xs mt-1 text-center">Python Dev</span></div>
+            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl">📈</span><span class="text-xs mt-1 text-center">Data Analyst</span></div>
+            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl">⚡</span><span class="text-xs mt-1 text-center">SQL Expert</span></div>
+            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl">🎨</span><span class="text-xs mt-1 text-center">UI/UX Basics</span></div>
           </div>
-
-          <p class="text-sm text-slate-300">
-            <strong class="text-indigo-300">Idiomas:</strong> 
-            Português (Nativo) | Inglês (Intermediário)
-          </p>
-        </div>
-
-      </div>
-  </section>
-
-      <section id="projetos" class="py-12 md:py-16 reveal">
-    <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">
-      Projetos & <span class="text-indigo-300">Iniciativas</span>
-    </h2>
-
-    <p class="text-center text-slate-300 mb-10 max-w-2xl mx-auto">
-      Projetos desenvolvidos para aplicar conhecimentos em programação, dados e desenvolvimento web
-    </p>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="project-card rounded-xl overflow-hidden">
-        <div class="h-32 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 flex items-center justify-center">
-          <span class="text-4xl"></span>
-        </div>
-        <div class="p-5">
-          <h3 class="text-lg font-bold">Dashboard Power BI</h3>
-          <p class="text-xs text-indigo-300 mb-2">Análise de Dados</p>
-          <p class="text-slate-300 text-sm">
-            Criação de dashboards interativos com indicadores e métricas, utilizando modelagem de dados e visualização no Power BI.
-          </p>
+          <a href="badges.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-purple-300 font-medium text-sm transition">🏅 Clique para ver todas as badges →</a>
         </div>
       </div>
+    </section>
 
-      <div class="project-card rounded-xl overflow-hidden">
-        <div class="h-32 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 flex items-center justify-center">
-          <span class="text-4xl"></span>
+    <!-- Projetos com links para páginas individuais -->
+    <section id="projetos" class="py-12 md:py-16 reveal">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">
+        Projetos & <span class="text-indigo-300">Iniciativas</span>
+      </h2>
+      <p class="text-center text-slate-300 mb-10 max-w-2xl mx-auto">Clique em qualquer card para ver detalhes e repositórios completos</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="project-card rounded-xl overflow-hidden" data-project="dashboard">
+          <div class="h-32 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 flex items-center justify-center"><span class="text-4xl">📊</span></div>
+          <div class="p-5"><h3 class="text-lg font-bold">Dashboard Power BI</h3><p class="text-xs text-indigo-300 mb-2">Análise de Dados</p><p class="text-slate-300 text-sm">Dashboards interativos com métricas e modelagem de dados.</p></div>
         </div>
-        <div class="p-5">
-          <h3 class="text-lg font-bold">Sistema com SQL Server</h3>
-          <p class="text-xs text-indigo-300 mb-2">Banco de Dados</p>
-          <p class="text-slate-300 text-sm">
-            Desenvolvimento de banco de dados para controle de informações, com consultas SQL, procedures e estrutura relacional.
-          </p>
+        <div class="project-card rounded-xl overflow-hidden" data-project="sql">
+          <div class="h-32 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 flex items-center justify-center"><span class="text-4xl">🗄️</span></div>
+          <div class="p-5"><h3 class="text-lg font-bold">Sistema com SQL Server</h3><p class="text-xs text-indigo-300 mb-2">Banco de Dados</p><p class="text-slate-300 text-sm">Procedures, consultas SQL e estrutura relacional.</p></div>
+        </div>
+        <div class="project-card rounded-xl overflow-hidden" data-project="web">
+          <div class="h-32 bg-gradient-to-r from-emerald-900/50 to-teal-900/50 flex items-center justify-center"><span class="text-4xl">🌐</span></div>
+          <div class="p-5"><h3 class="text-lg font-bold">Plataformas Web</h3><p class="text-xs text-indigo-300 mb-2">Front-end</p><p class="text-slate-300 text-sm">Sites modernos com animações e UX.</p></div>
+        </div>
+        <div class="project-card rounded-xl overflow-hidden" data-project="python">
+          <div class="h-32 bg-gradient-to-r from-amber-900/50 to-orange-900/50 flex items-center justify-center"><span class="text-4xl">🤖</span></div>
+          <div class="p-5"><h3 class="text-lg font-bold">Automação com Python</h3><p class="text-xs text-indigo-300 mb-2">Programação</p><p class="text-slate-300 text-sm">Scripts para automação de tarefas e dados.</p></div>
+        </div>
+        <div class="project-card rounded-xl overflow-hidden" data-project="matematica">
+          <div class="h-32 bg-gradient-to-r from-rose-900/50 to-pink-900/50 flex items-center justify-center"><span class="text-4xl">📐</span></div>
+          <div class="p-5"><h3 class="text-lg font-bold">Estudos de Matemática</h3><p class="text-xs text-indigo-300 mb-2">Projeto Integrador</p><p class="text-slate-300 text-sm">Conceitos matemáticos aplicados à soluções inteligentes.</p></div>
+        </div>
+        <div class="project-card rounded-xl overflow-hidden" data-project="analise">
+          <div class="h-32 bg-gradient-to-r from-fuchsia-900/50 to-purple-900/50 flex items-center justify-center"><span class="text-4xl">📈</span></div>
+          <div class="p-5"><h3 class="text-lg font-bold">Análise de Dados</h3><p class="text-xs text-indigo-300 mb-2">Excel & Power Query</p><p class="text-slate-300 text-sm">Limpeza de dados, insights e dashboards.</p></div>
         </div>
       </div>
-
-      <div class="project-card rounded-xl overflow-hidden">
-        <div class="h-32 bg-gradient-to-r from-emerald-900/50 to-teal-900/50 flex items-center justify-center">
-          <span class="text-4xl"></span>
-        </div>
-        <div class="p-5">
-          <h3 class="text-lg font-bold">Plataformas Web</h3>
-          <p class="text-xs text-indigo-300 mb-2">Front-end</p>
-          <p class="text-slate-300 text-sm">
-            Desenvolvimento de sites pessoais com design moderno, animações e foco em experiência do usuário.
-          </p>
-        </div>
-      </div>
-
-      <div class="project-card rounded-xl overflow-hidden">
-        <div class="h-32 bg-gradient-to-r from-amber-900/50 to-orange-900/50 flex items-center justify-center">
-          <span class="text-4xl"></span>
-        </div>
-        <div class="p-5">
-          <h3 class="text-lg font-bold">Automação com Python</h3>
-          <p class="text-xs text-indigo-300 mb-2">Programação</p>
-          <p class="text-slate-300 text-sm">
-            Desenvolvimento de scripts para automação de tarefas, manipulação de dados e resolução de problemas lógicos.
-          </p>
-        </div>
-      </div>
-
-      <div class="project-card rounded-xl overflow-hidden">
-        <div class="h-32 bg-gradient-to-r from-rose-900/50 to-pink-900/50 flex items-center justify-center">
-          <span class="text-4xl"></span>
-        </div>
-        <div class="p-5">
-          <h3 class="text-lg font-bold">Estudos de Matemática</h3>
-          <p class="text-xs text-indigo-300 mb-2">Projeto Integrador</p>
-          <p class="text-slate-300 text-sm">
-            Exploração de conceitos matemáticos simples, e aplicações práticas para criação de soluções inteligentes.
-          </p>
-        </div>
-      </div>
-
-      <div class="project-card rounded-xl overflow-hidden">
-        <div class="h-32 bg-gradient-to-r from-fuchsia-900/50 to-purple-900/50 flex items-center justify-center">
-          <span class="text-4xl"></span>
-        </div>
-        <div class="p-5">
-          <h3 class="text-lg font-bold">Análise de Dados</h3>
-          <p class="text-xs text-indigo-300 mb-2">Excel & Power Query</p>
-          <p class="text-slate-300 text-sm">
-            Projetos de análise exploratória utilizando Excel, limpeza de dados e geração de insights.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
+    </section>
 
     <section id="contato" class="py-12 reveal">
       <div class="bg-gradient-to-br from-indigo-950/40 to-slate-900/40 rounded-2xl p-8 text-center backdrop-blur-sm border border-white/10">
@@ -409,33 +334,23 @@
           <a href="https://github.com/Joaopedro0s" target="_blank" class="social-link px-5 py-2.5 bg-[#333]/80 hover:bg-[#24292e] rounded-full text-sm">GitHub</a>
           <a href="mailto:jeipi7007@gmail.com" class="social-link px-5 py-2.5 bg-red-600/70 hover:bg-red-600 rounded-full text-sm">E-mail</a>
         </div>
-        <div class="mt-8 text-xs text-slate-500 border-t border-white/10 pt-5">
-          <p>© 2026 João Pedro Carvalho — Em constante evolução</p>
-        </div>
+        <div class="mt-8 text-xs text-slate-500 border-t border-white/10 pt-5"><p>© 2026 João Pedro Carvalho — Em constante evolução</p></div>
       </div>
     </section>
   </main>
 
+  <!-- Terminal Modal -->
   <div id="terminalModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none">
     <div class="bg-slate-900 w-full max-w-md rounded-xl border border-indigo-500/40 overflow-hidden">
-      <div class="flex justify-between items-center px-4 py-3 bg-slate-800 border-b border-indigo-500/30">
-        <span class="font-mono text-xs text-indigo-300">terminal@joaopedro:~</span>
-        <button id="closeTerminal" class="text-slate-400 hover:text-white text-xl">&times;</button>
-      </div>
-      <div class="p-4 h-56 overflow-y-auto font-mono text-xs text-green-300 bg-black/60" id="terminalOutput">
-        <p>$ Terminal interativo - João Pedro</p>
-        <p>$ Comandos: sobre, experiencia, habilidades, projetos, contato, clear, sair</p>
-        <p>$ </p>
-      </div>
-      <div class="p-3 bg-slate-900 border-t border-slate-700 flex gap-2">
-        <span class="text-indigo-300 font-mono text-xs">$&gt;</span>
-        <input type="text" id="terminalInput" class="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs" placeholder="digite um comando..." autocomplete="off">
-      </div>
+      <div class="flex justify-between items-center px-4 py-3 bg-slate-800 border-b border-indigo-500/30"><span class="font-mono text-xs text-indigo-300">terminal@joaopedro:~</span><button id="closeTerminal" class="text-slate-400 hover:text-white text-xl">&times;</button></div>
+      <div class="p-4 h-56 overflow-y-auto font-mono text-xs text-green-300 bg-black/60" id="terminalOutput"><p>$ Terminal interativo - João Pedro</p><p>$ Comandos: sobre, experiencia, habilidades, projetos, contato, clear, sair</p><p>$ </p></div>
+      <div class="p-3 bg-slate-900 border-t border-slate-700 flex gap-2"><span class="text-indigo-300 font-mono text-xs">$&gt;</span><input type="text" id="terminalInput" class="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs" placeholder="digite um comando..." autocomplete="off"></div>
     </div>
   </div>
 
   <script>
     (function() {
+      // Partículas flutuantes
       const wrapper = document.getElementById('particlesWrapper');
       for(let i = 0; i < 40; i++) {
         const p = document.createElement('div');
@@ -450,7 +365,7 @@
         wrapper.appendChild(p);
       }
       
-      // Typing effect
+      // Typing
       const nameSpan = document.getElementById('typedName');
       const titleSpan = document.getElementById('typedTitle');
       const fullName = "João Pedro Carvalho";
@@ -470,10 +385,7 @@
               setTimeout(typeTitle, 40);
             } else {
               titleSpan.innerHTML = fullTitle;
-              document.querySelectorAll('.reveal').forEach(el => {
-                const delay = parseInt(el.getAttribute('data-delay') || '0');
-                setTimeout(() => el.classList.add('reveal-visible'), delay);
-              });
+              document.querySelectorAll('.reveal').forEach(el => { const delay = parseInt(el.getAttribute('data-delay') || '0'); setTimeout(() => el.classList.add('reveal-visible'), delay); });
             }
           }
           typeTitle();
@@ -484,12 +396,7 @@
       // Navbar scroll
       let lastScroll = 0;
       const navbar = document.getElementById('navbar');
-      window.addEventListener('scroll', () => {
-        let current = window.scrollY;
-        if(current > 80 && current > lastScroll) navbar.classList.add('navbar-hidden');
-        else navbar.classList.remove('navbar-hidden');
-        lastScroll = current;
-      });
+      window.addEventListener('scroll', () => { let current = window.scrollY; if(current > 80 && current > lastScroll) navbar.classList.add('navbar-hidden'); else navbar.classList.remove('navbar-hidden'); lastScroll = current; });
       
       // Terminal
       const termBtn = document.getElementById('terminalBtn');
@@ -497,98 +404,44 @@
       const closeTerm = document.getElementById('closeTerminal');
       const termInput = document.getElementById('terminalInput');
       const termOut = document.getElementById('terminalOutput');
-      
-      function addLine(msg, isError = false) {
-        const p = document.createElement('p');
-        p.className = isError ? 'text-red-400' : 'text-indigo-200';
-        p.innerHTML = msg;
-        termOut.insertBefore(p, termOut.lastElementChild);
-        termOut.scrollTop = termOut.scrollHeight;
-      }
-      
-      function handleCommand(cmd) {
-        let c = cmd.trim().toLowerCase();
-        if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS.');
-        else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec');
-        else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, Inglês intermediário');
-        else if(c === 'projetos') addLine('Dashboards, Sistema SQL, Portfólio online');
-        else if(c === 'contato') addLine('jeipi7007@gmail.com | Lorena-SP');
-        else if(c === 'clear') {
-          while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]);
-        }
-        else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none');
-        else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true);
-        if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`);
-        termInput.value = '';
-      }
-      
-      termBtn.addEventListener('click', () => {
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        setTimeout(() => termInput.focus(), 100);
-      });
+      function addLine(msg, isError = false) { const p = document.createElement('p'); p.className = isError ? 'text-red-400' : 'text-indigo-200'; p.innerHTML = msg; termOut.insertBefore(p, termOut.lastElementChild); termOut.scrollTop = termOut.scrollHeight; }
+      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards, Sistema SQL, Portfólio online'); else if(c === 'contato') addLine('jeipi7007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
+      termBtn.addEventListener('click', () => { modal.classList.remove('opacity-0', 'pointer-events-none'); setTimeout(() => termInput.focus(), 100); });
       closeTerm.addEventListener('click', () => modal.classList.add('opacity-0', 'pointer-events-none'));
       termInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleCommand(termInput.value); });
       modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.add('opacity-0', 'pointer-events-none'); });
       
       // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          let hash = this.getAttribute('href');
-          if(hash === '#') return;
-          let target = document.querySelector(hash);
-          if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        });
-      });
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { let hash = this.getAttribute('href'); if(hash === '#') return; let target = document.querySelector(hash); if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
       
       // Reveal observer
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal-visible'); });
-      }, { threshold: 0.1 });
+      const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('reveal-visible'); }); }, { threshold: 0.1 });
       document.querySelectorAll('.reveal:not(.reveal-visible)').forEach(el => observer.observe(el));
       
-      // ============================================================
-      // CONFIGURAÇÃO DO BOTÃO DE DOWNLOAD DO CURRÍCULO
-      // ============================================================
-      // IMPORTANTE: 
-      // 1. Renomeie seu arquivo PDF para "Curriculo_Joao_Pedro.pdf"
-      // 2. Coloque o arquivo na MESMA PASTA do seu arquivo HTML
-      // 3. Ou altere o caminho abaixo para onde seu PDF está
-      // ============================================================
-      
+      // Botão download currículo (mesmo comportamento anterior)
       const downloadBtn = document.getElementById('downloadCurriculoBtn');
-      
-      // DEFINA AQUI O CAMINHO DO SEU CURRÍCULO PDF
-      // Opção 1: Arquivo na mesma pasta - coloque o PDF com este nome
       const caminhoCurriculo = 'Curriculo_Joao_Pedro.pdf';
+      fetch(caminhoCurriculo, { method: 'HEAD' }).then(response => { if(response.ok) { downloadBtn.href = caminhoCurriculo; } else { downloadBtn.style.opacity = '0.5'; downloadBtn.style.cursor = 'not-allowed'; downloadBtn.onclick = (e) => { e.preventDefault(); alert('⚠️ Arquivo do currículo não encontrado!\n\nColoque o PDF na mesma pasta com nome "Curriculo_Joao_Pedro.pdf"'); }; } }).catch(() => { downloadBtn.style.opacity = '0.5'; downloadBtn.style.cursor = 'not-allowed'; downloadBtn.onclick = (e) => { e.preventDefault(); alert('⚠️ Currículo PDF não localizado!'); }; });
       
-      // Opção 2: Se quiser usar outro nome ou caminho, descomente a linha abaixo e ajuste
-      // const caminhoCurriculo = 'meu_curriculo.pdf';
-      
-      // Verifica se o arquivo existe (tenta carregar)
-      fetch(caminhoCurriculo, { method: 'HEAD' })
-        .then(response => {
-          if(response.ok) {
-            downloadBtn.href = caminhoCurriculo;
-            downloadBtn.style.opacity = '1';
+      // FUNÇÃO PARA REDIRECIONAR PARA PÁGINAS DE PROJETOS (cada card leva a uma página HTML diferente com detalhes e repositórios)
+      const pagesMap = {
+        dashboard: 'projeto_dashboard.html',
+        sql: 'projeto_sql.html',
+        web: 'projeto_web.html',
+        python: 'projeto_python.html',
+        matematica: 'projeto_matematica.html',
+        analise: 'projeto_analise.html'
+      };
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          const projectKey = card.getAttribute('data-project');
+          if(projectKey && pagesMap[projectKey]) {
+            window.location.href = pagesMap[projectKey];
           } else {
-            // Se o arquivo não existir, mostra mensagem e desabilita
-            downloadBtn.style.opacity = '0.5';
-            downloadBtn.style.cursor = 'not-allowed';
-            downloadBtn.onclick = (e) => {
-              e.preventDefault();
-              alert('⚠️ Arquivo do currículo não encontrado!\n\nInstruções:\n1. Coloque seu arquivo PDF na mesma pasta do site\n2. Renomeie para "Curriculo_Joao_Pedro.pdf"\n\nOu altere o caminho no código JavaScript');
-            };
+            alert('Página deste projeto está sendo construída em breve!');
           }
-        })
-        .catch(() => {
-          downloadBtn.style.opacity = '0.5';
-          downloadBtn.style.cursor = 'not-allowed';
-          downloadBtn.onclick = (e) => {
-            e.preventDefault();
-            alert('⚠️ Currículo PDF não localizado!\n\n📁 Como adicionar seu currículo:\n\n1. Pegue o arquivo PDF do seu currículo\n2. Copie para a mesma pasta deste arquivo HTML\n3. Renomeie para: Curriculo_Joao_Pedro.pdf\n\nPronto! O botão vai funcionar automaticamente.');
-          };
         });
-      
+      });
     })();
   </script>
 </body>
