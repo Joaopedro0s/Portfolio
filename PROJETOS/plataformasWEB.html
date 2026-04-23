@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Plataformas Web | Front-end | João Pedro Carvalho</title>
+  
+  <meta name="description" content="Projeto de Plataformas Web - Desenvolvimento Front-end com HTML, CSS, JavaScript e frameworks modernos.">
+  <meta name="theme-color" content="#0f172a">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #0a0f1e, #020617);
+      color: #eef2ff;
+    }
+
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(16, 185, 129, 0.1), transparent 60%),
+                  radial-gradient(ellipse at 80% 70%, rgba(79, 70, 229, 0.08), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-particle {
+      position: fixed;
+      background: rgba(16, 185, 129, 0.15);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(4px);
+      animation: floatAnim 20s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes floatAnim {
+      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.15; }
+      100% { transform: translateY(-50px) translateX(40px) scale(1.3); opacity: 0.4; }
+    }
+
+    .glass-nav {
+      background: rgba(10, 15, 30, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .project-container {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.85));
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .demo-image {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      transition: all 0.3s ease;
+    }
+    .demo-image:hover {
+      border-color: #10b981;
+      transform: scale(1.01);
+    }
+
+    .btn-github {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      transition: all 0.25s ease;
+    }
+    .btn-github:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(5, 150, 105, 0.4));
+      border-color: #10b981;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -8px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-voltar {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.2));
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-voltar:hover {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(139, 92, 246, 0.4));
+      border-color: #818cf8;
+      transform: translateY(-2px);
+    }
+
+    .tech-badge {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      transition: all 0.2s ease;
+    }
+    .tech-badge:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: #10b981;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border-radius: 10px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <div class="animated-bg"></div>
+  <div id="particlesWrapper" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></div>
+
+  <nav class="glass-nav fixed w-full top-0 left-0 z-50 px-5 py-3">
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <a href="../index.html" class="text-emerald-300 font-semibold hover:text-emerald-200 transition text-sm md:text-base">← Voltar ao Portfólio</a>
+      <div class="text-sm text-slate-400">Plataformas Web</div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-5xl mx-auto px-5 md:px-8 pt-28 pb-16">
+    
+    <!-- Cabeçalho do Projeto -->
+    <div class="text-center mb-10 reveal">
+      <div class="inline-block px-3 py-1 bg-emerald-900/40 rounded-full text-emerald-300 text-xs font-mono mb-3">Front-end Development</div>
+      <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-emerald-200 to-emerald-300 bg-clip-text text-transparent mb-4">
+        Plataformas Web
+      </h1>
+      <p class="text-slate-300 max-w-2xl mx-auto">
+        Desenvolvimento de interfaces modernas, responsivas e com foco na experiência do usuário.
+      </p>
+      <div class="w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- Container principal do projeto -->
+    <div class="project-container rounded-2xl overflow-hidden reveal">
+      
+      <!-- IMAGEM DE DEMONSTRAÇÃO -->
+      <div class="demo-image w-full">
+        <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-8 md:p-12">
+          <!-- Preview visual do projeto -->
+          <div class="max-w-3xl mx-auto">
+            <div class="bg-slate-900/80 rounded-t-xl overflow-hidden border border-slate-700">
+              <!-- Barra de navegação simulada -->
+              <div class="bg-slate-800 px-4 py-2 flex items-center gap-2 border-b border-slate-700">
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div class="text-xs text-slate-400 mx-auto">portifolio.joaopedro.com/demo</div>
+              </div>
+              <!-- Conteúdo simulado do site -->
+              <div class="p-6 bg-slate-900/60">
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                  <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl">🌐</div>
+                  <div class="flex-1 text-center md:text-left">
+                    <div class="h-5 bg-slate-700 rounded w-3/4 mb-3 animate-pulse"></div>
+                    <div class="h-3 bg-slate-700/50 rounded w-full mb-2"></div>
+                    <div class="h-3 bg-slate-700/50 rounded w-2/3"></div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
+                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
+                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
+                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
+                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Legenda da imagem -->
+            <p class="text-center text-xs text-slate-400 mt-3">🎨 Interface moderna e responsiva - Exemplo visual do projeto</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteúdo do projeto -->
+      <div class="p-6 md:p-8">
+        
+        <!-- Descrição completa -->
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
+            <span class="w-6 h-0.5 bg-emerald-400 rounded-full"></span>
+            Sobre o Projeto
+          </h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Este projeto reúne o desenvolvimento de plataformas web interativas, sites institucionais e portfólios pessoais, aplicando conceitos modernos de front-end. O foco principal é criar experiências digitais fluidas, responsivas e visualmente atraentes, utilizando as melhores práticas de desenvolvimento web.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Foram desenvolvidos diversos layouts com animações suaves, design adaptativo para dispositivos móveis e otimização de performance. Cada projeto é único e pensado para atender às necessidades específicas do usuário final, garantindo acessibilidade e usabilidade.
+          </p>
+        </div>
+
+        <!-- Características / Funcionalidades -->
+        <div class="mb-8">
+          <h2 class="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
+            <span class="w-5 h-0.5 bg-emerald-400 rounded-full"></span>
+            Funcionalidades
+          </h2>
+          <ul class="grid md:grid-cols-2 gap-2 text-slate-300 text-sm">
+            <li class="flex items-center gap-2">✓ Design totalmente responsivo (Mobile First)</li>
+            <li class="flex items-center gap-2">✓ Animações e transições suaves</li>
+            <li class="flex items-center gap-2">✓ Tema claro/escuro (Dark mode)</li>
+            <li class="flex items-center gap-2">✓ Otimizado para SEO e performance</li>
+            <li class="flex items-center gap-2">✓ Componentes reutilizáveis</li>
+            <li class="flex items-center gap-2">✓ Integração com APIs (quando aplicável)</li>
+          </ul>
+        </div>
+
+        <!-- Tecnologias utilizadas -->
+        <div class="mb-8">
+          <h2 class="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
+            <span class="w-5 h-0.5 bg-emerald-400 rounded-full"></span>
+            Tecnologias Utilizadas
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">HTML5</span>
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">CSS3</span>
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">JavaScript (ES6+)</span>
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Tailwind CSS</span>
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Figma (UI/UX)</span>
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Git & GitHub</span>
+            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Vue.js (básico)</span>
+          </div>
+        </div>
+
+        <!-- Link do GitHub Repositório -->
+        <div class="bg-slate-800/40 rounded-xl p-5 border border-emerald-500/20 mb-8">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-semibold text-emerald-300 mb-1">📁 Repositório no GitHub</h3>
+              <p class="text-xs text-slate-400">Acesse o código completo, documentação e histórico de commits</p>
+            </div>
+            <a href="https://github.com/Joaopedro0s/web-platforms" target="_blank" class="btn-github inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition">
+              <span>🐙</span> Ver no GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Imagens adicionais / Galeria (Foto real do projeto) -->
+        <div class="mb-8">
+          <h2 class="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
+            <span class="w-5 h-0.5 bg-emerald-400 rounded-full"></span>
+            Demonstração Visual
+          </h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <!-- Card 1 - Screenshot Desktop -->
+            <div class="bg-slate-800/30 rounded-xl p-3 border border-slate-700">
+              <div class="bg-slate-900 rounded-lg h-36 flex items-center justify-center border border-slate-700">
+                <div class="text-center">
+                  <div class="text-5xl mb-2">🖥️</div>
+                  <p class="text-xs text-slate-400">Versão Desktop</p>
+                </div>
+              </div>
+              <p class="text-xs text-center text-slate-400 mt-2">Layout Desktop responsivo</p>
+            </div>
+            <!-- Card 2 - Screenshot Mobile -->
+            <div class="bg-slate-800/30 rounded-xl p-3 border border-slate-700">
+              <div class="bg-slate-900 rounded-lg h-36 flex items-center justify-center border border-slate-700">
+                <div class="text-center">
+                  <div class="text-5xl mb-2">📱</div>
+                  <p class="text-xs text-slate-400">Versão Mobile</p>
+                </div>
+              </div>
+              <p class="text-xs text-center text-slate-400 mt-2">Adaptação para dispositivos móveis</p>
+            </div>
+          </div>
+          <p class="text-center text-xs text-slate-500 mt-3">
+            * As imagens acima representam o estilo visual do projeto. O código completo está disponível no repositório.
+          </p>
+        </div>
+
+        <!-- Próximos passos / Roadmap -->
+        <div class="bg-emerald-950/20 rounded-xl p-5 border border-emerald-500/20">
+          <h3 class="font-semibold text-emerald-300 mb-2 flex items-center gap-2">🚀 Próximas implementações</h3>
+          <ul class="text-xs text-slate-300 space-y-1 list-disc list-inside">
+            <li>Implementar PWA (Progressive Web App)</li>
+            <li>Adicionar testes automatizados (Jest)</li>
+            <li>Melhorar acessibilidade (WCAG 2.1)</li>
+            <li>Integrar com CMS headless</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Botão Voltar -->
+    <div class="mt-10 text-center reveal">
+      <a href="../index.html" class="btn-voltar inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition">
+        <span>←</span> Voltar para o Portfólio
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      // Partículas flutuantes
+      const wrapper = document.getElementById('particlesWrapper');
+      for(let i = 0; i < 35; i++) {
+        const p = document.createElement('div');
+        p.classList.add('floating-particle');
+        let size = Math.random() * 60 + 15;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.animationDuration = Math.random() * 18 + 12 + 's';
+        wrapper.appendChild(p);
+      }
+      
+      // Reveal animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      
+      // Ativa visíveis imediatamente
+      setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if(rect.top < window.innerHeight - 50) {
+            el.classList.add('reveal-visible');
+          }
+        });
+      }, 100);
+    })();
+  </script>
+</body>
+</html>
