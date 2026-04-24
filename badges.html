@@ -59,6 +59,7 @@
       backdrop-filter: blur(4px);
       border: 1px solid rgba(139, 92, 246, 0.25);
       transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
     }
     .badge-card:hover {
       transform: translateY(-6px) scale(1.02);
@@ -99,13 +100,21 @@
     }
 
     .badge-icon {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
       transition: all 0.2s ease;
     }
     .badge-card:hover .badge-icon {
       transform: scale(1.1);
       filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.8));
+    }
+    
+    .modal-badge {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      max-width: 500px;
+      width: 90%;
     }
   </style>
 </head>
@@ -128,119 +137,299 @@
         Badges & Conquistas
       </h1>
       <p class="text-slate-300 max-w-2xl mx-auto">
-        Medalhas, distintivos e reconhecimentos que representam minha evolução e dedicação na área da tecnologia.
+        Selos, distintivos e reconhecimentos que representam minha evolução e dedicação na área da tecnologia.
       </p>
       <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       
       <!-- Badge 1 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">🐍</div>
-        <h3 class="font-bold text-base">Python Dev</h3>
-        <p class="text-xs text-purple-300 mb-2">Nível: Intermediário</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Certificado Cisco</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao SERVIDOR MCP">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🏆</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução ao SERVIDOR MCP</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 2 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">📊</div>
-        <h3 class="font-bold text-base">Data Analyst</h3>
-        <p class="text-xs text-purple-300 mb-2">Power BI Expert</p>
-        <p class="text-xs text-slate-400">Concluído em 2025</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Microsoft</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Acelerar o desenvolvimento com o GitHub Copilot Cloud Agent">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🚀</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Acelerar o desenvolvimento com o GitHub Copilot Cloud Agent</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Certificado</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 3 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">⚡</div>
-        <h3 class="font-bold text-base">SQL Expert</h3>
-        <p class="text-xs text-purple-300 mb-2">Otimização Queries</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Fundação Bradesco</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Criar aplicativos com o modo agente do GitHub Copilot">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🤖</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Criar aplicativos com o modo agente do GitHub Copilot</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 4 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">🎨</div>
-        <h3 class="font-bold text-base">UI/UX Basics</h3>
-        <p class="text-xs text-purple-300 mb-2">Design Responsivo</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">SENAI</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="IA responsável com GitHub Copilot">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">⚖️</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">IA responsável com GitHub Copilot</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 5 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">🤖</div>
-        <h3 class="font-bold text-base">IA & Machine Learning</h3>
-        <p class="text-xs text-purple-300 mb-2">Estudos Iniciais</p>
-        <p class="text-xs text-slate-400">Em andamento - 2025</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">SENAI</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução à engenharia de prompts com o GitHub Copilot">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">💬</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução à engenharia de prompts com o GitHub Copilot</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 6 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">📈</div>
-        <h3 class="font-bold text-base">Dashboard Pro</h3>
-        <p class="text-xs text-purple-300 mb-2">Storytelling com Dados</p>
-        <p class="text-xs text-slate-400">Concluído em 2025</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Microsoft</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao GitHub Copilot">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">👨‍💻</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução ao GitHub Copilot</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 7 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">🌐</div>
-        <h3 class="font-bold text-base">Full Stack Starter</h3>
-        <p class="text-xs text-purple-300 mb-2">HTML/CSS/JS + PHP</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">SENAI</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Manter um repositório seguro com as melhores práticas do GitHub">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🔒</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Manter um repositório seguro com as melhores práticas do GitHub</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 8 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">📁</div>
-        <h3 class="font-bold text-base">Git Mastery</h3>
-        <p class="text-xs text-purple-300 mb-2">Versionamento</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">DIO</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Gerenciar um programa InnerSource usando o GitHub">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🔄</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Gerenciar um programa InnerSource usando o GitHub</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 9 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">📋</div>
-        <h3 class="font-bold text-base">Excel Advanced</h3>
-        <p class="text-xs text-purple-300 mb-2">Power Query & DAX</p>
-        <p class="text-xs text-slate-400">Concluído em 2025</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Fundação Bradesco</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Contribuir para um projeto de software livre no GitHub">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🌟</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Contribuir para um projeto de software livre no GitHub</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 10 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">🔒</div>
-        <h3 class="font-bold text-base">Cybersecurity Basics</h3>
-        <p class="text-xs text-purple-300 mb-2">Fundamentos Segurança</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Cisco</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução aos produtos do GitHub">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">📦</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução aos produtos do GitHub</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 14/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 11 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">☁️</div>
-        <h3 class="font-bold text-base">Cloud Foundations</h3>
-        <p class="text-xs text-purple-300 mb-2">Azure & AWS</p>
-        <p class="text-xs text-slate-400">Em andamento - 2025</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">Microsoft Learn</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao GitHub">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🐙</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução ao GitHub</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 14/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
       </div>
 
       <!-- Badge 12 -->
-      <div class="badge-card rounded-2xl p-5 text-center reveal">
-        <div class="badge-icon mb-3">📱</div>
-        <h3 class="font-bold text-base">Mobile First</h3>
-        <p class="text-xs text-purple-300 mb-2">Design Responsivo</p>
-        <p class="text-xs text-slate-400">Concluído em 2024</p>
-        <div class="mt-2 inline-block px-2 py-0.5 bg-purple-900/40 rounded-full text-[10px]">SENAI</div>
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao Git">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">📚</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução ao Git</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 09/04/2026</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 13 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução à extração de informações alimentadas por IA no Azure">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🔍</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução à extração de informações alimentadas por IA no Azure</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 14 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução aos conceitos de extração de informações alimentados por IA">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">📊</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de extração de informações alimentados por IA</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 15 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução à pesquisa visual computacional no Azure">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">👁️</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução à pesquisa visual computacional no Azure</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 16 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução aos conceitos de computer vision">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🖼️</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de computer vision</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 17 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução à fala no Azure">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🎤</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução à fala no Azure</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 18 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao processamento de linguagem natural no Azure">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">📝</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução ao processamento de linguagem natural no Azure</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 19 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução aos conceitos de processamento de linguagem natural">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🧠</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de processamento de linguagem natural</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 20 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução à IA gerativa no Azure">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">✨</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução à IA gerativa no Azure</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 21 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução à IA gerativa e aos agentes">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🤝</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução à IA gerativa e aos agentes</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 22 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao aprendizado de máquina no Azure">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">⚙️</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução ao aprendizado de máquina no Azure</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 29/08/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 23 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução aos conceitos de machine learning">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">📈</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de machine learning</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 29/08/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge 24 -->
+      <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução aos conceitos de IA">
+        <div class="flex items-center gap-4">
+          <div class="badge-icon">🧠</div>
+          <div class="flex-1">
+            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de IA</h3>
+            <p class="text-xs text-slate-400 mt-1">Concluído em 29/08/2025</p>
+            <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Certificado</div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -248,29 +437,21 @@
     <!-- Estatísticas -->
     <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
       <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">12+</div>
+        <div class="text-3xl font-bold text-purple-300">24</div>
         <div class="text-xs text-slate-400">Badges Conquistadas</div>
       </div>
       <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">5</div>
-        <div class="text-xs text-slate-400">Categorias Diferentes</div>
+        <div class="text-3xl font-bold text-purple-300">GitHub</div>
+        <div class="text-xs text-slate-400">Plataforma Principal</div>
       </div>
       <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">7</div>
-        <div class="text-xs text-slate-400">Instituições Parceiras</div>
+        <div class="text-3xl font-bold text-purple-300">Azure</div>
+        <div class="text-xs text-slate-400">IA & Machine Learning</div>
       </div>
       <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">🚀</div>
-        <div class="text-xs text-slate-400">Sempre Aprendendo</div>
+        <div class="text-3xl font-bold text-purple-300">Microsoft</div>
+        <div class="text-xs text-slate-400">Learn Platform</div>
       </div>
-    </div>
-
-    <!-- Mensagem motivacional -->
-    <div class="mt-10 bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl p-6 text-center border border-purple-500/20 reveal">
-      <p class="text-slate-300 italic text-sm md:text-base">
-        "Cada badge representa não apenas uma habilidade técnica, mas horas de dedicação, curiosidade e a paixão por transformar conhecimento em soluções reais."
-      </p>
-      <p class="text-purple-400 text-xs mt-3">— João Pedro Carvalho</p>
     </div>
 
     <!-- Botão Voltar -->
@@ -281,6 +462,26 @@
     </div>
 
   </main>
+
+  <!-- Modal para exibir link da badge -->
+  <div id="badgeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm transition-all duration-300" style="display: none;">
+    <div class="modal-badge rounded-2xl p-6 transform transition-all duration-300 scale-95 opacity-0">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-purple-300" id="modalTitle">Badge</h3>
+        <button id="closeModal" class="text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <div class="mb-4">
+        <p class="text-slate-300 text-sm mb-2" id="modalDate"></p>
+        <div class="bg-slate-900/50 rounded-lg p-3">
+          <p class="text-xs text-slate-400 mb-2">Link de verificação:</p>
+          <a href="#" id="modalLink" target="_blank" class="text-purple-400 text-sm break-all hover:underline">Clique para verificar a badge</a>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="inline-block px-3 py-1 bg-emerald-900/40 rounded-full text-xs text-emerald-400" id="modalStatus">Avaliação aprovada</div>
+      </div>
+    </div>
+  </div>
 
   <script>
     (function() {
@@ -319,6 +520,92 @@
           }
         });
       }, 100);
+
+      // CONFIGURAÇÃO DOS LINKS DAS BADGES - TODOS OS LINKS INSERIDOS
+      const badgeLinks = {
+        "Introdução ao SERVIDOR MCP": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/7BA4SDNZ?sharingId=1CFF8B701923E29B",
+        "Acelerar o desenvolvimento com o GitHub Copilot Cloud Agent": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/2JZBLDUV?sharingId=1CFF8B701923E29B",
+        "Criar aplicativos com o modo agente do GitHub Copilot": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/J3D9N6ET?sharingId=1CFF8B701923E29B",
+        "IA responsável com GitHub Copilot": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/37UR2N3H?sharingId=1CFF8B701923E29B",
+        "Introdução à engenharia de prompts com o GitHub Copilot": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/Q5VBHSME?sharingId=1CFF8B701923E29B",
+        "Introdução ao GitHub Copilot": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/CYG8MTN9?sharingId=1CFF8B701923E29B",
+        "Manter um repositório seguro com as melhores práticas do GitHub": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/NM8AMJCF?sharingId=1CFF8B701923E29B",
+        "Gerenciar um programa InnerSource usando o GitHub": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/YPF2ENKR?sharingId=1CFF8B701923E29B",
+        "Contribuir para um projeto de software livre no GitHub": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/WVHR2E5N?sharingId=1CFF8B701923E29B",
+        "Introdução aos produtos do GitHub": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/CYL6SQV9?sharingId=1CFF8B701923E29B",
+        "Introdução ao GitHub": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/UA69LYM3?sharingId=1CFF8B701923E29B",
+        "Introdução ao Git": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/HZ9VNDY8?sharingId=1CFF8B701923E29Bs",
+        "Introdução à extração de informações alimentadas por IA no Azure": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/HZNUFRB8?sharingId=1CFF8B701923E29B",
+        "Introdução aos conceitos de extração de informações alimentados por IA": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/KCJPDVKB?sharingId=1CFF8B701923E29B",
+        "Introdução à pesquisa visual computacional no Azure": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/VTEZQHXM?sharingId=1CFF8B701923E29B",
+        "Introdução aos conceitos de computer vision": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/WVXHF4GN?sharingId=1CFF8B701923E29B",
+        "Introdução à fala no Azure": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/82F3NN3W?sharingId=1CFF8B701923E29B",
+        "Introdução ao processamento de linguagem natural no Azure": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/Q542Q2YE?sharingId=1CFF8B701923E29B",
+        "Introdução aos conceitos de processamento de linguagem natural": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/CY3LCR59?sharingId=1CFF8B701923E29B",
+        "Introdução à IA gerativa no Azure": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/NMYHWW3F?sharingId=1CFF8B701923E29B",
+        "Introdução à IA gerativa e aos agentes": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/7BVYAK8Z?sharingId=1CFF8B701923E29B",
+        "Introdução ao aprendizado de máquina no Azure": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/A4FZKK27?sharingId=1CFF8B701923E29B",
+        "Introdução aos conceitos de machine learning": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/2DRMDP6V?sharingId=1CFF8B701923E29B",
+        "Introdução aos conceitos de IA": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/BCEJ6HWD?sharingId=1CFF8B701923E29B"
+      };
+
+      // Modal functionality
+      const modal = document.getElementById('badgeModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDate = document.getElementById('modalDate');
+      const modalLink = document.getElementById('modalLink');
+      const modalStatus = document.getElementById('modalStatus');
+      const closeModal = document.getElementById('closeModal');
+
+      function showModal(badgeName, date, status) {
+        modalTitle.textContent = badgeName;
+        modalDate.textContent = `Concluído em ${date}`;
+        modalStatus.textContent = status;
+        
+        const link = badgeLinks[badgeName];
+        if (link && link !== "") {
+          modalLink.href = link;
+          modalLink.textContent = link;
+          modalLink.style.opacity = "1";
+        } else {
+          modalLink.href = "#";
+          modalLink.textContent = "Link não disponível ainda.";
+          modalLink.style.opacity = "0.6";
+        }
+        
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.querySelector('.modal-badge').classList.remove('scale-95', 'opacity-0');
+          modal.querySelector('.modal-badge').classList.add('scale-100', 'opacity-100');
+        }, 10);
+      }
+
+      function closeModalFunc() {
+        modal.querySelector('.modal-badge').classList.remove('scale-100', 'opacity-100');
+        modal.querySelector('.modal-badge').classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 200);
+      }
+
+      // Adiciona evento de clique nos cards
+      document.querySelectorAll('.badge-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const badgeName = card.getAttribute('data-badge-name');
+          const dateElement = card.querySelector('.text-slate-400');
+          const statusElement = card.querySelector('.text-emerald-400');
+          
+          let date = dateElement ? dateElement.textContent.replace('Concluído em ', '') : "";
+          let status = statusElement ? statusElement.textContent : "Avaliação aprovada";
+          
+          showModal(badgeName, date, status);
+        });
+      });
+
+      closeModal.addEventListener('click', closeModalFunc);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFunc();
+      });
     })();
   </script>
 </body>
