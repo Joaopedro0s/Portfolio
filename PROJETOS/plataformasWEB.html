@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Plataformas Web | Front-end | João Pedro Carvalho</title>
   
-  <meta name="description" content="Projeto de Plataformas Web - Desenvolvimento Front-end com HTML, CSS, JavaScript e frameworks modernos.">
+  <meta name="description" content="Projetos de Plataformas Web - Desenvolvimento Front-end com HTML, CSS, JavaScript e frameworks modernos.">
   <meta name="theme-color" content="#0f172a">
   
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,13 +22,14 @@
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background: radial-gradient(circle at 0% 0%, #0a0f1e, #020617);
       color: #eef2ff;
+      overflow-x: hidden;
     }
 
     .animated-bg {
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 40%, rgba(16, 185, 129, 0.1), transparent 60%),
-                  radial-gradient(ellipse at 80% 70%, rgba(79, 70, 229, 0.08), transparent 50%);
+      background: radial-gradient(ellipse at 30% 40%, rgba(16, 185, 129, 0.08), transparent 60%),
+                  radial-gradient(ellipse at 80% 70%, rgba(79, 70, 229, 0.06), transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -58,23 +59,101 @@
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.85));
       backdrop-filter: blur(4px);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      transition: all 0.3s ease;
+      border-radius: 1rem;
+      overflow: hidden;
     }
 
-    .demo-image {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+    /* CORREÇÃO PRINCIPAL DO CARROSSEL */
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      width: 100%;
+    }
+    
+    .carousel-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+      width: 100%;
+      overflow-y: auto;
+      max-height: 70vh;
+    }
+    
+    /* Personalização da scrollbar dentro do slide */
+    .carousel-slide::-webkit-scrollbar {
+      width: 4px;
+    }
+    .carousel-slide::-webkit-scrollbar-track {
+      background: #1e293b;
+      border-radius: 10px;
+    }
+    .carousel-slide::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border-radius: 10px;
+    }
+    
+    .nav-btn {
+      background: rgba(16, 185, 129, 0.2);
       border: 1px solid rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      z-index: 20;
+    }
+    
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(16, 185, 129, 0.4);
+      border-color: #10b981;
+      transform: scale(1.05);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    .dot-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .dot-indicator.active {
+      background: #10b981;
+      transform: scale(1.2);
+      box-shadow: 0 0 8px #10b981;
+    }
+    
+    .dot-indicator:hover:not(.active) {
+      background: rgba(16, 185, 129, 0.6);
+      transform: scale(1.1);
+    }
+
+    .preview-iframe {
+      background: #0f172a;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 0.75rem;
       transition: all 0.3s ease;
     }
-    .demo-image:hover {
+    .preview-iframe:hover {
       border-color: #10b981;
-      transform: scale(1.01);
     }
 
     .btn-github {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
       border: 1px solid rgba(16, 185, 129, 0.5);
       transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .btn-github:hover {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), rgba(5, 150, 105, 0.4));
@@ -102,6 +181,17 @@
     .tech-badge:hover {
       background: rgba(16, 185, 129, 0.3);
       border-color: #10b981;
+    }
+
+    .btn-visitar {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-visitar:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: #10b981;
+      transform: translateY(-2px);
     }
 
     ::-webkit-scrollbar {
@@ -140,170 +230,241 @@
 
   <main class="relative z-10 max-w-5xl mx-auto px-5 md:px-8 pt-28 pb-16">
     
-    <!-- Cabeçalho do Projeto -->
-    <div class="text-center mb-10 reveal">
+    <div class="text-center mb-8 reveal">
       <div class="inline-block px-3 py-1 bg-emerald-900/40 rounded-full text-emerald-300 text-xs font-mono mb-3">Front-end Development</div>
-      <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-emerald-200 to-emerald-300 bg-clip-text text-transparent mb-4">
-        Plataformas Web
-      </h1>
-      <p class="text-slate-300 max-w-2xl mx-auto">
-        Desenvolvimento de interfaces modernas, responsivas e com foco na experiência do usuário.
-      </p>
+      <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-emerald-200 to-emerald-300 bg-clip-text text-transparent mb-4">Plataformas Web</h1>
+      <p class="text-slate-300 max-w-2xl mx-auto">Desenvolvimento de interfaces modernas, responsivas e com foco na experiência do usuário.</p>
       <div class="w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
-    <!-- Container principal do projeto -->
-    <div class="project-container rounded-2xl overflow-hidden reveal">
-      
-      <div class="demo-image w-full">
-        <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-8 md:p-12">
-          <div class="max-w-3xl mx-auto">
-            <div class="bg-slate-900/80 rounded-t-xl overflow-hidden border border-slate-700">
-              <div class="bg-slate-800 px-4 py-2 flex items-center gap-2 border-b border-slate-700">
-                <div class="flex gap-1.5">
-                  <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                <div class="text-xs text-slate-400 mx-auto">https://github.com/Joaopedro0s/Bike-Shop</div>
-              </div>
-              <div class="p-6 bg-slate-900/60">
-                <div class="flex flex-col md:flex-row gap-6 items-center">
-                  <div class="w-24 h-24 bg-gradient-to-br from-emerald-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-3xl">🌐</div>
-                  <div class="flex-1 text-center md:text-left">
-                    <div class="h-5 bg-slate-700 rounded w-3/4 mb-3 animate-pulse"></div>
-                    <div class="h-3 bg-slate-700/50 rounded w-full mb-2"></div>
-                    <div class="h-3 bg-slate-700/50 rounded w-2/3"></div>
-                  </div>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
-                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
-                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
-                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
-                  <div class="h-16 bg-slate-800/50 rounded-lg"></div>
-                </div>
-              </div>
-            </div>
-            <!-- Legenda da imagem -->
-            <p class="text-center text-xs text-slate-400 mt-3">Interface moderna e responsiva - Exemplo visual do projeto</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Conteúdo do projeto -->
-      <div class="p-6 md:p-8">
+    <!-- CARROSSEL CORRIGIDO -->
+    <div class="project-container reveal">
+      <div class="carousel-wrapper">
+        <button id="prevBtn" class="nav-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-emerald-300 text-lg md:text-xl z-10">←</button>
         
-        <!-- Descrição completa -->
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
-            <span class="w-6 h-0.5 bg-emerald-400 rounded-full"></span>
-            Sobre o Projeto
-          </h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
-            Este projeto reúne o desenvolvimento de plataformas web interativas, sites institucionais e portfólios pessoais, aplicando conceitos modernos de front-end. O foco principal é criar experiências digitais fluidas, responsivas e visualmente atraentes, utilizando as melhores práticas de desenvolvimento web.
-          </p>
-          <p class="text-slate-300 leading-relaxed">
-            Foram desenvolvidos diversos layouts com animações suaves, design adaptativo para dispositivos móveis e otimização de performance. Cada projeto é único e pensado para atender às necessidades específicas do usuário final, garantindo acessibilidade e usabilidade.
-          </p>
-        </div>
+        <div class="carousel-track" id="carouselTrack">
+          
+          <!-- PROJETO 1 -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <!-- Iframe -->
+              <div class="preview-iframe overflow-hidden rounded-xl mb-5">
+                <iframe 
+                  src="https://joaopedro0s.github.io/Portfolio/" 
+                  class="w-full h-64 md:h-80"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+                  loading="lazy"
+                  title="Preview do Portfólio Pessoal">
+                </iframe>
+              </div>
+              <div class="flex justify-end mb-4">
+                <a href="https://github.com/Joaopedro0s/Portfolio" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">📁 Portfólio Pessoal</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Site portfólio completo com animações suaves, design moderno e totalmente responsivo. Desenvolvido para apresentar projetos, habilidades e certificações de forma profissional.</p>
 
-        <!-- Características / Funcionalidades -->
-        <div class="mb-8">
-          <h2 class="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
-            <span class="w-5 h-0.5 bg-emerald-400 rounded-full"></span>
-            Funcionalidades
-          </h2>
-          <ul class="grid md:grid-cols-2 gap-2 text-slate-300 text-sm">
-            <li class="flex items-center gap-2">✓ Design totalmente responsivo (Mobile First)</li>
-            <li class="flex items-center gap-2">✓ Animações e transições suaves</li>
-            <li class="flex items-center gap-2">✓ Tema claro/escuro (Dark mode)</li>
-            <li class="flex items-center gap-2">✓ Otimizado para SEO e performance</li>
-            <li class="flex items-center gap-2">✓ Componentes reutilizáveis</li>
-            <li class="flex items-center gap-2">✓ Integração com APIs (quando aplicável)</li>
-          </ul>
-        </div>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
+                <li class="flex items-center gap-1">✓ Design responsivo</li>
+                <li class="flex items-center gap-1">✓ Animações suaves</li>
+                <li class="flex items-center gap-1">✓ Efeito de digitação</li>
+                <li class="flex items-center gap-1">✓ Terminal interativo</li>
+                <li class="flex items-center gap-1">✓ Cards clicáveis</li>
+                <li class="flex items-center gap-1">✓ Certificações/badges</li>
+              </ul>
 
-        <!-- Tecnologias utilizadas -->
-        <div class="mb-8">
-          <h2 class="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
-            <span class="w-5 h-0.5 bg-emerald-400 rounded-full"></span>
-            Tecnologias Utilizadas
-          </h2>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">HTML5</span>
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">CSS3</span>
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">JavaScript (ES6+)</span>
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Tailwind CSS</span>
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Figma (UI/UX)</span>
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Git & GitHub</span>
-            <span class="tech-badge px-3 py-1.5 rounded-full text-sm">Vue.js (básico)</span>
-          </div>
-        </div>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <div class="flex flex-wrap gap-2 mb-5">
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">JavaScript</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
+              </div>
 
-        <!-- Link do GitHub Repositório -->
-        <div class="bg-slate-800/40 rounded-xl p-5 border border-emerald-500/20 mb-8">
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <h3 class="font-semibold text-emerald-300 mb-1">Repositório no GitHub</h3>
-              <p class="text-xs text-slate-400">Acesse o código completo, documentação e histórico de commits</p>
-            </div>
-            <a href="https://github.com/Joaopedro0s/Bike-Shop" target="_blank" class="btn-github inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition">
-              <span></span> Ver no GitHub
-            </a>
-          </div>
-        </div>
-
-        <!-- Imagens adicionais / Galeria (Foto real do projeto) -->
-        <div class="mb-8">
-          <h2 class="text-xl font-bold text-emerald-300 mb-3 flex items-center gap-2">
-            <span class="w-5 h-0.5 bg-emerald-400 rounded-full"></span>
-            Demonstração Visual
-          </h2>
-          <div class="grid md:grid-cols-2 gap-4">
-            <!-- Card 1 - Screenshot Desktop -->
-            <div class="bg-slate-800/30 rounded-xl p-3 border border-slate-700">
-              <div class="bg-slate-900 rounded-lg h-36 flex items-center justify-center border border-slate-700">
-                <div class="text-center">
-                  <div class="text-5xl mb-2"></div>
-                  <p class="text-xs text-slate-400">Versão Desktop</p>
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/portfolio" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
                 </div>
               </div>
-              <p class="text-xs text-center text-slate-400 mt-2">Layout Desktop responsivo</p>
-            </div>
-            <!-- Card 2 - Screenshot Mobile -->
-            <div class="bg-slate-800/30 rounded-xl p-3 border border-slate-700">
-              <div class="bg-slate-900 rounded-lg h-36 flex items-center justify-center border border-slate-700">
-                <div class="text-center">
-                  <div class="text-5xl mb-2"></div>
-                  <p class="text-xs text-slate-400">Versão Mobile</p>
-                </div>
-              </div>
-              <p class="text-xs text-center text-slate-400 mt-2">Adaptação para dispositivos móveis</p>
             </div>
           </div>
-          <p class="text-center text-xs text-slate-500 mt-3">
-            * As imagens acima representam o estilo visual do projeto. O código completo está disponível no repositório.
-          </p>
+
+          <!-- PROJETO 2 -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="preview-iframe overflow-hidden rounded-xl mb-5">
+                <iframe 
+                  src="https://joaopedro0s.github.io/Bike-Shop/" 
+                  class="w-full h-64 md:h-80"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+                  loading="lazy"
+                  title="Preview da Landing Page">
+                </iframe>
+              </div>
+              <div class="flex justify-end mb-4">
+                <a href="https://joaopedro0s.github.io/Bike-Shop/" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">🏢 Landing Page Corporativa</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Landing page profissional para empresas com design focado em conversão. Inclui seções de hero, serviços, depoimentos, equipe e formulário de contato.</p>
+
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
+                <li class="flex items-center gap-1">✓ Design moderno</li>
+                <li class="flex items-center gap-1">✓ Formulário contato</li>
+                <li class="flex items-center gap-1">✓ Responsividade</li>
+                <li class="flex items-center gap-1">✓ Scroll suave</li>
+                <li class="flex items-center gap-1">✓ Otimização SEO</li>
+                <li class="flex items-center gap-1">✓ Seções organizadas</li>
+              </ul>
+
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <div class="flex flex-wrap gap-2 mb-5">
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Bootstrap 5</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">jQuery</span>
+              </div>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/landing-page" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJETO 3 -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="preview-iframe overflow-hidden rounded-xl mb-5">
+                <iframe 
+                  src="https://joaopedro0s.github.io/JML-Phones/" 
+                  class="w-full h-64 md:h-80"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+                  loading="lazy"
+                  title="Preview do E-commerce">
+                </iframe>
+              </div>
+              <div class="flex justify-end mb-4">
+                <a href="https://Joaopedro0s.github.io/ecommerce-frontend" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">🛒 E-commerce Front-end</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Interface completa de e-commerce com catálogo de produtos, carrinho de compras, filtros e checkout simulados. Desenvolvido com React.</p>
+
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
+                <li class="flex items-center gap-1">✓ Catálogo produtos</li>
+                <li class="flex items-center gap-1">✓ Carrinho compras</li>
+                <li class="flex items-center gap-1">✓ Filtros categoria</li>
+                <li class="flex items-center gap-1">✓ Busca produtos</li>
+                <li class="flex items-center gap-1">✓ Checkout simulado</li>
+                <li class="flex items-center gap-1">✓ Design responsivo</li>
+              </ul>
+
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <div class="flex flex-wrap gap-2 mb-5">
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">React</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Context API</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Vite</span>
+              </div>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/ecommerce-frontend" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJETO 4 -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="preview-iframe overflow-hidden rounded-xl mb-5">
+                <iframe 
+                  src="https://joaopedro0s.github.io/StudyFlow/" 
+                  class="w-full h-64 md:h-80"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+                  loading="lazy"
+                  title="Preview do Dashboard">
+                </iframe>
+              </div>
+              <div class="flex justify-end mb-4">
+                <a href="https://Joaopedro0s.github.io/admin-dashboard" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">📊 Dashboard Admin</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Painel administrativo com gráficos interativos, tabelas de dados, métricas em tempo real e navegação intuitiva para gestão de sistemas.</p>
+
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
+                <li class="flex items-center gap-1">✓ Gráficos interativos</li>
+                <li class="flex items-center gap-1">✓ Tabelas paginação</li>
+                <li class="flex items-center gap-1">✓ Cards de KPI</li>
+                <li class="flex items-center gap-1">✓ Navegação lateral</li>
+                <li class="flex items-center gap-1">✓ Modo claro/escuro</li>
+                <li class="flex items-center gap-1">✓ Design responsivo</li>
+              </ul>
+
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <div class="flex flex-wrap gap-2 mb-5">
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Vue.js</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Chart.js</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Vue Router</span>
+              </div>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/admin-dashboard" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+        
+        <button id="nextBtn" class="nav-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-emerald-300 text-lg md:text-xl z-10">→</button>
+      </div>
+      
+      <div class="flex justify-center gap-2 py-4" id="dotsContainer"></div>
+    </div>
+
+    <div class="mt-8 bg-slate-800/30 rounded-xl p-4 text-center reveal">
+      <h3 class="text-base font-semibold text-emerald-300 mb-2">⚙️ Tecnologias dominadas</h3>
+      <div class="flex flex-wrap justify-center gap-2">
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">JavaScript</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">React</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">Vue.js</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">Bootstrap</span>
+        <span class="tech-badge px-2 py-1 rounded-full text-xs">jQuery</span>
       </div>
     </div>
 
-    <div class="mt-10 text-center reveal">
-      <a href="../index.html" class="btn-voltar inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition">
-        <span>←</span> Voltar para o Portfólio
-      </a>
+    <div class="mt-6 text-center reveal">
+      <a href="../index.html" class="btn-voltar inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition"><span>←</span> Voltar ao Portfólio</a>
     </div>
 
   </main>
 
   <script>
     (function() {
-      // Partículas flutuantes
+      // Partículas
       const wrapper = document.getElementById('particlesWrapper');
-      for(let i = 0; i < 35; i++) {
+      for(let i = 0; i < 30; i++) {
         const p = document.createElement('div');
         p.classList.add('floating-particle');
-        let size = Math.random() * 60 + 15;
+        let size = Math.random() * 50 + 15;
         p.style.width = size + 'px';
         p.style.height = size + 'px';
         p.style.left = Math.random() * 100 + '%';
@@ -313,26 +474,67 @@
         wrapper.appendChild(p);
       }
       
-      // Reveal animation
+      // Reveal
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-          }
-        });
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('reveal-visible'); });
       }, { threshold: 0.1 });
-      
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
       
-      // Ativa visíveis imediatamente
       setTimeout(() => {
         document.querySelectorAll('.reveal').forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if(rect.top < window.innerHeight - 50) {
-            el.classList.add('reveal-visible');
-          }
+          if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('reveal-visible');
         });
       }, 100);
+
+      // Carrossel
+      const track = document.getElementById('carouselTrack');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const dotsContainer = document.getElementById('dotsContainer');
+      
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('button');
+          dot.classList.add('dot-indicator');
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+      
+      function updateDots() {
+        document.querySelectorAll('.dot-indicator').forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+      }
+      
+      function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+        updateButtons();
+      }
+      
+      function updateButtons() {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === totalSlides - 1;
+      }
+      
+      prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+      nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+        else if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+      });
+      
+      createDots();
+      goToSlide(0);
     })();
   </script>
 </body>
