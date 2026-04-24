@@ -63,7 +63,6 @@
       overflow: hidden;
     }
 
-    /* CORREÇÃO PRINCIPAL DO CARROSSEL */
     .carousel-wrapper {
       position: relative;
       width: 100%;
@@ -84,7 +83,6 @@
       max-height: 70vh;
     }
     
-    /* Personalização da scrollbar dentro do slide */
     .carousel-slide::-webkit-scrollbar {
       width: 4px;
     }
@@ -237,17 +235,16 @@
       <div class="w-20 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
     </div>
 
-    <!-- CARROSSEL CORRIGIDO -->
+    <!-- CARROSSEL -->
     <div class="project-container reveal">
       <div class="carousel-wrapper">
         <button id="prevBtn" class="nav-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-emerald-300 text-lg md:text-xl z-10">←</button>
         
         <div class="carousel-track" id="carouselTrack">
           
-          <!-- PROJETO 1 -->
+          <!-- PROJETO 1 - Portfólio (mantido) -->
           <div class="carousel-slide">
             <div class="p-5 md:p-7">
-              <!-- Iframe -->
               <div class="preview-iframe overflow-hidden rounded-xl mb-5">
                 <iframe 
                   src="https://joaopedro0s.github.io/Portfolio/" 
@@ -258,23 +255,23 @@
                 </iframe>
               </div>
               <div class="flex justify-end mb-4">
-                <a href="https://github.com/Joaopedro0s/Portfolio" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+                <a href="https://github.com/Joaopedro0s/Portfolio" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">Abrir em nova aba</a>
               </div>
               
-              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">📁 Portfólio Pessoal</h2>
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">Portfólio Pessoal</h2>
               <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Site portfólio completo com animações suaves, design moderno e totalmente responsivo. Desenvolvido para apresentar projetos, habilidades e certificações de forma profissional.</p>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">Funcionalidades</h3>
               <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
                 <li class="flex items-center gap-1">✓ Design responsivo</li>
                 <li class="flex items-center gap-1">✓ Animações suaves</li>
                 <li class="flex items-center gap-1">✓ Efeito de digitação</li>
                 <li class="flex items-center gap-1">✓ Terminal interativo</li>
                 <li class="flex items-center gap-1">✓ Cards clicáveis</li>
-                <li class="flex items-center gap-1">✓ Certificações/badges</li>
+                <li class="flex items-center gap-1">✓ Certificações e badges</li>
               </ul>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">Tecnologias</h3>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
                 <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
@@ -284,14 +281,14 @@
 
               <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
-                  <a href="https://github.com/Joaopedro0s/portfolio" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/portfolio" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">Ver no GitHub</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- PROJETO 2 -->
+          <!-- PROJETO 2 - Bike Shop (Loja de Bicicletas) -->
           <div class="carousel-slide">
             <div class="p-5 md:p-7">
               <div class="preview-iframe overflow-hidden rounded-xl mb-5">
@@ -300,44 +297,44 @@
                   class="w-full h-64 md:h-80"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
                   loading="lazy"
-                  title="Preview da Landing Page">
+                  title="Preview da Loja de Bicicletas">
                 </iframe>
               </div>
               <div class="flex justify-end mb-4">
-                <a href="https://joaopedro0s.github.io/Bike-Shop/" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+                <a href="https://joaopedro0s.github.io/Bike-Shop/" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">Abrir em nova aba</a>
               </div>
               
-              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">🏢 Landing Page Corporativa</h2>
-              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Landing page profissional para empresas com design focado em conversão. Inclui seções de hero, serviços, depoimentos, equipe e formulário de contato.</p>
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">Bike Shop - Loja de Bicicletas</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">E-commerce especializado em venda de bicicletas, acessórios e equipamentos de ciclismo. Interface moderna com catálogo organizado por categorias (mountain bike, speed, elétrica, infantil) e sistema de filtros por preço e marca.</p>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">Funcionalidades</h3>
               <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
-                <li class="flex items-center gap-1">✓ Design moderno</li>
-                <li class="flex items-center gap-1">✓ Formulário contato</li>
-                <li class="flex items-center gap-1">✓ Responsividade</li>
-                <li class="flex items-center gap-1">✓ Scroll suave</li>
-                <li class="flex items-center gap-1">✓ Otimização SEO</li>
-                <li class="flex items-center gap-1">✓ Seções organizadas</li>
+                <li class="flex items-center gap-1">✓ Catálogo de bicicletas</li>
+                <li class="flex items-center gap-1">✓ Filtros por categoria</li>
+                <li class="flex items-center gap-1">✓ Busca por produtos</li>
+                <li class="flex items-center gap-1">✓ Carrinho de compras</li>
+                <li class="flex items-center gap-1">✓ Sistema de avaliações</li>
+                <li class="flex items-center gap-1">✓ Design responsivo</li>
               </ul>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">Tecnologias</h3>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">Bootstrap 5</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">jQuery</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">React</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Context API</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">LocalStorage</span>
               </div>
 
               <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
-                  <a href="https://github.com/Joaopedro0s/landing-page" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/bike-shop" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">Ver no GitHub</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- PROJETO 3 -->
+          <!-- PROJETO 3 - JML Phones (Loja de Celulares) -->
           <div class="carousel-slide">
             <div class="p-5 md:p-7">
               <div class="preview-iframe overflow-hidden rounded-xl mb-5">
@@ -346,44 +343,44 @@
                   class="w-full h-64 md:h-80"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
                   loading="lazy"
-                  title="Preview do E-commerce">
+                  title="Preview da Loja de Celulares">
                 </iframe>
               </div>
               <div class="flex justify-end mb-4">
-                <a href="https://Joaopedro0s.github.io/ecommerce-frontend" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+                <a href="https://joaopedro0s.github.io/JML-Phones/" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">Abrir em nova aba</a>
               </div>
               
-              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">🛒 E-commerce Front-end</h2>
-              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Interface completa de e-commerce com catálogo de produtos, carrinho de compras, filtros e checkout simulados. Desenvolvido com React.</p>
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">JML Phones - Loja de Celulares</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Plataforma de vendas de smartphones e acessórios com layout moderno e intuitivo. Oferece catálogo completo com marcas como Apple, Samsung, Xiaomi e Motorola, além de comparação de produtos e ofertas especiais.</p>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">Funcionalidades</h3>
               <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
-                <li class="flex items-center gap-1">✓ Catálogo produtos</li>
-                <li class="flex items-center gap-1">✓ Carrinho compras</li>
-                <li class="flex items-center gap-1">✓ Filtros categoria</li>
-                <li class="flex items-center gap-1">✓ Busca produtos</li>
-                <li class="flex items-center gap-1">✓ Checkout simulado</li>
+                <li class="flex items-center gap-1">✓ Cards de produtos</li>
+                <li class="flex items-center gap-1">✓ Filtro por marca</li>
+                <li class="flex items-center gap-1">✓ Ordenação por preço</li>
+                <li class="flex items-center gap-1">✓ Modal de detalhes</li>
+                <li class="flex items-center gap-1">✓ Carrinho dinâmico</li>
                 <li class="flex items-center gap-1">✓ Design responsivo</li>
               </ul>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">Tecnologias</h3>
               <div class="flex flex-wrap gap-2 mb-5">
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">React</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">Context API</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">Vite</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">JavaScript</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">Bootstrap</span>
               </div>
 
               <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
-                  <a href="https://github.com/Joaopedro0s/ecommerce-frontend" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/jml-phones" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">Ver no GitHub</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- PROJETO 4 -->
+          <!-- PROJETO 4 - StudyFlow (Auxílio Escolar) -->
           <div class="carousel-slide">
             <div class="p-5 md:p-7">
               <div class="preview-iframe overflow-hidden rounded-xl mb-5">
@@ -392,38 +389,38 @@
                   class="w-full h-64 md:h-80"
                   sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
                   loading="lazy"
-                  title="Preview do Dashboard">
+                  title="Preview do Site de Auxílio Escolar">
                 </iframe>
               </div>
               <div class="flex justify-end mb-4">
-                <a href="https://Joaopedro0s.github.io/admin-dashboard" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">🔗 Abrir em nova aba</a>
+                <a href="https://joaopedro0s.github.io/StudyFlow/" target="_blank" class="btn-visitar inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs transition">Abrir em nova aba</a>
               </div>
               
-              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">📊 Dashboard Admin</h2>
-              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Painel administrativo com gráficos interativos, tabelas de dados, métricas em tempo real e navegação intuitiva para gestão de sistemas.</p>
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-300 mb-3">StudyFlow - Auxílio Escolar</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">Plataforma educacional desenvolvida para auxiliar estudantes nos estudos, oferecendo resumos interativos, exercícios, videoaulas organizadas por disciplina (Matemática, Português, Ciências, História) e sistema de progresso de aprendizado.</p>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">✨ Funcionalidades</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2 mt-4">Funcionalidades</h3>
               <ul class="grid grid-cols-2 gap-1 text-slate-300 text-xs md:text-sm mb-4">
-                <li class="flex items-center gap-1">✓ Gráficos interativos</li>
-                <li class="flex items-center gap-1">✓ Tabelas paginação</li>
-                <li class="flex items-center gap-1">✓ Cards de KPI</li>
-                <li class="flex items-center gap-1">✓ Navegação lateral</li>
-                <li class="flex items-center gap-1">✓ Modo claro/escuro</li>
+                <li class="flex items-center gap-1">✓ Conteúdo por disciplina</li>
+                <li class="flex items-center gap-1">✓ Resumos interativos</li>
+                <li class="flex items-center gap-1">✓ Quiz de exercícios</li>
+                <li class="flex items-center gap-1">✓ Barra de progresso</li>
+                <li class="flex items-center gap-1">✓ Flashcards para estudo</li>
                 <li class="flex items-center gap-1">✓ Design responsivo</li>
               </ul>
 
-              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">🛠 Tecnologias</h3>
+              <h3 class="text-base md:text-lg font-semibold text-emerald-300 mb-2">Tecnologias</h3>
               <div class="flex flex-wrap gap-2 mb-5">
                 <span class="tech-badge px-2 py-1 rounded-full text-xs">Vue.js</span>
-                <span class="tech-badge px-2 py-1 rounded-full text-xs">Chart.js</span>
                 <span class="tech-badge px-2 py-1 rounded-full text-xs">Tailwind</span>
                 <span class="tech-badge px-2 py-1 rounded-full text-xs">Vue Router</span>
+                <span class="tech-badge px-2 py-1 rounded-full text-xs">LocalStorage</span>
               </div>
 
               <div class="bg-slate-800/40 rounded-xl p-4 border border-emerald-500/20">
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <div><h4 class="font-semibold text-emerald-300 text-sm">📦 Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
-                  <a href="https://github.com/Joaopedro0s/admin-dashboard" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">🐙 Ver no GitHub</a>
+                  <div><h4 class="font-semibold text-emerald-300 text-sm">Repositório</h4><p class="text-xs text-slate-400">Código completo</p></div>
+                  <a href="https://github.com/Joaopedro0s/studyflow" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">Ver no GitHub</a>
                 </div>
               </div>
             </div>
@@ -438,7 +435,7 @@
     </div>
 
     <div class="mt-8 bg-slate-800/30 rounded-xl p-4 text-center reveal">
-      <h3 class="text-base font-semibold text-emerald-300 mb-2">⚙️ Tecnologias dominadas</h3>
+      <h3 class="text-base font-semibold text-emerald-300 mb-2">Tecnologias dominadas</h3>
       <div class="flex flex-wrap justify-center gap-2">
         <span class="tech-badge px-2 py-1 rounded-full text-xs">HTML5</span>
         <span class="tech-badge px-2 py-1 rounded-full text-xs">CSS3</span>
@@ -447,7 +444,6 @@
         <span class="tech-badge px-2 py-1 rounded-full text-xs">React</span>
         <span class="tech-badge px-2 py-1 rounded-full text-xs">Vue.js</span>
         <span class="tech-badge px-2 py-1 rounded-full text-xs">Bootstrap</span>
-        <span class="tech-badge px-2 py-1 rounded-full text-xs">jQuery</span>
       </div>
     </div>
 
