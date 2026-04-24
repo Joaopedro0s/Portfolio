@@ -95,6 +95,29 @@
       border-color: #818cf8;
       box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
     }
+    
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #4f46e5, #a78bfa, #4f46e5);
+    }
+    .highlight-star {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 12px;
+      color: #fbbf24;
+    }
 
     .typing-cursor::after {
       content: '|';
@@ -165,6 +188,16 @@
       background: #4f46e5;
       border-radius: 10px;
     }
+    
+    .badge-mini {
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      transition: all 0.2s ease;
+    }
+    .badge-mini:hover {
+      background: rgba(139, 92, 246, 0.35);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body class="overflow-x-hidden">
@@ -204,7 +237,7 @@
         <a href="#contato" class="px-6 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 transition shadow-lg font-semibold text-sm">Vamos conversar</a>
         <a href="#projetos" class="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition font-semibold text-sm border border-white/20">Ver projetos</a>
         <button id="terminalBtn" class="px-5 py-2.5 rounded-full bg-slate-800/80 hover:bg-slate-700 transition flex items-center gap-2 text-sm font-mono terminal-glow">
-          <span>&gt;_</span> terminal
+          <span></span> terminal
         </button>
         
         <a id="downloadCurriculoBtn" href="Curriculo_Joao_Pedro.pdf" download class="px-5 py-2.5 rounded-full btn-download-curriculo transition flex items-center gap-2 text-sm font-semibold">
@@ -226,6 +259,7 @@
         <div class="space-y-4 text-slate-200 leading-relaxed">
           <p>Sou estudante de Análise e Desenvolvimento de Sistemas, com interesse em desenvolvimento de software, análise de dados e criação de soluções tecnológicas. Tenho perfil criativo e gosto de resolver problemas através da lógica e da programação.</p>
           <p>Atualmente curso <strong class="text-indigo-300">Análise e Desenvolvimento de Sistemas</strong> no SENAI Taubaté (previsão: 2027) e já concluí o ensino técnico na área (2025). Possuo experiência prática em ambientes administrativos e de TI, além de atuação como aprendiz em desenvolvimento de sistemas.</p>
+          <p>Já conquistei <strong class="text-purple-300">24 badges da Microsoft Learn</strong> e mais de <strong class="text-indigo-300">17 certificações</strong> em diversas tecnologias, sempre buscando me atualizar e expandir meus conhecimentos.</p>
         </div>
       </div>
     </section>
@@ -250,43 +284,114 @@
       </div>
     </section>
 
-    <!-- Seção Certificações + Badges -->
+    <!-- Seção Certificações + Badges com Destaques -->
     <section id="certificacoes-badges" class="py-12 md:py-16 reveal">
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Certificações -->
         <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20">
-          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-indigo-400"></span>Certificações</h3>
-          <div class="space-y-3 mb-5">
-            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
-              <span class="text-indigo-400 text-xl"></span>
-              <div><p class="font-semibold">Python Essentials 1</p><p class="text-xs text-slate-400">Cisco Networking Academy - 2024</p></div>
-            </div>
-            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
-              <span class="text-indigo-400 text-xl"></span>
-              <div><p class="font-semibold">Power BI Data Analyst Associate</p><p class="text-xs text-slate-400">Microsoft Learn - 2025</p></div>
-            </div>
-            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
-              <span class="text-indigo-400 text-xl"></span>
-              <div><p class="font-semibold">SQL Fundamentos</p><p class="text-xs text-slate-400">Bradesco Foundation - 2024</p></div>
-            </div>
-            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
-              <span class="text-indigo-400 text-xl"></span>
-              <div><p class="font-semibold">Desenvolvimento Web Front-end</p><p class="text-xs text-slate-400">SENAI - 2024</p></div>
+          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-indigo-400"></span>Certificações em Destaque</h3>
+          <div class="mb-4">
+            <p class="text-xs text-slate-400 mb-2">Total: 17+ certificações</p>
+          </div>
+          
+          <!-- Destaque 1 -->
+          <div class="highlight-card p-3 rounded-xl mb-3 relative">
+            <span class="highlight-star">★</span>
+            <div>
+              <p class="font-semibold text-indigo-200">Soluções de IA com GitHub</p>
+              <p class="text-xs text-slate-400">GitHub / Microsoft Learn - 2026</p>
+              <p class="text-xs text-slate-500 mt-1">Implementação de IA com GitHub Copilot e GitHub Models</p>
             </div>
           </div>
-          <a href="certificacoes.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-indigo-300 font-medium text-sm transition">Clique para ver mais certificações →</a>
+          
+          <!-- Destaque 2 -->
+          <div class="highlight-card p-3 rounded-xl mb-3 relative">
+            <span class="highlight-star">★</span>
+            <div>
+              <p class="font-semibold text-indigo-200">Introdução à IA gerativa no Azure</p>
+              <p class="text-xs text-slate-400">Microsoft Learn - 2025</p>
+              <p class="text-xs text-slate-500 mt-1">Fundamentos de IA generativa e agentes inteligentes na nuvem</p>
+            </div>
+          </div>
+          
+          <!-- Destaque 3 -->
+          <div class="highlight-card p-3 rounded-xl mb-3 relative">
+            <span class="highlight-star">★</span>
+            <div>
+              <p class="font-semibold text-indigo-200">Análise de Dados com Power BI</p>
+              <p class="text-xs text-slate-400">Microsoft Learn - 2026</p>
+              <p class="text-xs text-slate-500 mt-1">Dashboards interativos, DAX, Power Query e modelagem de dados</p>
+            </div>
+          </div>
+          
+          <div class="space-y-2 mt-4">
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <div><p class="font-semibold text-sm">Introdução ao aprendizado de máquina no Azure</p><p class="text-xs text-slate-400">Microsoft Learn - 2025</p></div>
+            </div>
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <div><p class="font-semibold text-sm">SQL Server e MySQL</p><p class="text-xs text-slate-400">Alura - 2024</p></div>
+            </div>
+            <div class="flex items-start gap-3 p-2 rounded-lg bg-indigo-950/20">
+              <div><p class="font-semibold text-sm">HTML, CSS e Lógica de Programação</p><p class="text-xs text-slate-400">Alura - 2024</p></div>
+            </div>
+          </div>
+          
+          <a href="certificacoes.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-indigo-300 font-medium text-sm transition mt-4">Clique para ver todas as certificações →</a>
         </div>
 
         <!-- Badges -->
         <div class="bg-white/5 rounded-2xl p-6 border border-purple-500/20">
-          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-purple-400"></span>Badges & Conquistas</h3>
-          <div class="flex flex-wrap gap-3 mb-5">
-            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl"></span><span class="text-xs mt-1 text-center">Python Dev</span></div>
-            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl"></span><span class="text-xs mt-1 text-center">Data Analyst</span></div>
-            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl"></span><span class="text-xs mt-1 text-center">SQL Expert</span></div>
-            <div class="flex flex-col items-center bg-slate-800/40 p-3 rounded-xl w-[100px]"><span class="text-3xl"></span><span class="text-xs mt-1 text-center">UI/UX Basics</span></div>
+          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-purple-400"></span>Badges em Destaque</h3>
+          <div class="mb-4">
+            <p class="text-xs text-slate-400 mb-2">Total: 24 badges da Microsoft Learn</p>
           </div>
-          <a href="badges.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-purple-300 font-medium text-sm transition">Clique para ver todas as badges →</a>
+          
+          <!-- Destaque 1 -->
+          <div class="highlight-card p-3 rounded-xl mb-3 relative">
+            <span class="highlight-star">★</span>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-purple-300 text-sm">MCP</div>
+              <div>
+                <p class="font-semibold text-purple-200">Introdução ao SERVIDOR MCP</p>
+                <p class="text-xs text-slate-400">Concluído em 23/04/2026</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Destaque 2 -->
+          <div class="highlight-card p-3 rounded-xl mb-3 relative">
+            <span class="highlight-star">★</span>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-purple-300 text-sm">GCA</div>
+              <div>
+                <p class="font-semibold text-purple-200">GitHub Copilot Cloud Agent</p>
+                <p class="text-xs text-slate-400">Concluído em 23/04/2026</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Destaque 3 -->
+          <div class="highlight-card p-3 rounded-xl mb-3 relative">
+            <span class="highlight-star">★</span>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-purple-300 text-sm">GEN</div>
+              <div>
+                <p class="font-semibold text-purple-200">Introdução à IA gerativa no Azure</p>
+                <p class="text-xs text-slate-400">Concluído em 10/10/2025</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mt-4">
+            <div class="badge-mini px-3 py-1.5 rounded-full text-xs"><span class="font-medium">ML</span> Machine Learning</div>
+            <div class="badge-mini px-3 py-1.5 rounded-full text-xs"><span class="font-medium">NLP</span> Processamento de Linguagem</div>
+            <div class="badge-mini px-3 py-1.5 rounded-full text-xs"><span class="font-medium">CV</span> Computer Vision</div>
+            <div class="badge-mini px-3 py-1.5 rounded-full text-xs"><span class="font-medium">GIT</span> Controle de Versão</div>
+            <div class="badge-mini px-3 py-1.5 rounded-full text-xs"><span class="font-medium">GH</span> GitHub Actions</div>
+            <div class="badge-mini px-3 py-1.5 rounded-full text-xs"><span class="font-medium">PRM</span> Engenharia de Prompts</div>
+          </div>
+          
+          <a href="badges.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-purple-300 font-medium text-sm transition mt-4">Clique para ver todas as badges →</a>
         </div>
       </div>
     </section>
@@ -301,32 +406,44 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Dashboard Power BI -->
         <div class="project-card rounded-xl overflow-hidden" data-project="powerbi">
-          <div class="h-32 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 flex items-center justify-center"><span class="text-4xl"></span></div>
+          <div class="h-32 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 flex items-center justify-center">
+            <span class="text-4xl font-bold text-indigo-300">BI</span>
+          </div>
           <div class="p-5"><h3 class="text-lg font-bold">Dashboard Power BI</h3><p class="text-xs text-indigo-300 mb-2">Análise de Dados</p><p class="text-slate-300 text-sm">Dashboards interativos com métricas e modelagem de dados.</p></div>
         </div>
         <!-- Sistema SQL Server -->
         <div class="project-card rounded-xl overflow-hidden" data-project="sqlserver">
-          <div class="h-32 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 flex items-center justify-center"><span class="text-4xl"></span></div>
+          <div class="h-32 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 flex items-center justify-center">
+            <span class="text-4xl font-bold text-blue-300">SQL</span>
+          </div>
           <div class="p-5"><h3 class="text-lg font-bold">Sistema com SQL Server</h3><p class="text-xs text-indigo-300 mb-2">Banco de Dados</p><p class="text-slate-300 text-sm">Procedures, consultas SQL e estrutura relacional.</p></div>
         </div>
         <!-- Plataformas Web -->
         <div class="project-card rounded-xl overflow-hidden" data-project="plataformasweb">
-          <div class="h-32 bg-gradient-to-r from-emerald-900/50 to-teal-900/50 flex items-center justify-center"><span class="text-4xl"></span></div>
+          <div class="h-32 bg-gradient-to-r from-emerald-900/50 to-teal-900/50 flex items-center justify-center">
+            <span class="text-4xl font-bold text-emerald-300">WEB</span>
+          </div>
           <div class="p-5"><h3 class="text-lg font-bold">Plataformas Web</h3><p class="text-xs text-indigo-300 mb-2">Front-end</p><p class="text-slate-300 text-sm">Sites modernos com animações e UX.</p></div>
         </div>
         <!-- Automação com Python -->
         <div class="project-card rounded-xl overflow-hidden" data-project="automacaopython">
-          <div class="h-32 bg-gradient-to-r from-amber-900/50 to-orange-900/50 flex items-center justify-center"><span class="text-4xl"></span></div>
+          <div class="h-32 bg-gradient-to-r from-amber-900/50 to-orange-900/50 flex items-center justify-center">
+            <span class="text-4xl font-bold text-amber-300">PY</span>
+          </div>
           <div class="p-5"><h3 class="text-lg font-bold">Automação com Python</h3><p class="text-xs text-indigo-300 mb-2">Programação</p><p class="text-slate-300 text-sm">Scripts para automação de tarefas e dados.</p></div>
         </div>
-        <!-- Projeto Integrador (Matemática) -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="projetointegrador">
-          <div class="h-32 bg-gradient-to-r from-rose-900/50 to-pink-900/50 flex items-center justify-center"><span class="text-4xl"></span></div>
-          <div class="p-5"><h3 class="text-lg font-bold">Estudos de Matemática</h3><p class="text-xs text-indigo-300 mb-2">Projeto Integrador</p><p class="text-slate-300 text-sm">Conceitos matemáticos aplicados à soluções inteligentes.</p></div>
+        <!-- Estudos IA -->
+        <div class="project-card rounded-xl overflow-hidden" data-project="estudosia">
+          <div class="h-32 bg-gradient-to-r from-rose-900/50 to-pink-900/50 flex items-center justify-center">
+            <span class="text-4xl font-bold text-rose-300">IA</span>
+          </div>
+          <div class="p-5"><h3 class="text-lg font-bold">Estudos de IA</h3><p class="text-xs text-indigo-300 mb-2">Inteligência Artificial</p><p class="text-slate-300 text-sm">Exploração de conceitos de IA, machine learning e LLMs.</p></div>
         </div>
         <!-- Análise de Dados -->
         <div class="project-card rounded-xl overflow-hidden" data-project="analisedados">
-          <div class="h-32 bg-gradient-to-r from-fuchsia-900/50 to-purple-900/50 flex items-center justify-center"><span class="text-4xl"></span></div>
+          <div class="h-32 bg-gradient-to-r from-fuchsia-900/50 to-purple-900/50 flex items-center justify-center">
+            <span class="text-4xl font-bold text-fuchsia-300">AD</span>
+          </div>
           <div class="p-5"><h3 class="text-lg font-bold">Análise de Dados</h3><p class="text-xs text-indigo-300 mb-2">Excel & Power Query</p><p class="text-slate-300 text-sm">Limpeza de dados, insights e dashboards.</p></div>
         </div>
       </div>
@@ -412,7 +529,7 @@
       const termInput = document.getElementById('terminalInput');
       const termOut = document.getElementById('terminalOutput');
       function addLine(msg, isError = false) { const p = document.createElement('p'); p.className = isError ? 'text-red-400' : 'text-indigo-200'; p.innerHTML = msg; termOut.insertBefore(p, termOut.lastElementChild); termOut.scrollTop = termOut.scrollHeight; }
-      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards, Sistema SQL, Portfólio online'); else if(c === 'contato') addLine('jeipi7007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
+      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS. 24 badges Microsoft + 17 certificações.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, IA/ML, GitHub, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards Power BI, Sistema SQL, Automação Python, Estudos IA'); else if(c === 'contato') addLine('jeipi7007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
       termBtn.addEventListener('click', () => { modal.classList.remove('opacity-0', 'pointer-events-none'); setTimeout(() => termInput.focus(), 100); });
       closeTerm.addEventListener('click', () => modal.classList.add('opacity-0', 'pointer-events-none'));
       termInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleCommand(termInput.value); });
@@ -431,7 +548,7 @@
         sqlserver: 'PROJETOS/SQLServer.html',
         plataformasweb: 'PROJETOS/plataformasWEB.html',
         automacaopython: 'PROJETOS/automacaoPython.html',
-        projetointegrador: 'PROJETOS/projetoIntegrador.html',
+        estudosia: 'PROJETOS/estudosIA.html',
         analisedados: 'PROJETOS/analiseDados.html'
       };
       
@@ -442,7 +559,7 @@
           if(projectKey && pagesMap[projectKey]) {
             window.location.href = pagesMap[projectKey];
           } else {
-            alert('⚠️ Página deste projeto está sendo construída em breve!');
+            alert('Página deste projeto está sendo construída em breve!');
           }
         });
       });
