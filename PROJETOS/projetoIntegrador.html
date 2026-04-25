@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Projeto Integrador | Matemática Gamificada | João Pedro Carvalho</title>
+  
+  <meta name="description" content="Plataforma de aprendizado de matemática estilo Duolingo - Sistema completo com criação de contas, progresso, avatares e conquistas.">
+  <meta name="theme-color" content="#0f172a">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #0a0f1e, #020617);
+      color: #eef2ff;
+    }
+
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(236, 72, 153, 0.08), transparent 60%),
+                  radial-gradient(ellipse at 80% 70%, rgba(168, 85, 247, 0.06), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-particle {
+      position: fixed;
+      background: rgba(236, 72, 153, 0.12);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(4px);
+      animation: floatAnim 20s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes floatAnim {
+      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.15; }
+      100% { transform: translateY(-50px) translateX(40px) scale(1.3); opacity: 0.4; }
+    }
+
+    .glass-nav {
+      background: rgba(10, 15, 30, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .project-container {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.85));
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      width: 100%;
+    }
+    
+    .carousel-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+      width: 100%;
+      overflow-y: auto;
+      max-height: 75vh;
+    }
+    
+    .carousel-slide::-webkit-scrollbar {
+      width: 4px;
+    }
+    .carousel-slide::-webkit-scrollbar-track {
+      background: #1e293b;
+      border-radius: 10px;
+    }
+    .carousel-slide::-webkit-scrollbar-thumb {
+      background: #ec4899;
+      border-radius: 10px;
+    }
+    
+    .nav-btn {
+      background: rgba(236, 72, 153, 0.2);
+      border: 1px solid rgba(236, 72, 153, 0.4);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      z-index: 20;
+    }
+    
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(236, 72, 153, 0.4);
+      border-color: #ec4899;
+      transform: scale(1.05);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    .dot-indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(236, 72, 153, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .dot-indicator.active {
+      background: #ec4899;
+      transform: scale(1.2);
+      box-shadow: 0 0 8px #ec4899;
+    }
+    
+    .dot-indicator:hover:not(.active) {
+      background: rgba(236, 72, 153, 0.6);
+      transform: scale(1.1);
+    }
+
+    .screenshot-img {
+      background: #0f172a;
+      border: 1px solid rgba(236, 72, 153, 0.4);
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    .screenshot-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .screenshot-img:hover img {
+      transform: scale(1.02);
+    }
+    .screenshot-img:hover {
+      border-color: #ec4899;
+    }
+
+    .btn-github {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2));
+      border: 1px solid rgba(236, 72, 153, 0.5);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-github:hover {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(168, 85, 247, 0.4));
+      border-color: #ec4899;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -8px rgba(236, 72, 153, 0.4);
+    }
+
+    .btn-voltar {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.2));
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-voltar:hover {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(139, 92, 246, 0.4));
+      border-color: #818cf8;
+      transform: translateY(-2px);
+    }
+
+    .tech-badge {
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      transition: all 0.2s ease;
+    }
+    .tech-badge:hover {
+      background: rgba(236, 72, 153, 0.3);
+      border-color: #ec4899;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ec4899;
+      border-radius: 10px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <div class="animated-bg"></div>
+  <div id="particlesWrapper" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></div>
+
+  <nav class="glass-nav fixed w-full top-0 left-0 z-50 px-5 py-3">
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-3">
+      <a href="../index.html" class="text-pink-300 font-semibold hover:text-pink-200 transition text-sm md:text-base">← Voltar ao Portfólio</a>
+      <div class="text-sm text-slate-400">Projeto Integrador - MathDuo</div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 max-w-5xl mx-auto px-5 md:px-8 pt-28 pb-16">
+    
+    <div class="text-center mb-8 reveal">
+      <div class="inline-block px-3 py-1 bg-pink-900/40 rounded-full text-pink-300 text-xs font-mono mb-3">Projeto Integrador</div>
+      <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-pink-200 to-pink-300 bg-clip-text text-transparent mb-4">MathDuo - Matemática Gamificada</h1>
+      <p class="text-slate-300 max-w-2xl mx-auto">Plataforma de aprendizado de matemática estilo Duolingo, com sistema completo de gamificação, progresso e conquistas.</p>
+      <div class="w-20 h-1 bg-pink-500 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- CARROSSEL COM 5 SLIDES - USANDO IMAGENS -->
+    <div class="project-container reveal">
+      <div class="carousel-wrapper">
+        <button id="prevBtn" class="nav-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-pink-300 text-lg md:text-xl z-10">←</button>
+        
+        <div class="carousel-track" id="carouselTrack">
+          
+          <!-- SLIDE 1 - Visão Geral / Tela Inicial -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="screenshot-img overflow-hidden rounded-xl mb-5">
+                <img 
+                  src="imagens/mathduo-tela-inicial.jpeg" 
+                  alt="Tela inicial do MathDuo"
+                  class="w-full h-auto"
+                  onerror="this.src='https://placehold.co/800x500/1e293b/ec4899?text=MathDuo+-+Tela+Inicial'">
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-pink-300 mb-3">MathDuo - Visão Geral</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                O MathDuo é uma plataforma completa de aprendizado de matemática inspirada no Duolingo, desenvolvida para tornar o estudo da matemática mais divertido e envolvente através de gamificação. O sistema conta com criação de contas, progressão por níveis, personalização de avatares e sistema de conquistas.
+              </p>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                Desenvolvido como Projeto Integrador do curso de DS, o K4-MATH utiliza tecnologias web full-stack (PHP, SQL, HTML, CSS, JS) para entregar uma experiência completa aos usuários.
+              </p>
+
+              <h3 class="text-base md:text-lg font-semibold text-pink-300 mb-3 mt-4">Funcionalidades Principais</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+                <div class="bg-pink-950/20 rounded-lg p-3">
+                  <div class="text-pink-300 text-lg mb-1">👤</div>
+                  <h4 class="font-semibold text-sm">Criação de Contas</h4>
+                  <p class="text-xs text-slate-400">Sistema completo de cadastro, login e recuperação de senha com PHP e MySQL</p>
+                </div>
+                <div class="bg-pink-950/20 rounded-lg p-3">
+                  <div class="text-pink-300 text-lg mb-1">📊</div>
+                  <h4 class="font-semibold text-sm">Visualização de Progresso</h4>
+                  <p class="text-xs text-slate-400">Gráficos e métricas mostrando evolução do usuário, níveis e experiência</p>
+                </div>
+                <div class="bg-pink-950/20 rounded-lg p-3">
+                  <div class="text-pink-300 text-lg mb-1">🎨</div>
+                  <h4 class="font-semibold text-sm">Personalização de Avatares</h4>
+                  <p class="text-xs text-slate-400">Escolha de personagens, roupas e acessórios para personalizar o perfil</p>
+                </div>
+                <div class="bg-pink-950/20 rounded-lg p-3">
+                  <div class="text-pink-300 text-lg mb-1">🏆</div>
+                  <h4 class="font-semibold text-sm">Ganho de Conquistas</h4>
+                  <p class="text-xs text-slate-400">Sistema de medalhas e troféus desbloqueáveis ao completar desafios</p>
+                </div>
+              </div>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-pink-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-pink-300 text-sm">Repositório GitHub</h4><p class="text-xs text-slate-400">Código completo do projeto</p></div>
+                  <a href="https://github.com/Joaopedro0s/TCC-K4-MATH.git" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/>
+                    </svg>
+                    Ver no GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 - Sistema de Contas e Autenticação -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="screenshot-img overflow-hidden rounded-xl mb-5">
+                <img 
+                  src="imagens/mathduo-tela-game.jpeg" 
+                  alt="Tela de jogo do MathDuo"
+                  class="w-full h-auto"
+                  onerror="this.src='https://placehold.co/800x500/1e293b/ec4899?text=MathDuo+-+Tela+de+Jogo'">
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-pink-300 mb-3">Sistema de Contas e Autenticação</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                O MathDuo conta com um sistema completo de gerenciamento de usuários, desenvolvido com PHP e MySQL, garantindo segurança e personalização da experiência.
+              </p>
+
+              <h3 class="text-base md:text-lg font-semibold text-pink-300 mb-2 mt-4">Funcionalidades de Autenticação</h3>
+              <ul class="feature-list text-slate-300 text-sm mb-5 space-y-2">
+                <li>✓ Cadastro de novos usuários com validação de dados</li>
+                <li>✓ Login seguro com hash de senha</li>
+                <li>✓ Sessões persistentes para manter usuário logado</li>
+                <li>✓ Recuperação de senha por e-mail</li>
+                <li>✓ Perfil de usuário com informações editáveis</li>
+                <li>✓ Níveis de permissão (usuário/admin)</li>
+              </ul>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-pink-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-pink-300 text-sm">Módulo de Autenticação</h4><p class="text-xs text-slate-400">Código no GitHub</p></div>
+                  <a href="https://github.com/Joaopedro0s/TCC-K4-MATH.git" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/>
+                    </svg>
+                    Ver código
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 - Progresso e Estatísticas -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="screenshot-img overflow-hidden rounded-xl mb-5">
+                <img 
+                  src="imagens/mathduo-tela-progresso.jpeg" 
+                  alt="Tela de progresso do MathDuo"
+                  class="w-full h-auto"
+                  onerror="this.src='https://placehold.co/800x500/1e293b/ec4899?text=MathDuo+-+Progresso'">
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-pink-300 mb-3">Sistema de Progresso</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                O sistema de progresso do MathDuo permite que os usuários visualizem sua evolução de forma clara e motivadora, com métricas detalhadas e representações visuais.
+              </p>
+
+              <h3 class="text-base md:text-lg font-semibold text-pink-300 mb-2 mt-4">Funcionalidades de Progresso</h3>
+              <ul class="feature-list text-slate-300 text-sm mb-5 space-y-2">
+                <li>✓ Dashboard com estatísticas do usuário</li>
+                <li>✓ Gráficos de desempenho por matéria/tópico</li>
+                <li>✓ Barra de experiência (XP) e níveis</li>
+                <li>✓ Sequências de dias (streak) e ofensas</li>
+                <li>✓ Relatórios de acertos e erros</li>
+                <li>✓ Metas diárias e semanais personalizáveis</li>
+              </ul>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-pink-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-pink-300 text-sm">Módulo de Progresso</h4><p class="text-xs text-slate-400">Código no GitHub</p></div>
+                  <a href="https://github.com/Joaopedro0s/TCC-K4-MATH.git" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/>
+                    </svg>
+                    Ver código
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 4 - Personalização de Avatares -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="screenshot-img overflow-hidden rounded-xl mb-5">
+                <img 
+                  src="imagens/mathduo-tela-personalização.jpeg" 
+                  alt="Tela de personalização de avatar do MathDuo"
+                  class="w-full h-auto"
+                  onerror="this.src='https://placehold.co/800x500/1e293b/ec4899?text=MathDuo+-+Personaliza%C3%A7%C3%A3o+de+Avatar'">
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-pink-300 mb-3">Personalização de Avatares</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                O sistema de personalização permite que cada usuário crie um avatar único, promovendo maior engajamento e identificação com a plataforma.
+              </p>
+
+              <h3 class="text-base md:text-lg font-semibold text-pink-300 mb-2 mt-4">Opções de Personalização</h3>
+              <ul class="feature-list text-slate-300 text-sm mb-5 space-y-2">
+                <li>✓ Escolha entre vários personagens base</li>
+                <li>✓ Cores de pele e cabelo customizáveis</li>
+                <li>✓ Roupas, acessórios e chapéus</li>
+                <li>✓ Expressões faciais (feliz, triste, animado)</li>
+                <li>✓ Fundos e cenários para perfil</li>
+                <li>✓ Itens desbloqueáveis com moedas do jogo</li>
+              </ul>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-pink-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-pink-300 text-sm">Módulo de Avatar</h4><p class="text-xs text-slate-400">Código no GitHub</p></div>
+                  <a href="https://github.com/Joaopedro0s/TCC-K4-MATH.git" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/>
+                    </svg>
+                    Ver código
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 5 - Sistema de Conquistas -->
+          <div class="carousel-slide">
+            <div class="p-5 md:p-7">
+              <div class="screenshot-img overflow-hidden rounded-xl mb-5">
+                <img 
+                  src="imagens/mathduo-tela-conquistas.jpeg" 
+                  alt="Tela de conquistas do MathDuo"
+                  class="w-full h-auto"
+                  onerror="this.src='https://placehold.co/800x500/1e293b/ec4899?text=MathDuo+-+Conquistas'">
+              </div>
+              
+              <h2 class="text-xl md:text-2xl font-bold text-pink-300 mb-3">Sistema de Conquistas</h2>
+              <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-4">
+                O sistema de gamificação do MathDuo recompensa os usuários com conquistas ao completarem desafios, mantendo-os motivados e engajados no aprendizado.
+              </p>
+
+              <h3 class="text-base md:text-lg font-semibold text-pink-300 mb-2 mt-4">Tipos de Conquistas</h3>
+              <ul class="feature-list text-slate-300 text-sm mb-5 space-y-2">
+                <li>✓ Conquistas de progresso (completar níveis)</li>
+                <li>✓ Conquistas de sequência (streak de dias)</li>
+                <li>✓ Conquistas de habilidade (acertar questões)</li>
+                <li>✓ Conquistas de tempo (tempo de estudo)</li>
+                <li>✓ Medalhas de ouro, prata e bronze</li>
+                <li>✓ Troféus especiais para eventos</li>
+              </ul>
+
+              <div class="bg-slate-800/40 rounded-xl p-4 border border-pink-500/20">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div><h4 class="font-semibold text-pink-300 text-sm">Módulo de Conquistas</h4><p class="text-xs text-slate-400">Código no GitHub</p></div>
+                  <a href="https://github.com/Joaopedro0s/TCC-K4-MATH.git" target="_blank" class="btn-github px-4 py-2 rounded-full text-xs font-semibold transition">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.21.68-.48 0-.24-.01-.88-.01-1.73-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.13 20.17 22 16.42 22 12c0-5.52-4.48-10-10-10z"/>
+                    </svg>
+                    Ver código
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <button id="nextBtn" class="nav-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-pink-300 text-lg md:text-xl z-10">→</button>
+      </div>
+      
+      <div class="flex justify-center gap-2 py-4" id="dotsContainer"></div>
+    </div>
+
+    <!-- Resumo das funcionalidades -->
+    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3 reveal">
+      <div class="bg-pink-950/20 rounded-xl p-3 text-center border border-pink-500/20">
+        <div class="text-2xl mb-1">👤</div>
+        <div class="text-xs font-semibold text-pink-300">Criação de Contas</div>
+      </div>
+      <div class="bg-pink-950/20 rounded-xl p-3 text-center border border-pink-500/20">
+        <div class="text-2xl mb-1">📊</div>
+        <div class="text-xs font-semibold text-pink-300">Progresso</div>
+      </div>
+      <div class="bg-pink-950/20 rounded-xl p-3 text-center border border-pink-500/20">
+        <div class="text-2xl mb-1">🎨</div>
+        <div class="text-xs font-semibold text-pink-300">Avatares</div>
+      </div>
+      <div class="bg-pink-950/20 rounded-xl p-3 text-center border border-pink-500/20">
+        <div class="text-2xl mb-1">🏆</div>
+        <div class="text-xs font-semibold text-pink-300">Conquistas</div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center reveal">
+      <a href="../index.html" class="btn-voltar inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition">← Voltar ao Portfólio</a>
+    </div>
+
+  </main>
+
+  <script>
+    (function() {
+      // Partículas
+      const wrapper = document.getElementById('particlesWrapper');
+      for(let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.classList.add('floating-particle');
+        let size = Math.random() * 50 + 15;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        p.style.animationDuration = Math.random() * 18 + 12 + 's';
+        wrapper.appendChild(p);
+      }
+      
+      // Reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('reveal-visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      
+      setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => {
+          if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('reveal-visible');
+        });
+      }, 100);
+
+      // Carrossel
+      const track = document.getElementById('carouselTrack');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const dotsContainer = document.getElementById('dotsContainer');
+      
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement('button');
+          dot.classList.add('dot-indicator');
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+      
+      function updateDots() {
+        document.querySelectorAll('.dot-indicator').forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+      }
+      
+      function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateDots();
+        updateButtons();
+      }
+      
+      function updateButtons() {
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === totalSlides - 1;
+      }
+      
+      prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+      nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goToSlide(currentIndex - 1);
+        else if (e.key === 'ArrowRight') goToSlide(currentIndex + 1);
+      });
+      
+      createDots();
+      goToSlide(0);
+    })();
+  </script>
+</body>
+</html>
