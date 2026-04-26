@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Análise de Dados | Excel & Power BI | Portfólio</title>
+  
+  <meta name="description" content="Projetos de Análise de Dados - Dashboards interativos, modelos preditivos e visualizações com Excel e Power BI.">
+  <meta name="theme-color" content="#0f172a">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #0a0f1e, #020617);
+      color: #eef2ff;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(139, 92, 246, 0.1), transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(167, 139, 250, 0.08), transparent 50%),
+        repeating-linear-gradient(45deg, rgba(139, 92, 246, 0.02) 0px, rgba(139, 92, 246, 0.02) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-particle {
+      position: fixed;
+      background: rgba(139, 92, 246, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(5px);
+      animation: floatAnim 25s infinite alternate ease-in-out;
+      z-index: 0;
+    }
+
+    @keyframes floatAnim {
+      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.05; }
+      100% { transform: translateY(-80px) translateX(60px) scale(1.5); opacity: 0.15; }
+    }
+
+    .glass-nav {
+      background: rgba(10, 15, 30, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .nav-link {
+      color: #c4b5fd;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-link:hover {
+      color: #ddd6fe;
+      transform: translateX(-4px);
+    }
+
+    .nav-badge {
+      font-size: 0.75rem;
+      color: #a78bfa;
+      background: rgba(139, 92, 246, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      padding: 5rem 0 3rem;
+      position: relative;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 1.5rem;
+      padding: 1rem 1.5rem;
+      min-width: 160px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: #a78bfa;
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 0.25rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(167, 139, 250, 0.1));
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      color: #c4b5fd;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+      margin: 2rem auto 0;
+      border-radius: 2px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 25px 40px -15px rgba(139, 92, 246, 0.25);
+    }
+
+    .project-card.active {
+      border-color: #a78bfa;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .card-image {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(0, 0, 0, 0.6));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover .card-image-overlay {
+      opacity: 1;
+    }
+
+    .card-image-overlay i {
+      font-size: 2rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.75rem;
+      border-radius: 50%;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(167, 139, 250, 0.15));
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .card-icon i {
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #e2e8f0;
+    }
+
+    .project-card .description {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 2rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #c4b5fd;
+    }
+
+    .btn-view {
+      background: transparent;
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 2rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-view:hover {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: #a78bfa;
+      transform: translateY(-2px);
+    }
+
+    .details-section {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 2rem;
+      padding: 2rem;
+      margin: 3rem 0;
+      transition: all 0.4s ease;
+    }
+
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .details-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(167, 139, 250, 0.15));
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      border-radius: 2rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-download:hover {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(167, 139, 250, 0.25));
+      border-color: #a78bfa;
+      transform: translateY(-2px);
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 2rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-github:hover {
+      background: rgba(139, 92, 246, 0.3);
+      border-color: #a78bfa;
+      transform: translateY(-2px);
+    }
+
+    .details-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .details-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dashboard-preview {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.05));
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .dashboard-preview h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #c4b5fd;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .kpi-card {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .kpi-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #c4b5fd;
+    }
+
+    .kpi-label {
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    .chart-container {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 1rem;
+      padding: 1rem;
+      height: 200px;
+    }
+
+    .screenshot-img {
+      width: 100%;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .insight-list {
+      list-style: none;
+    }
+
+    .insight-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      color: #cbd5e1;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .insight-list li i {
+      color: #a78bfa;
+      font-size: 0.875rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #8b5cf6;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+      .stats-row {
+        gap: 1rem;
+      }
+      .stat-card {
+        min-width: 120px;
+        padding: 0.75rem 1rem;
+      }
+      .stat-number {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="animated-bg"></div>
+  <div id="particlesWrapper" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></div>
+
+  <nav class="glass-nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-link">
+        <i class="fas fa-arrow-left"></i> Voltar ao Portfólio
+      </a>
+      <div class="nav-badge">
+        <i class="fas fa-chart-line me-1"></i> Análise de Dados
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 pt-28 pb-16">
+    <div class="container">
+      
+      <div class="hero-section reveal">
+        <div class="badge">
+          <i class="fas fa-chart-simple me-2"></i> Excel & Power BI
+        </div>
+        <h1>Análise de Dados</h1>
+        <p class="subtitle">
+          Dashboards interativos, modelos preditivos e visualizações com Excel e Power BI
+        </p>
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Dashboards Criados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Linhas Processadas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Precisão das Análises</div>
+          </div>
+        </div>
+        <div class="hero-divider"></div>
+      </div>
+
+      <div class="cards-grid reveal">
+        
+        <!-- Card 1 - Sales Dashboard -->
+        <div class="project-card" data-project="sales">
+          <div class="card-image" style="background-image: url('https://placehold.co/600x400/1e293b/818cf8?text=Sales+Dashboard')">
+            <div class="card-image-overlay">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3>Sales Dashboard</h3>
+            <p class="description">Dashboard completo de vendas com métricas de performance e previsões.</p>
+            <div class="tech-list">
+              <span class="tech-tag">Excel Avançado</span>
+              <span class="tech-tag">Power Pivot</span>
+              <span class="tech-tag">DAX</span>
+            </div>
+            <button class="btn-view" data-project-btn="sales">
+              Analisar <i class="fas fa-chart-line ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2 - Financial Analysis -->
+        <div class="project-card" data-project="financial">
+          <div class="card-image" style="background-image: url('https://placehold.co/600x400/1e293b/a78bfa?text=Financial+Analysis')">
+            <div class="card-image-overlay">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Financial Analysis</h3>
+            <p class="description">Análise financeira com indicadores de rentabilidade e fluxo de caixa.</p>
+            <div class="tech-list">
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Power Query</span>
+              <span class="tech-tag">VBA</span>
+            </div>
+            <button class="btn-view" data-project-btn="financial">
+              Analisar <i class="fas fa-chart-line ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3 - SampleSuperstore -->
+        <div class="project-card" data-project="superstore">
+          <div class="card-image" style="background-image: url('https://placehold.co/600x400/1e293b/c4b5fd?text=SampleSuperstore')">
+            <div class="card-image-overlay">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-icon">
+              <i class="fas fa-store"></i>
+            </div>
+            <h3>SampleSuperstore</h3>
+            <p class="description">Dashboard de vendas com análise de categorias, lucro por subcategoria e tabela dinâmica.</p>
+            <div class="tech-list">
+              <span class="tech-tag">Excel</span>
+              <span class="tech-tag">Tabelas Dinâmicas</span>
+              <span class="tech-tag">Power BI</span>
+            </div>
+            <button class="btn-view" data-project-btn="superstore">
+              Analisar <i class="fas fa-chart-line ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="projectDetails" class="details-section reveal"></div>
+
+    </div>
+  </main>
+
+  <script>
+    function initMiniCharts() {
+      // Mini charts já estão sendo renderizados nos placeholders
+    }
+
+    (function() {
+      const wrapper = document.getElementById('particlesWrapper');
+      if (wrapper) {
+        for(let i = 0; i < 50; i++) {
+          const p = document.createElement('div');
+          p.classList.add('floating-particle');
+          let size = Math.random() * 80 + 30;
+          p.style.width = size + 'px';
+          p.style.height = size + 'px';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.top = Math.random() * 100 + '%';
+          p.style.animationDelay = Math.random() * 25 + 's';
+          p.style.animationDuration = Math.random() * 30 + 20 + 's';
+          wrapper.appendChild(p);
+        }
+      }
+    })();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('reveal-visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('reveal-visible');
+      });
+    }, 100);
+
+    function downloadExcel(projectType) {
+      let data = [];
+      let sheetName = '';
+      if (projectType === 'sales') {
+        sheetName = 'Sales_Dashboard';
+        data = [['Mês', 'Vendas', 'Lucro', 'Clientes'], ['Jan/2024', 125000, 37500, 342], ['Fev/2024', 132000, 39600, 358], ['Mar/2024', 148000, 44400, 401], ['Abr/2024', 156000, 46800, 423], ['Mai/2024', 162000, 48600, 439], ['Jun/2024', 175000, 52500, 474], ['Jul/2024', 189000, 56700, 512], ['Ago/2024', 194000, 58200, 525], ['Set/2024', 201000, 60300, 544], ['Out/2024', 198000, 59400, 536], ['Nov/2024', 212000, 63600, 574], ['Dez/2024', 235000, 70500, 636]];
+      } else if (projectType === 'financial') {
+        sheetName = 'Financial_Analysis';
+        data = [['Trimestre', 'Receita', 'Custos', 'Despesas', 'Lucro'], ['Q1 2024', 450000, 180000, 90000, 180000], ['Q2 2024', 520000, 208000, 104000, 208000], ['Q3 2024', 580000, 232000, 116000, 232000], ['Q4 2024', 645000, 258000, 129000, 258000]];
+      } else if (projectType === 'superstore') {
+        sheetName = 'SampleSuperstore';
+        data = [['Categoria', 'Vendas'], ['Office Supplies', 6000], ['Furniture', 2200], ['Technology', 1800]];
+      }
+      let csvContent = data.map(row => row.join(',')).join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.href = url;
+      link.setAttribute('download', `${sheetName}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    const projectsData = {
+      sales: { 
+        name: 'Sales Dashboard', 
+        icon: 'fa-chart-pie', 
+        description: 'Dashboard completo de análise de vendas desenvolvido no Excel com Power Pivot e DAX. O dashboard apresenta métricas de performance, análise de produtos mais vendidos, sazonalidade e previsões.', 
+        kpis: [{ value: 'R$ 2.28M', label: 'Vendas Totais' }, { value: '+32%', label: 'Crescimento' }, { value: 'R$ 369', label: 'Ticket Médio' }, { value: '5.854', label: 'Clientes' }], 
+        insights: ['Dezembro maior volume de vendas (R$ 235K)', 'Ticket médio estável em R$ 369', 'Crescimento médio de 6.8% ao mês', 'Margem de lucro mantida em 30%'], 
+        github: 'https://github.com/Joaopedro0s/sales-dashboard',
+        chartType: 'line',
+        chartLabels: ['Jan', 'Mar', 'Mai', 'Jul', 'Set', 'Nov'],
+        chartData: [125, 148, 162, 189, 201, 212],
+        screenshot: 'https://placehold.co/800x450/1e293b/818cf8?text=Sales+Dashboard+Screenshot'
+      },
+      financial: { 
+        name: 'Financial Analysis', 
+        icon: 'fa-chart-line', 
+        description: 'Análise financeira empresarial completa com demonstrativos de resultado, fluxo de caixa e indicadores de rentabilidade.', 
+        kpis: [{ value: 'R$ 2.20M', label: 'Receita Total' }, { value: '40%', label: 'Margem Líquida' }, { value: 'R$ 878K', label: 'Lucro Total' }, { value: '+43%', label: 'Crescimento' }], 
+        insights: ['Margem líquida consistente de 40%', 'Crescimento de receita de 43%', 'Eficiência operacional mantida', 'Lucro acumulado de R$ 878 mil'], 
+        github: 'https://github.com/Joaopedro0s/financial-analysis',
+        chartType: 'bar',
+        chartLabels: ['Q1', 'Q2', 'Q3', 'Q4'],
+        chartData: [450, 520, 580, 645],
+        screenshot: 'https://placehold.co/800x450/1e293b/a78bfa?text=Financial+Analysis+Screenshot'
+      },
+      superstore: { 
+        name: 'SampleSuperstore', 
+        icon: 'fa-store', 
+        description: 'Dashboard de análise de vendas baseado no dataset SampleSuperstore. Inclui análise de vendas por categoria, lucro por subcategoria, participação por segmento e tabela dinâmica interativa.', 
+        kpis: [{ value: '10.000', label: 'Vendas Totais' }, { value: 'R$ 2.5K', label: 'Lucro Total' }, { value: '25%', label: 'Margem Média' }, { value: '3', label: 'Categorias' }], 
+        insights: ['Office Supplies é a categoria com maior volume de vendas (6.000)', 'Furniture representa 22% das vendas totais', 'Technology contribui com 18% do faturamento'], 
+        github: 'https://github.com/Joaopedro0s/sample-superstore',
+        chartType: 'bar',
+        chartLabels: ['Office Supplies', 'Furniture', 'Technology'],
+        chartData: [6000, 2200, 1800],
+        screenshot: 'https://placehold.co/800x450/1e293b/c4b5fd?text=SampleSuperstore+Screenshot'
+      }
+    };
+
+    let currentChart = null;
+
+    function showProject(projectId) {
+      document.querySelectorAll('.project-card').forEach(card => card.classList.remove('active'));
+      const activeCard = document.querySelector(`.project-card[data-project="${projectId}"]`);
+      if (activeCard) activeCard.classList.add('active');
+      
+      const project = projectsData[projectId];
+      const details = document.getElementById('projectDetails');
+      if (project && details) {
+        details.innerHTML = `
+          <div class="details-header">
+            <h2><i class="fas ${project.icon}"></i> ${project.name}</h2>
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn-download" data-download="${projectId}"><i class="fas fa-download"></i> Baixar Dados (CSV)</button>
+              <a href="${project.github}" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+          </div>
+          <div class="details-content">
+            <div class="dashboard-preview">
+              <h3><i class="fas fa-image"></i> Screenshot do Dashboard</h3>
+              <img src="${project.screenshot}" alt="${project.name}" class="screenshot-img">
+              <h3><i class="fas fa-chart-simple"></i> KPIs do Dashboard</h3>
+              <div class="kpi-grid">${project.kpis.map(k => `<div class="kpi-card"><div class="kpi-value">${k.value}</div><div class="kpi-label">${k.label}</div></div>`).join('')}</div>
+            </div>
+            <div class="dashboard-preview">
+              <h3><i class="fas fa-info-circle"></i> Sobre o Projeto</h3>
+              <p style="margin-bottom: 1.5rem; line-height: 1.6;">${project.description}</p>
+              <h3><i class="fas fa-chart-line"></i> Visualização dos Dados</h3>
+              <div class="chart-container"><canvas id="detailChart"></canvas></div>
+              <h3><i class="fas fa-lightbulb"></i> Insights Gerados</h3>
+              <ul class="insight-list">${project.insights.map(i => `<li><i class="fas fa-chart-line"></i> ${i}</li>`).join('')}</ul>
+            </div>
+          </div>
+        `;
+        
+        const downloadBtn = details.querySelector('.btn-download');
+        if (downloadBtn) downloadBtn.addEventListener('click', () => downloadExcel(projectId));
+        
+        const ctx = document.getElementById('detailChart')?.getContext('2d');
+        if (ctx) {
+          if (currentChart) currentChart.destroy();
+          currentChart = new Chart(ctx, {
+            type: project.chartType,
+            data: { 
+              labels: project.chartLabels, 
+              datasets: [{ 
+                data: project.chartData, 
+                borderColor: '#a78bfa', 
+                backgroundColor: 'rgba(139, 92, 246, 0.5)',
+                borderWidth: 2, 
+                borderRadius: 8
+              }] 
+            },
+            options: { 
+              responsive: true, 
+              maintainAspectRatio: true, 
+              plugins: { legend: { display: false } }, 
+              scales: { 
+                y: { grid: { color: 'rgba(139, 92, 246, 0.1)' }, ticks: { color: '#94a3b8' }, title: { display: true, text: 'Vendas (R$)', color: '#94a3b8' } }, 
+                x: { ticks: { color: '#94a3b8' } } 
+              } 
+            }
+          });
+        }
+      }
+    }
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', (e) => { if (!e.target.closest('.btn-view')) showProject(card.dataset.project); });
+    });
+    document.querySelectorAll('.btn-view').forEach(btn => {
+      btn.addEventListener('click', (e) => { e.stopPropagation(); showProject(btn.dataset.projectBtn); });
+    });
+    
+    showProject('superstore');
+  </script>
+</body>
+</html>

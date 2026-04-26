@@ -249,7 +249,7 @@
         <span class="flex items-center gap-1">Lorena - São Paulo</span>
         <span class="flex items-center gap-1">18 anos</span>
         <span class="flex items-center gap-1">+55 (12) 99102-6455</span>
-        <span class="flex items-center gap-1">jeipi7007@gmail.com</span>
+        <span class="flex items-center gap-1">jpfonsecaalves2007@gmail.com</span>
       </div>
     </section>
 
@@ -435,7 +435,7 @@
         <!-- Estudos IA -->
         <div class="project-card rounded-xl overflow-hidden" data-project="estudosia">
           <div class="h-32 bg-gradient-to-r from-rose-900/50 to-pink-900/50 flex items-center justify-center">
-            <span class="text-4xl font-bold text-rose-300">IA</span>
+            <span class="text-4xl font-bold text-rose-300">PI</span>
           </div>
           <div class="p-5"><h3 class="text-lg font-bold">Projeto Integrador</h3><p class="text-xs text-indigo-300 mb-2">Full Stack</p><p class="text-slate-300 text-sm">Junção de conceitos visuais, interativos e lógicos.</p></div>
         </div>
@@ -456,7 +456,7 @@
         <div class="flex flex-wrap justify-center gap-4">
           <a href="https://linkedin.com/in/joaopedro2007" target="_blank" class="social-link px-5 py-2.5 bg-[#0A66C2]/80 hover:bg-[#0A66C2] rounded-full text-sm">LinkedIn</a>
           <a href="https://github.com/Joaopedro0s" target="_blank" class="social-link px-5 py-2.5 bg-[#333]/80 hover:bg-[#24292e] rounded-full text-sm">GitHub</a>
-          <a href="mailto:jeipi7007@gmail.com" class="social-link px-5 py-2.5 bg-red-600/70 hover:bg-red-600 rounded-full text-sm">E-mail</a>
+          <a href="mailto:jpfonsecaalves2007@gmail.com" class="social-link px-5 py-2.5 bg-red-600/70 hover:bg-red-600 rounded-full text-sm">E-mail</a>
         </div>
         <div class="mt-8 text-xs text-slate-500 border-t border-white/10 pt-5"><p>© 2026 João Pedro Carvalho — Em constante evolução</p></div>
       </div>
@@ -529,7 +529,7 @@
       const termInput = document.getElementById('terminalInput');
       const termOut = document.getElementById('terminalOutput');
       function addLine(msg, isError = false) { const p = document.createElement('p'); p.className = isError ? 'text-red-400' : 'text-indigo-200'; p.innerHTML = msg; termOut.insertBefore(p, termOut.lastElementChild); termOut.scrollTop = termOut.scrollHeight; }
-      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS. 24 badges Microsoft + 17 certificações.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, IA/ML, GitHub, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards Power BI, Sistema SQL, Automação Python, Estudos IA'); else if(c === 'contato') addLine('jeipi7007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
+      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS. 24 badges Microsoft + 17 certificações.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, IA/ML, GitHub, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards Power BI, Sistema SQL, Automação Python, Estudos IA'); else if(c === 'contato') addLine('jpfonsecaalves2007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
       termBtn.addEventListener('click', () => { modal.classList.remove('opacity-0', 'pointer-events-none'); setTimeout(() => termInput.focus(), 100); });
       closeTerm.addEventListener('click', () => modal.classList.add('opacity-0', 'pointer-events-none'));
       termInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleCommand(termInput.value); });
