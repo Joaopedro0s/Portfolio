@@ -499,9 +499,6 @@
             <span class="tech-tag">Estrutura relacional</span>
             <span class="tech-tag">JSON</span>
           </div>
-          <button class="btn-view" data-project-btn="educash">
-            Ver projeto <i class="fas fa-arrow-right ms-1"></i>
-          </button>
         </div>
 
         <!-- Card 2 - K4Math -->
@@ -518,9 +515,6 @@
             <span class="tech-tag">Sistema de conquistas</span>
             <span class="tech-tag">Inventário e loja</span>
           </div>
-          <button class="btn-view" data-project-btn="k4math">
-            Ver projeto <i class="fas fa-arrow-right ms-1"></i>
-          </button>
         </div>
 
         <!-- Card 3 - Loja Real -->
@@ -537,9 +531,6 @@
             <span class="tech-tag">Modelagem relacional</span>
             <span class="tech-tag">Controle de pedidos</span>
           </div>
-          <button class="btn-view" data-project-btn="lojareal">
-            Ver projeto <i class="fas fa-arrow-right ms-1"></i>
-          </button>
         </div>
       </div>
 
@@ -604,7 +595,7 @@ FROM user_cofrinhos c
 LEFT JOIN cofrinho_deposits d ON c.id = d.cofrinho_id
 GROUP BY c.id, c.name
 ORDER BY total_saved DESC;`,
-        github: 'https://github.com/Joaopedro0s/educash'
+        github: 'https://github.com/Joaopedro0s/Portfolio/tree/main/BANCOS%20DE%20DADOS'
       },
       k4math: {
         name: 'K4Math',
@@ -624,7 +615,7 @@ FROM activities a
 LEFT JOIN user_progress up ON a.id = up.activity_id AND up.status = 'completed'
 GROUP BY a.id, a.title
 ORDER BY completions DESC;`,
-        github: 'https://github.com/Joaopedro0s/k4math'
+        github: 'https://github.com/Joaopedro0s/Portfolio/tree/main/BANCOS%20DE%20DADOS'
       },
       lojareal: {
         name: 'Loja Real',
@@ -645,7 +636,7 @@ FROM clientes c
 LEFT JOIN pedidos p ON c.id = p.cliente_id
 GROUP BY c.id, c.nome
 ORDER BY total_gasto DESC;`,
-        github: 'https://github.com/Joaopedro0s/loja-real'
+        github: 'https://github.com/Joaopedro0s/Portfolio/tree/main/BANCOS%20DE%20DADOS'
       }
     };
 
