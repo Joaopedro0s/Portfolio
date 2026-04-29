@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>João Pedro Carvalho | Portfólio - Estudante de ADS</title>
+  <title>João Pedro Carvalho | Portfólio - Estudante de Análise e Desenvolvimento de Sistemas</title>
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="Portfólio de João Pedro Carvalho - Estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia, IA e desenvolvimento de soluções inteligentes.">
@@ -278,7 +278,7 @@
           <h3 class="text-2xl font-bold mb-4">Formação</h3>
           <div class="space-y-4">
             <div><h4 class="font-semibold text-indigo-300">Análise e Desenvolvimento de Sistemas</h4><p class="text-sm text-slate-300">SENAI Taubaté</p><p class="text-xs text-slate-400">2025 - 2027 (cursando)</p></div>
-            <div><h4 class="font-semibold text-indigo-300">Técnico em ADS</h4><p class="text-sm text-slate-300">SENAI</p><p class="text-xs text-slate-400">Conclusão: 2025</p></div>
+            <div><h4 class="font-semibold text-indigo-300">Técnico em Desenvolvimento de Sistemas</h4><p class="text-sm text-slate-300">SENAI Cruzeiro</p><p class="text-xs text-slate-400">Conclusão: 2025</p></div>
           </div>
         </div>
       </div>
@@ -493,7 +493,7 @@
       const nameSpan = document.getElementById('typedName');
       const titleSpan = document.getElementById('typedTitle');
       const fullName = "João Pedro Carvalho";
-      const fullTitle = "Estudante de ADS";
+      const fullTitle = "Estudante de Análise e Desenvolvimento de Sistemas";
       let nameIdx = 0, titleIdx = 0;
       function typeName() {
         if(nameIdx < fullName.length) {
@@ -529,7 +529,7 @@
       const termInput = document.getElementById('terminalInput');
       const termOut = document.getElementById('terminalOutput');
       function addLine(msg, isError = false) { const p = document.createElement('p'); p.className = isError ? 'text-red-400' : 'text-indigo-200'; p.innerHTML = msg; termOut.insertBefore(p, termOut.lastElementChild); termOut.scrollTop = termOut.scrollHeight; }
-      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de ADS. 24 badges Microsoft + 17 certificações.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, IA/ML, GitHub, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards Power BI, Sistema SQL, Automação Python, Estudos IA'); else if(c === 'contato') addLine('jpfonsecaalves2007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
+      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de Análise e Desenvolvimento de Sistemas. 24 badges Microsoft + 17 certificações.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, IA/ML, GitHub, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards Power BI, Sistema SQL, Automação Python, Estudos IA'); else if(c === 'contato') addLine('jpfonsecaalves2007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
       termBtn.addEventListener('click', () => { modal.classList.remove('opacity-0', 'pointer-events-none'); setTimeout(() => termInput.focus(), 100); });
       closeTerm.addEventListener('click', () => modal.classList.add('opacity-0', 'pointer-events-none'));
       termInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleCommand(termInput.value); });
