@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Banco de Dados | MySQL & SQL Server | Portfólio</title>
+  <title>Banco de Dados | MySQL & SQL Server | Portfolio</title>
   
-  <meta name="description" content="Projetos de Banco de Dados - Modelagem relacional, consultas SQL avançadas e sistemas completos com MySQL.">
+  <meta name="description" content="Projetos de Banco de Dados - Modelagem relacional, consultas SQL avancadas e sistemas completos com MySQL.">
   <meta name="theme-color" content="#0f172a">
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -26,7 +26,6 @@
       line-height: 1.5;
     }
 
-    /* Animated Background */
     .animated-bg {
       position: fixed;
       inset: 0;
@@ -51,7 +50,6 @@
       100% { transform: translateY(-60px) translateX(50px) scale(1.4); opacity: 0.25; }
     }
 
-    /* Glass Navigation */
     .glass-nav {
       background: rgba(10, 15, 30, 0.75);
       backdrop-filter: blur(12px);
@@ -91,14 +89,12 @@
       color: #818cf8;
     }
 
-    /* Main Container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Hero Section */
     .hero-section {
       text-align: center;
       padding: 4rem 0 2rem;
@@ -141,7 +137,6 @@
       border-radius: 2px;
     }
 
-    /* Cards Grid */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -270,7 +265,6 @@
       box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
     }
 
-    /* Project Details Section */
     .details-section {
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(8px);
@@ -396,24 +390,68 @@
       word-break: break-word;
     }
 
-    .screenshot-placeholder {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.05));
-      border: 1px dashed rgba(129, 140, 248, 0.3);
-      border-radius: 1rem;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #475569;
-      font-size: 0.875rem;
-      transition: all 0.2s ease;
+    .project-image {
+      width: 100%;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(129, 140, 248, 0.3);
     }
 
-    .screenshot-placeholder:hover {
-      border-color: rgba(129, 140, 248, 0.5);
+    .project-image:hover {
+      transform: scale(1.02);
+      border-color: #818cf8;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
-    /* Scroll Reveal */
+    .image-caption {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* Modal for full screen image */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      z-index: 1001;
+      font-family: Arial, sans-serif;
+    }
+
+    .close-modal:hover {
+      color: #818cf8;
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -425,7 +463,6 @@
       transform: translateY(0);
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -441,7 +478,6 @@
       background: #818cf8;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
@@ -451,6 +487,11 @@
       }
       .details-section {
         padding: 1.25rem;
+      }
+      .close-modal {
+        top: 15px;
+        right: 25px;
+        font-size: 30px;
       }
     }
   </style>
@@ -462,37 +503,34 @@
 
   <nav class="glass-nav">
     <div class="nav-container">
-      <a href="../index.html" class="nav-link">← Voltar ao Portfólio</a>
+      <a href="../index.html" class="nav-link">← Voltar ao Portfolio</a>
       <div class="nav-badge">Banco de Dados</div>
     </div>
   </nav>
 
-  <main class="relative z-10 pt-28 pb-16">
+  <main style="position: relative; z-index: 10; padding-top: 7rem; padding-bottom: 4rem;">
     <div class="container">
       
-      <!-- Hero Section -->
       <div class="hero-section reveal">
         <div class="badge">
-          <i class="fas fa-database me-2"></i> MySQL & SQL Server
+          <i class="fas fa-database"></i> MySQL & SQL Server
         </div>
         <h1>Bancos de Dados</h1>
         <p class="subtitle">
-          Projetos de modelagem relacional, consultas avançadas e sistemas completos
+          Projetos de modelagem relacional, consultas avancadas e sistemas completos
         </p>
         <div class="hero-divider"></div>
       </div>
 
-      <!-- Cards Grid -->
       <div class="cards-grid reveal">
         
-        <!-- Card 1 - EduCash -->
         <div class="project-card" data-project="educash">
           <div class="card-icon">
             <i class="fas fa-coins"></i>
           </div>
           <h3>EduCash</h3>
           <p class="description">
-            Sistema de educação financeira com controle de despesas, cofrinhos e progresso do usuário.
+            Sistema de educacao financeira com controle de despesas, cofrinhos e progresso do usuario.
           </p>
           <div class="tech-list">
             <span class="tech-tag">MySQL</span>
@@ -501,23 +539,21 @@
           </div>
         </div>
 
-        <!-- Card 2 - K4Math -->
         <div class="project-card" data-project="k4math">
           <div class="card-icon">
             <i class="fas fa-gamepad"></i>
           </div>
           <h3>K4Math</h3>
           <p class="description">
-            Sistema educacional gamificado com atividades, conquistas, XP, loja e progressão de usuário.
+            Sistema educacional gamificado com atividades, conquistas, XP, loja e progressao de usuario.
           </p>
           <div class="tech-list">
             <span class="tech-tag">MySQL</span>
             <span class="tech-tag">Sistema de conquistas</span>
-            <span class="tech-tag">Inventário e loja</span>
+            <span class="tech-tag">Inventario e loja</span>
           </div>
         </div>
 
-        <!-- Card 3 - Loja Real -->
         <div class="project-card" data-project="lojareal">
           <div class="card-icon">
             <i class="fas fa-store"></i>
@@ -534,16 +570,18 @@
         </div>
       </div>
 
-      <!-- Dynamic Project Details -->
       <div id="projectDetails" class="details-section reveal">
-        <!-- Content will be injected dynamically -->
       </div>
 
     </div>
   </main>
 
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
   <script>
-    // Floating particles
     (function() {
       const wrapper = document.getElementById('particlesWrapper');
       if (wrapper) {
@@ -562,7 +600,6 @@
       }
     })();
 
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add('reveal-visible');
@@ -576,12 +613,11 @@
       });
     }, 100);
 
-    // Project data
     const projectsData = {
       educash: {
         name: 'EduCash',
         icon: 'fa-coins',
-        description: 'Sistema completo de educação financeira desenvolvido para auxiliar usuários no controle de gastos pessoais, criação de metas de economia (cofrinhos) e acompanhamento de progresso financeiro. O sistema utiliza uma estrutura relacional robusta com suporte a dados JSON para armazenar progresso personalizado.',
+        description: 'Sistema completo de educacao financeira desenvolvido para auxiliar usuarios no controle de gastos pessoais, criacao de metas de economia (cofrinhos) e acompanhamento de progresso financeiro. O sistema utiliza uma estrutura relacional robusta com suporte a dados JSON para armazenar progresso personalizado.',
         tables: ['users', 'user_cofrinhos', 'cofrinho_deposits', 'user_planilhas', 'planilha_despesas', 'user_module_progress'],
         sql: `-- Controle de gastos - Top 5 maiores despesas
 SELECT name, amount, date
@@ -595,14 +631,15 @@ FROM user_cofrinhos c
 LEFT JOIN cofrinho_deposits d ON c.id = d.cofrinho_id
 GROUP BY c.id, c.name
 ORDER BY total_saved DESC;`,
-        github: 'https://github.com/Joaopedro0s/Portfolio/tree/main/BANCOS%20DE%20DADOS'
+        github: 'https://github.com/Joaopedro0s/educash',
+        imagePath: 'imagens/educash.png'
       },
       k4math: {
         name: 'K4Math',
         icon: 'fa-gamepad',
-        description: 'Plataforma educacional gamificada que transforma o aprendizado de matemática em uma experiência envolvente. O sistema gerencia usuários, atividades interativas, sistema de conquistas, progressão por XP, inventário de itens e loja virtual onde alunos podem trocar pontos por recompensas.',
+        description: 'Plataforma educacional gamificada que transforma o aprendizado de matematica em uma experiencia envolvente. O sistema gerencia usuarios, atividades interativas, sistema de conquistas, progressao por XP, inventario de itens e loja virtual onde alunos podem trocar pontos por recompensas.',
         tables: ['users', 'activities', 'achievements', 'user_progress', 'user_achievements', 'user_inventory', 'shop_items', 'shop_categories'],
-        sql: `-- Ranking de usuários por XP
+        sql: `-- Ranking de usuarios por XP
 SELECT u.username, up.total_xp, up.current_level
 FROM users u
 JOIN user_progress up ON u.id = up.user_id
@@ -615,12 +652,13 @@ FROM activities a
 LEFT JOIN user_progress up ON a.id = up.activity_id AND up.status = 'completed'
 GROUP BY a.id, a.title
 ORDER BY completions DESC;`,
-        github: 'https://github.com/Joaopedro0s/Portfolio/tree/main/BANCOS%20DE%20DADOS'
+        github: 'https://github.com/Joaopedro0s/k4math',
+        imagePath: 'imagens/k4math.png'
       },
       lojareal: {
         name: 'Loja Real',
         icon: 'fa-store',
-        description: 'Sistema de banco de dados para e-commerce completo, gerenciando clientes, pedidos, produtos e itens de pedido. Projetado para suportar operações de alta performance com índices otimizados e consultas analíticas para tomada de decisão.',
+        description: 'Sistema de banco de dados para e-commerce completo, gerenciando clientes, pedidos, produtos e itens de pedido. Projetado para suportar operacoes de alta performance com indices otimizados e consultas analiticas para tomada de decisao.',
         tables: ['clientes', 'pedidos', 'produtos', 'itens_pedido'],
         sql: `-- Produtos mais vendidos
 SELECT p.nome, SUM(i.quantidade) AS total_vendido
@@ -636,16 +674,34 @@ FROM clientes c
 LEFT JOIN pedidos p ON c.id = p.cliente_id
 GROUP BY c.id, c.nome
 ORDER BY total_gasto DESC;`,
-        github: 'https://github.com/Joaopedro0s/Portfolio/tree/main/BANCOS%20DE%20DADOS'
+        github: 'https://github.com/Joaopedro0s/loja-real',
+        imagePath: 'imagens/loja_real.png'
       }
     };
 
     let currentProject = 'educash';
 
+    function openModal(imgSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'block';
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    }
+
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if(e.target === this) {
+        closeModal();
+      }
+    });
+
     function showProject(projectId) {
       currentProject = projectId;
       
-      // Update active card styling
       document.querySelectorAll('.project-card').forEach(card => {
         card.classList.remove('active');
       });
@@ -662,7 +718,7 @@ ORDER BY total_gasto DESC;`,
         detailsContainer.innerHTML = `
           <div class="details-header">
             <h2>
-              <i class="fas ${project.icon} me-2"></i>
+              <i class="fas ${project.icon}"></i>
               ${project.name}
             </h2>
             <a href="${project.github}" target="_blank" class="btn-github">
@@ -677,7 +733,7 @@ ORDER BY total_gasto DESC;`,
             <div class="info-box">
               <h3><i class="fas fa-table"></i> Estrutura (Tabelas principais)</h3>
               <ul class="tables-list">
-                ${project.tables.map(table => `<li><i class="fas fa-database me-2" style="color:#818cf8;"></i>${table}</li>`).join('')}
+                ${project.tables.map(table => `<li><i class="fas fa-database" style="color:#818cf8; width:20px;"></i> ${table}</li>`).join('')}
               </ul>
             </div>
             <div class="info-box">
@@ -687,25 +743,18 @@ ORDER BY total_gasto DESC;`,
               </div>
             </div>
             <div class="info-box">
-              <h3><i class="fas fa-image"></i> Preview</h3>
-              <div class="screenshot-placeholder">
-                <div class="text-center">
-                  <i class="fas fa-database fa-2x mb-2" style="color:#475569;"></i>
-                  <p>Diagrama ER e Screenshots disponíveis no repositório</p>
-                </div>
-              </div>
+              <h3><i class="fas fa-image"></i> Preview do Projeto</h3>
+              <img src="${project.imagePath}" alt="Preview do ${project.name}" class="project-image" onclick="openModal('${project.imagePath}')" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.05)); border: 1px dashed rgba(129, 140, 248, 0.3); border-radius: 1rem; height: 200px; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 0.875rem;\'><div style=\'text-align:center;\'><i class=\'fas fa-database\' style=\'font-size: 2rem; margin-bottom: 0.5rem; color:#475569;\'></i><p>Imagem nao encontrada</p><p style=\'font-size:0.7rem;\'>${project.imagePath}</p></div></div>'">
+              <div class="image-caption">Clique na imagem para ampliar</div>
             </div>
           </div>
         `;
       }
     }
 
-    // Event listeners for cards (click on card)
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        // Prevent event from bubbling if button was clicked directly
         if (e.target.closest('.btn-view')) return;
-        
         const projectId = card.getAttribute('data-project');
         if (projectId) {
           showProject(projectId);
@@ -713,7 +762,6 @@ ORDER BY total_gasto DESC;`,
       });
     });
     
-    // Event listeners for buttons
     document.querySelectorAll('.btn-view').forEach(button => {
       button.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -724,10 +772,8 @@ ORDER BY total_gasto DESC;`,
       });
     });
 
-    // Load default project (EduCash)
     showProject('educash');
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
