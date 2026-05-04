@@ -631,7 +631,7 @@ FROM user_cofrinhos c
 LEFT JOIN cofrinho_deposits d ON c.id = d.cofrinho_id
 GROUP BY c.id, c.name
 ORDER BY total_saved DESC;`,
-        github: 'https://github.com/Joaopedro0s/educash',
+        github: 'https://github.com/Joaopedro0s/Portfolio/blob/main/BANCOS%20DE%20DADOS/educash%20(1).sql',
         imagePath: 'imagens/educash.png'
       },
       k4math: {
@@ -652,7 +652,7 @@ FROM activities a
 LEFT JOIN user_progress up ON a.id = up.activity_id AND up.status = 'completed'
 GROUP BY a.id, a.title
 ORDER BY completions DESC;`,
-        github: 'https://github.com/Joaopedro0s/k4math',
+        github: 'https://github.com/Joaopedro0s/Portfolio/blob/main/BANCOS%20DE%20DADOS/k4math.sql',
         imagePath: 'imagens/k4math.png'
       },
       lojareal: {
@@ -674,7 +674,7 @@ FROM clientes c
 LEFT JOIN pedidos p ON c.id = p.cliente_id
 GROUP BY c.id, c.nome
 ORDER BY total_gasto DESC;`,
-        github: 'https://github.com/Joaopedro0s/loja-real',
+        github: 'https://github.com/Joaopedro0s/Portfolio/blob/main/BANCOS%20DE%20DADOS/loja_real.sql',
         imagePath: 'imagens/loja_real.png'
       }
     };
