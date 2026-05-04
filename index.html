@@ -71,90 +71,119 @@
       transform: translateY(0);
     }
 
-    .skill-badge {
-      background: rgba(30, 41, 59, 0.5);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(129, 140, 248, 0.25);
-      transition: all 0.25s ease;
-    }
-    .skill-badge:hover {
-      border-color: #818cf8;
-      background: rgba(79, 70, 229, 0.25);
-      transform: translateY(-3px);
-    }
-
-    .project-card {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(129, 140, 248, 0.2);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-6px);
-      border-color: #818cf8;
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
-    }
-    
-    .highlight-card {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(139, 92, 246, 0.1));
-      border: 1px solid rgba(129, 140, 248, 0.4);
+    .cert-badge-item {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(129, 140, 248, 0.15);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
     }
-    .highlight-card::before {
+    
+    .cert-badge-item::before {
       content: '';
       position: absolute;
       top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .cert-badge-item:hover::before {
+      left: 100%;
+    }
+    
+    .cert-badge-item:hover {
+      border-color: rgba(129, 140, 248, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -12px rgba(79, 70, 229, 0.3);
+    }
+    
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(139, 92, 246, 0.2));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    
+    .cert-badge-item:hover .icon-wrapper {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(139, 92, 246, 0.4));
+    }
+
+    .project-card-modern {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.7));
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(129, 140, 248, 0.15);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card-modern::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
       left: 0;
       right: 0;
       height: 2px;
       background: linear-gradient(90deg, #4f46e5, #a78bfa, #4f46e5);
-    }
-    .highlight-star {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      font-size: 12px;
-      color: #fbbf24;
-    }
-
-    .typing-cursor::after {
-      content: '|';
-      animation: blink 1s step-end infinite;
-      margin-left: 2px;
-      color: #a78bfa;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    section[id] {
-      scroll-margin-top: 85px;
-    }
-
-    .terminal-glow {
-      box-shadow: 0 0 6px rgba(139, 92, 246, 0.5);
-      animation: terminalPulse 2s infinite;
-    }
-    @keyframes terminalPulse {
-      0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
-      70% { box-shadow: 0 0 0 6px rgba(139, 92, 246, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
-    }
-
-    .social-link {
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .social-link:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.1);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
     }
     
+    .project-card-modern:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .project-card-modern:hover {
+      transform: translateY(-8px);
+      border-color: rgba(129, 140, 248, 0.4);
+      box-shadow: 0 20px 40px -20px rgba(79, 70, 229, 0.4);
+    }
+    
+    .project-icon {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card-modern:hover .project-icon {
+      transform: rotate(5deg) scale(1.05);
+      box-shadow: 0 8px 20px -8px rgba(79, 70, 229, 0.5);
+    }
+    
+    .tech-tag {
+      background: rgba(79, 70, 229, 0.15);
+      border: 1px solid rgba(129, 140, 248, 0.2);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .tech-tag:hover {
+      background: rgba(79, 70, 229, 0.3);
+      border-color: rgba(129, 140, 248, 0.5);
+    }
+
     .btn-download-curriculo {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
       border: 1px solid rgba(16, 185, 129, 0.5);
@@ -168,14 +197,17 @@
     }
 
     .btn-ver-mais {
-      background: rgba(79, 70, 229, 0.2);
-      border: 1px solid rgba(129, 140, 248, 0.4);
-      transition: all 0.2s ease;
+      background: rgba(79, 70, 229, 0.15);
+      border: 1px solid rgba(129, 140, 248, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+    
     .btn-ver-mais:hover {
-      background: rgba(79, 70, 229, 0.4);
+      background: rgba(79, 70, 229, 0.3);
       border-color: #818cf8;
-      transform: scale(0.98);
+      letter-spacing: 0.5px;
     }
 
     ::-webkit-scrollbar {
@@ -189,14 +221,31 @@
       border-radius: 10px;
     }
     
-    .badge-mini {
-      background: rgba(139, 92, 246, 0.2);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      transition: all 0.2s ease;
+    .section-title {
+      background: linear-gradient(135deg, #eef2ff, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    .badge-mini:hover {
-      background: rgba(139, 92, 246, 0.35);
-      transform: translateY(-2px);
+    
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4f46e5, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .social-link {
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .social-link:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
     }
   </style>
 </head>
@@ -236,12 +285,9 @@
       <div class="flex flex-wrap justify-center gap-4 mt-4 reveal" data-delay="400">
         <a href="#contato" class="px-6 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 transition shadow-lg font-semibold text-sm">Vamos conversar</a>
         <a href="#projetos" class="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition font-semibold text-sm border border-white/20">Ver projetos</a>
-        <button id="terminalBtn" class="px-5 py-2.5 rounded-full bg-slate-800/80 hover:bg-slate-700 transition flex items-center gap-2 text-sm font-mono terminal-glow">
-          <span></span>/terminal
-        </button>
         
         <a id="downloadCurriculoBtn" href="Curriculo_Joao_Pedro.pdf" download class="px-5 py-2.5 rounded-full btn-download-curriculo transition flex items-center gap-2 text-sm font-semibold">
-          <span></span>Baixar Currículo (PDF)
+          <span>↓</span> Baixar Currículo (PDF)
         </a>
       </div>
       
@@ -264,7 +310,7 @@
 
     <section id="experiencia" class="py-12 md:py-16 reveal">
       <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20">
+        <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300">
           <h3 class="text-2xl font-bold mb-4">Experiência</h3>
           <div class="space-y-4">
             <div><h4 class="font-semibold text-indigo-300">Aprendiz em Desenvolvimento - IOCHPE MAXION</h4><p class="text-xs text-slate-400">02/2024 até 12/2025</p><p class="text-sm text-slate-300 mt-1">Desenvolvimento web, sistemas e bancos de dados para soluções corporativas.</p></div>
@@ -272,7 +318,7 @@
             <div><h4 class="font-semibold text-indigo-300">Auxiliar Administrativo - Ascontec</h4><p class="text-xs text-slate-400">03/2023 até 12/2023</p><p class="text-sm text-slate-300 mt-1">Planilhas Excel, organização e gestão administrativa.</p></div>
           </div>
         </div>
-        <div class="bg-white/5 rounded-2xl p-6 border border-purple-500/20">
+        <div class="bg-white/5 rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
           <h3 class="text-2xl font-bold mb-4">Formação</h3>
           <div class="space-y-4">
             <div><h4 class="font-semibold text-indigo-300">Tecnólogo em Análise e Desenvolvimento de Sistemas</h4><p class="text-sm text-slate-300">SENAI Taubaté</p><p class="text-xs text-slate-400">2026 - 2027 (cursando)</p></div>
@@ -282,96 +328,107 @@
       </div>
     </section>
 
-    <!-- Seção Certificações + Badges com Destaques -->
+    <!-- Seção Certificações + Badges -->
     <section id="certificacoes-badges" class="py-12 md:py-16 reveal">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3">
+          <span class="section-title">Reconhecimentos & Conquistas</span>
+        </h2>
+        <p class="text-slate-400">Certificações e badges que validam minha jornada de aprendizado contínuo</p>
+      </div>
+      
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Certificações -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-indigo-500/20">
-          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-indigo-400"></span>Certificações em Destaque</h3>
-          <div class="mb-4">
-            <p class="text-xs text-slate-400 mb-2">Total: 17+ certificações</p>
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="text-xl font-bold">Certificações em Destaque</h3>
           </div>
-          
-          <!-- Destaque 1 -->
-          <div class="highlight-card p-3 rounded-xl mb-3 relative">
-            <span class="highlight-star">★</span>
-            <div>
-              <p class="font-semibold text-indigo-200">Soluções de IA com GitHub</p>
-              <p class="text-xs text-slate-400">GitHub / Microsoft Learn - 2026</p>
-              <p class="text-xs text-slate-500 mt-1">Implementação de IA com GitHub Copilot e GitHub Models</p>
+          <div class="space-y-3">
+            <div class="cert-badge-item rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="icon-wrapper">AI</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-indigo-200">Soluções de IA com GitHub</h4>
+                  <p class="text-xs text-slate-400">GitHub / Microsoft Learn - 2026</p>
+                  <p class="text-xs text-slate-500 mt-1">Implementação de IA com GitHub Copilot e GitHub Models</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cert-badge-item rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="icon-wrapper">CL</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-indigo-200">Introdução à IA gerativa no Azure</h4>
+                  <p class="text-xs text-slate-400">Microsoft Learn - 2025</p>
+                  <p class="text-xs text-slate-500 mt-1">Fundamentos de IA generativa e agentes inteligentes na nuvem</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cert-badge-item rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="icon-wrapper">BI</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-indigo-200">Análise de Dados com Power BI</h4>
+                  <p class="text-xs text-slate-400">Microsoft Learn - 2026</p>
+                  <p class="text-xs text-slate-500 mt-1">Dashboards interativos, DAX, Power Query e modelagem de dados</p>
+                </div>
+              </div>
             </div>
           </div>
-          
-          <!-- Destaque 2 -->
-          <div class="highlight-card p-3 rounded-xl mb-3 relative">
-            <span class="highlight-star">★</span>
-            <div>
-              <p class="font-semibold text-indigo-200">Introdução à IA gerativa no Azure</p>
-              <p class="text-xs text-slate-400">Microsoft Learn - 2025</p>
-              <p class="text-xs text-slate-500 mt-1">Fundamentos de IA generativa e agentes inteligentes na nuvem</p>
-            </div>
-          </div>
-          
-          <!-- Destaque 3 -->
-          <div class="highlight-card p-3 rounded-xl mb-3 relative">
-            <span class="highlight-star">★</span>
-            <div>
-              <p class="font-semibold text-indigo-200">Análise de Dados com Power BI</p>
-              <p class="text-xs text-slate-400">Microsoft Learn - 2026</p>
-              <p class="text-xs text-slate-500 mt-1">Dashboards interativos, DAX, Power Query e modelagem de dados</p>
-            </div>
-          </div> 
-          <a href="certificacoes.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-indigo-300 font-medium text-sm transition mt-4">Clique para ver todas as certificações →</a>
+          <a href="certificacoes.html" class="btn-ver-mais inline-flex items-center justify-center gap-2 w-full mt-4 py-2.5 rounded-lg text-indigo-300 font-medium text-sm transition">
+            Ver todas as certificações →
+          </a>
         </div>
 
         <!-- Badges -->
-        <div class="bg-white/5 rounded-2xl p-6 border border-purple-500/20">
-          <h3 class="text-2xl font-bold mb-5 flex items-center gap-2"><span class="w-6 h-1 bg-purple-400"></span>Badges em Destaque</h3>
-          <div class="mb-4">
-            <p class="text-xs text-slate-400 mb-2">Total: 24 badges da Microsoft Learn</p>
+        <div>
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="text-xl font-bold">Badges em Destaque</h3>
           </div>
-          
-          <!-- Destaque 1 -->
-          <div class="highlight-card p-3 rounded-xl mb-3 relative">
-            <span class="highlight-star">★</span>
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-purple-300 text-sm">MCP</div>
-              <div>
-                <p class="font-semibold text-purple-200">Introdução ao SERVIDOR MCP</p>
-                <p class="text-xs text-slate-400">Concluído em 23/04/2026</p>
+          <div class="space-y-3">
+            <div class="cert-badge-item rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="icon-wrapper">MC</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-purple-200">Introdução ao SERVIDOR MCP</h4>
+                  <p class="text-xs text-slate-400">Concluído em 23/04/2026</p>
+                  <p class="text-xs text-slate-500 mt-1">Model Context Protocol para Integração de IA</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cert-badge-item rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="icon-wrapper">GC</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-purple-200">GitHub Copilot Cloud Agent</h4>
+                  <p class="text-xs text-slate-400">Concluído em 23/04/2026</p>
+                  <p class="text-xs text-slate-500 mt-1">Assistente de programação com IA generativa</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cert-badge-item rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="icon-wrapper">GN</div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-purple-200">Introdução à IA gerativa no Azure</h4>
+                  <p class="text-xs text-slate-400">Concluído em 10/10/2025</p>
+                  <p class="text-xs text-slate-500 mt-1">Fundamentos e aplicações de IA generativa</p>
+                </div>
               </div>
             </div>
           </div>
-          
-          <!-- Destaque 2 -->
-          <div class="highlight-card p-3 rounded-xl mb-3 relative">
-            <span class="highlight-star">★</span>
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-purple-300 text-sm">GCA</div>
-              <div>
-                <p class="font-semibold text-purple-200">GitHub Copilot Cloud Agent</p>
-                <p class="text-xs text-slate-400">Concluído em 23/04/2026</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Destaque 3 -->
-          <div class="highlight-card p-3 rounded-xl mb-3 relative">
-            <span class="highlight-star">★</span>
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center font-bold text-purple-300 text-sm">GEN</div>
-              <div>
-                <p class="font-semibold text-purple-200">Introdução à IA gerativa no Azure</p>
-                <p class="text-xs text-slate-400">Concluído em 10/10/2025</p>
-              </div>
-            </div>
-          </div> 
-          <a href="badges.html" class="btn-ver-mais inline-block w-full text-center py-2.5 rounded-lg text-purple-300 font-medium text-sm transition mt-4">Clique para ver todas as badges →</a>
+          <a href="badges.html" class="btn-ver-mais inline-flex items-center justify-center gap-2 w-full mt-4 py-2.5 rounded-lg text-purple-300 font-medium text-sm transition">
+            Ver todas as badges →
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Projetos com links para páginas individuais -->
+    <!-- Projetos - TEXTOS ORIGINAIS DO PRIMEIRO CÓDIGO -->
     <section id="projetos" class="py-12 md:py-16 reveal">
       <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">
         Projetos & <span class="text-indigo-300">Iniciativas</span>
@@ -380,42 +437,42 @@
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Dashboard Power BI -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="powerbi">
+        <div class="project-card-modern rounded-xl overflow-hidden" data-project="powerbi">
           <div class="h-32 bg-gradient-to-r from-indigo-900/50 to-purple-900/50 flex items-center justify-center">
             <span class="text-4xl font-bold text-indigo-300">BI</span>
           </div>
           <div class="p-5"><h3 class="text-lg font-bold">Dashboard Power BI</h3><p class="text-xs text-indigo-300 mb-2">Análise de Dados</p><p class="text-slate-300 text-sm">Dashboards interativos com métricas e modelagem de dados.</p></div>
         </div>
         <!-- Sistema SQL Server -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="sqlserver">
+        <div class="project-card-modern rounded-xl overflow-hidden" data-project="sqlserver">
           <div class="h-32 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 flex items-center justify-center">
             <span class="text-4xl font-bold text-blue-300">SQL</span>
           </div>
           <div class="p-5"><h3 class="text-lg font-bold">Sistema com SQL Server</h3><p class="text-xs text-indigo-300 mb-2">Banco de Dados</p><p class="text-slate-300 text-sm">Procedures, consultas SQL e estrutura relacional.</p></div>
         </div>
         <!-- Plataformas Web -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="plataformasweb">
+        <div class="project-card-modern rounded-xl overflow-hidden" data-project="plataformasweb">
           <div class="h-32 bg-gradient-to-r from-emerald-900/50 to-teal-900/50 flex items-center justify-center">
             <span class="text-4xl font-bold text-emerald-300">WEB</span>
           </div>
           <div class="p-5"><h3 class="text-lg font-bold">Plataformas Web</h3><p class="text-xs text-indigo-300 mb-2">Front-end</p><p class="text-slate-300 text-sm">Sites modernos com animações e UX.</p></div>
         </div>
         <!-- Automação com Python -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="automacaopython">
+        <div class="project-card-modern rounded-xl overflow-hidden" data-project="automacaopython">
           <div class="h-32 bg-gradient-to-r from-amber-900/50 to-orange-900/50 flex items-center justify-center">
             <span class="text-4xl font-bold text-amber-300">PY</span>
           </div>
           <div class="p-5"><h3 class="text-lg font-bold">Automação com Python</h3><p class="text-xs text-indigo-300 mb-2">Programação</p><p class="text-slate-300 text-sm">Scripts para automação de tarefas e dados.</p></div>
         </div>
         <!-- Estudos IA -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="estudosia">
+        <div class="project-card-modern rounded-xl overflow-hidden" data-project="estudosia">
           <div class="h-32 bg-gradient-to-r from-rose-900/50 to-pink-900/50 flex items-center justify-center">
             <span class="text-4xl font-bold text-rose-300">PI</span>
           </div>
           <div class="p-5"><h3 class="text-lg font-bold">Projeto Integrador</h3><p class="text-xs text-indigo-300 mb-2">Full Stack</p><p class="text-slate-300 text-sm">Junção de conceitos visuais, interativos e lógicos.</p></div>
         </div>
         <!-- Análise de Dados -->
-        <div class="project-card rounded-xl overflow-hidden" data-project="analisedados">
+        <div class="project-card-modern rounded-xl overflow-hidden" data-project="analisedados">
           <div class="h-32 bg-gradient-to-r from-fuchsia-900/50 to-purple-900/50 flex items-center justify-center">
             <span class="text-4xl font-bold text-fuchsia-300">AD</span>
           </div>
@@ -454,19 +511,12 @@
             WhatsApp
           </a>
         </div>
-        <div class="mt-8 text-xs text-slate-500 border-t border-white/10 pt-5"><p>© 2026 João Pedro Carvalho — Em constante evolução</p></div>
+        <div class="mt-8 text-xs text-slate-500 border-t border-white/10 pt-5">
+          <p>© 2026 João Pedro Carvalho — Em constante evolução</p>
+        </div>
       </div>
     </section>
   </main>
-
-  <!-- Terminal Modal -->
-  <div id="terminalModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none">
-    <div class="bg-slate-900 w-full max-w-md rounded-xl border border-indigo-500/40 overflow-hidden">
-      <div class="flex justify-between items-center px-4 py-3 bg-slate-800 border-b border-indigo-500/30"><span class="font-mono text-xs text-indigo-300">terminal@joaopedro:~</span><button id="closeTerminal" class="text-slate-400 hover:text-white text-xl">&times;</button></div>
-      <div class="p-4 h-56 overflow-y-auto font-mono text-xs text-green-300 bg-black/60" id="terminalOutput"><p>$ Terminal interativo - João Pedro</p><p>$ Comandos: sobre, experiencia, habilidades, projetos, contato, clear, sair</p><p>$ </p></div>
-      <div class="p-3 bg-slate-900 border-t border-slate-700 flex gap-2"><span class="text-indigo-300 font-mono text-xs">$&gt;</span><input type="text" id="terminalInput" class="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs" placeholder="digite um comando..." autocomplete="off"></div>
-    </div>
-  </div>
 
   <script>
     (function() {
@@ -493,14 +543,14 @@
       let nameIdx = 0, titleIdx = 0;
       function typeName() {
         if(nameIdx < fullName.length) {
-          nameSpan.innerHTML = fullName.substring(0, nameIdx+1) + '<span class="typing-cursor"></span>';
+          nameSpan.innerHTML = fullName.substring(0, nameIdx+1);
           nameIdx++;
           setTimeout(typeName, 70);
         } else {
           nameSpan.innerHTML = fullName;
           function typeTitle() {
             if(titleIdx < fullTitle.length) {
-              titleSpan.innerHTML = fullTitle.substring(0, titleIdx+1) + '<span class="typing-cursor"></span>';
+              titleSpan.innerHTML = fullTitle.substring(0, titleIdx+1);
               titleIdx++;
               setTimeout(typeTitle, 40);
             } else {
@@ -517,19 +567,6 @@
       let lastScroll = 0;
       const navbar = document.getElementById('navbar');
       window.addEventListener('scroll', () => { let current = window.scrollY; if(current > 80 && current > lastScroll) navbar.classList.add('navbar-hidden'); else navbar.classList.remove('navbar-hidden'); lastScroll = current; });
-      
-      // Terminal
-      const termBtn = document.getElementById('terminalBtn');
-      const modal = document.getElementById('terminalModal');
-      const closeTerm = document.getElementById('closeTerminal');
-      const termInput = document.getElementById('terminalInput');
-      const termOut = document.getElementById('terminalOutput');
-      function addLine(msg, isError = false) { const p = document.createElement('p'); p.className = isError ? 'text-red-400' : 'text-indigo-200'; p.innerHTML = msg; termOut.insertBefore(p, termOut.lastElementChild); termOut.scrollTop = termOut.scrollHeight; }
-      function handleCommand(cmd) { let c = cmd.trim().toLowerCase(); if(c === 'sobre') addLine('João Pedro, 18 anos, estudante de Análise e Desenvolvimento de Sistemas. 24 badges Microsoft + 17 certificações.'); else if(c === 'experiencia') addLine('Aprendiz na Maxion, Estagiário na UNISAL, Auxiliar na Ascontec'); else if(c === 'habilidades') addLine('Python, SQL, Power BI, Excel, IA/ML, GitHub, Inglês intermediário'); else if(c === 'projetos') addLine('Dashboards Power BI, Sistema SQL, Automação Python, Estudos IA'); else if(c === 'contato') addLine('jpfonsecaalves2007@gmail.com | Lorena-SP'); else if(c === 'clear') { while(termOut.children.length > 3) termOut.removeChild(termOut.children[termOut.children.length-2]); } else if(c === 'sair' || c === 'exit') modal.classList.add('opacity-0', 'pointer-events-none'); else if(c !== '') addLine(`comando '${cmd}' não encontrado`, true); if(c !== 'clear' && c !== '' && c !== 'sair' && c !== 'exit') addLine(`$ ${cmd}`); termInput.value = ''; }
-      termBtn.addEventListener('click', () => { modal.classList.remove('opacity-0', 'pointer-events-none'); setTimeout(() => termInput.focus(), 100); });
-      closeTerm.addEventListener('click', () => modal.classList.add('opacity-0', 'pointer-events-none'));
-      termInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleCommand(termInput.value); });
-      modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.add('opacity-0', 'pointer-events-none'); });
       
       // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { let hash = this.getAttribute('href'); if(hash === '#') return; let target = document.querySelector(hash); if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
@@ -549,7 +586,7 @@
       };
       
       // Adiciona evento de clique em cada card
-      document.querySelectorAll('.project-card').forEach(card => {
+      document.querySelectorAll('.project-card-modern').forEach(card => {
         card.addEventListener('click', (e) => {
           const projectKey = card.getAttribute('data-project');
           if(projectKey && pagesMap[projectKey]) {
