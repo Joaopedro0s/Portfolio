@@ -41,7 +41,6 @@
       line-height: 1.6;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -52,7 +51,6 @@
       opacity: 0.5;
     }
 
-    /* ── AMBIENT BACKGROUND ── */
     .ambient-bg {
       position: fixed;
       inset: 0;
@@ -90,7 +88,6 @@
       66% { transform: translate(-20px, 30px) scale(0.95); }
     }
 
-    /* ── STAR FIELD ── */
     .stars {
       position: fixed;
       inset: 0;
@@ -108,7 +105,6 @@
       50% { opacity: var(--max-op); transform: scale(1.3); }
     }
 
-    /* ── NAVIGATION ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -166,7 +162,6 @@
     .nav-links a:hover { color: var(--text-primary); }
     .nav-links a:hover::after { width: 100%; }
 
-    /* ── MAIN CONTAINER ── */
     main {
       position: relative;
       z-index: 10;
@@ -175,7 +170,6 @@
       padding: 0 2rem 4rem;
     }
 
-    /* ── HERO ── */
     #home {
       min-height: 100vh;
       display: flex;
@@ -333,7 +327,6 @@
     }
     .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
 
-    /* ── SCROLL INDICATOR ── */
     .scroll-indicator {
       position: absolute;
       bottom: 2.5rem;
@@ -361,7 +354,6 @@
       100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
     }
 
-    /* ── SECTIONS ── */
     section { padding: 5rem 0; }
     .section-label {
       display: inline-flex;
@@ -390,7 +382,6 @@
       line-height: 1.15;
     }
 
-    /* ── CARDS SHARED ── */
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -411,13 +402,11 @@
     .card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(139,92,246,0.15); }
     .card:hover::before { opacity: 1; }
 
-    /* ── SOBRE ── */
     #sobre .card { backdrop-filter: blur(12px); }
     #sobre p { color: var(--text-secondary); line-height: 1.8; }
     #sobre p + p { margin-top: 1rem; }
     #sobre strong { color: #a5b4fc; font-weight: 600; }
 
-    /* ── EXPERIÊNCIA E FORMAÇÃO ── */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .timeline-item + .timeline-item { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
     .timeline-company { font-weight: 600; color: #818cf8; font-size: 0.93rem; }
@@ -425,7 +414,6 @@
     .timeline-desc { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem; }
     .card-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; }
 
-    /* ── CERTIFICAÇÕES & BADGES ── */
     .certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
     .cert-item {
       display: flex;
@@ -495,7 +483,6 @@
     .cert-col .btn-ver-mais:hover { color: #818cf8; }
     .badge-col .btn-ver-mais:hover { color: #a78bfa; }
 
-    /* ── PROJETOS ── */
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
     .project-card {
       background: var(--bg-card);
@@ -594,7 +581,6 @@
     .project-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
     .project-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
 
-    /* ── CONTATO ── */
     #contato .contact-box {
       background: linear-gradient(135deg, rgba(12,18,35,0.9), rgba(8,13,26,0.95));
       border: 1px solid var(--border);
@@ -635,7 +621,6 @@
 
     .footer-text { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted); }
 
-    /* ── REVEAL ANIMATIONS ── */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -664,16 +649,426 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg-deep); }
     ::-webkit-scrollbar-thumb { background: var(--accent-b); border-radius: 4px; }
 
-    /* ── RESPONSIVE ── */
+    /* ── PHOTO HINTS NOS CARDS ── */
+    .card-photo-hint {
+      position: absolute;
+      top: 0.85rem; right: 0.85rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(245,158,11,0.7);
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 100px;
+      padding: 0.2rem 0.6rem;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+    .award-card:hover .card-photo-hint {
+      color: #fcd34d;
+      background: rgba(245,158,11,0.15);
+      border-color: rgba(245,158,11,0.4);
+    }
+    .award-card { cursor: pointer; }
+    .event-card { cursor: pointer; }
+    .event-photo-hint {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .event-card:hover .event-photo-hint { color: var(--text-secondary); }
+
+    /* ── MODAL LIGHTBOX ── */
+    .photo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .photo-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 4, 10, 0.92);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+    }
+    .modal-box {
+      position: relative;
+      z-index: 1;
+      background: rgba(10, 15, 28, 0.98);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 1.5rem;
+      width: 100%;
+      max-width: 780px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,92,246,0.1);
+      transform: scale(0.95) translateY(16px);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .photo-modal.open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+    .modal-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .modal-close {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .modal-close:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--text-primary);
+      transform: scale(1.1);
+    }
+
+    /* Foto principal */
+    .modal-gallery {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      background: rgba(5,8,16,0.6);
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img {
+      max-width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      display: block;
+      transition: opacity 0.25s ease;
+    }
+    .modal-img.fading { opacity: 0; }
+
+    /* Placeholder quando não tem foto */
+    .modal-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-muted);
+      padding: 3rem;
+      text-align: center;
+    }
+    .modal-placeholder-icon { font-size: 3rem; opacity: 0.4; }
+    .modal-placeholder-text { font-size: 0.85rem; line-height: 1.6; }
+    .modal-placeholder-path {
+      font-size: 0.75rem;
+      font-family: monospace;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.2);
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      color: #818cf8;
+      margin-top: 0.5rem;
+    }
+
+    /* Navegação */
+    .modal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.85rem 1.5rem;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .modal-nav-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.25);
+      color: #818cf8;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .modal-nav-btn:hover:not(:disabled) {
+      background: rgba(99,102,241,0.25);
+      border-color: rgba(99,102,241,0.5);
+      color: #a5b4fc;
+      transform: scale(1.1);
+    }
+    .modal-nav-btn:disabled { opacity: 0.2; cursor: default; }
+    .modal-counter {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    /* Thumbnails */
+    .modal-thumbs {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem 1.25rem;
+      overflow-x: auto;
+      flex-shrink: 0;
+      scrollbar-width: none;
+    }
+    .modal-thumbs::-webkit-scrollbar { display: none; }
+    .modal-thumb {
+      width: 56px; height: 44px;
+      border-radius: 0.5rem;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      opacity: 0.55;
+    }
+    .modal-thumb.active {
+      border-color: #6366f1;
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    .modal-thumb:hover { opacity: 0.85; }
+
+    /* Thumb placeholder */
+    .modal-thumb-placeholder {
+      width: 56px; height: 44px;
+      border-radius: 0.5rem;
+      background: rgba(99,102,241,0.1);
+      border: 2px solid transparent;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      opacity: 0.55;
+    }
+    .modal-thumb-placeholder.active {
+      border-color: #6366f1;
+      opacity: 1;
+    }
+    .conquistas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    /* Card de premiação */
+    .award-card {
+      background: linear-gradient(135deg, rgba(20,16,8,0.95), rgba(12,18,35,0.9));
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .award-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,158,11,0.5), transparent);
+    }
+    .award-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(245,158,11,0.05), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .award-card:hover {
+      border-color: rgba(245,158,11,0.55);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 30px rgba(245,158,11,0.08);
+    }
+    .award-card:hover::after { opacity: 1; }
+
+    .award-medal {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .medal-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .medal-gold {
+      background: radial-gradient(circle at 35% 35%, #fde68a, #f59e0b, #b45309);
+      box-shadow: 0 0 18px rgba(245,158,11,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    .medal-bronze {
+      background: radial-gradient(circle at 35% 35%, #fed7aa, #f97316, #9a3412);
+      box-shadow: 0 0 18px rgba(249,115,22,0.35), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    .award-position {
+      position: relative; z-index: 1;
+    }
+    .award-place {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .medal-gold ~ .award-position .award-place { color: #fcd34d; }
+    .medal-bronze ~ .award-position .award-place { color: #fb923c; }
+    .award-event-type {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .award-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      position: relative; z-index: 1;
+    }
+    .award-context {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative; z-index: 1;
+    }
+    .award-year {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 0.2rem 0.65rem;
+      position: relative; z-index: 1;
+    }
+
+    /* Cards de eventos/visitas */
+    .events-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .event-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(99,102,241,0.06), transparent);
+      transition: left 0.5s ease;
+    }
+    .event-card:hover::before { left: 100%; }
+    .event-card:hover {
+      border-color: var(--border-hover);
+      transform: translateX(4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .event-icon {
+      width: 40px; height: 40px; min-width: 40px;
+      border-radius: 0.65rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .event-icon.visit {
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+    .event-icon.presentation {
+      background: rgba(16,185,129,0.15);
+      border: 1px solid rgba(16,185,129,0.25);
+    }
+    .event-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+    .event-detail {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .event-tag {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 100px;
+    }
+    .tag-visit { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .tag-presentation { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .grid-2 { grid-template-columns: 1fr; }
       .certs-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .conquistas-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
       main { padding: 0 1.25rem 3rem; }
     }
@@ -684,7 +1079,6 @@
 </head>
 <body>
 
-  <!-- AMBIENT -->
   <div class="ambient-bg">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
@@ -692,7 +1086,6 @@
   </div>
   <div class="stars" id="starsContainer"></div>
 
-  <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">JP</a>
@@ -701,6 +1094,7 @@
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#experiencia">Experiência</a></li>
         <li><a href="#certificacoes">Certificações</a></li>
+        <li><a href="#conquistas">Conquistas</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
@@ -764,6 +1158,8 @@
       <div class="section-label">Trajetória</div>
       <h2 class="section-title reveal">Experiência & Formação</h2>
       <div class="grid-2" style="margin-top:2rem;">
+
+        <!-- EXPERIÊNCIA -->
         <div class="card reveal-left">
           <div class="card-title">Experiência</div>
           <div class="timeline-item">
@@ -782,11 +1178,13 @@
             <div class="timeline-desc">Planilhas Excel, organização e gestão administrativa.</div>
           </div>
         </div>
+
+        <!-- FORMAÇÃO — corrigida e padronizada -->
         <div class="card reveal-right">
           <div class="card-title">Formação</div>
           <div class="timeline-item">
-            <div class="timeline-company">Tecnólogo em Análise e Desenvolvimento de Sistemas/div>
-            <div class="timeline-date">SENAI Taubaté · 2026–2027 (cursando)</div>
+            <div class="timeline-company">Tecnólogo em Análise e Desenvolvimento de Sistemas</div>
+            <div class="timeline-date">SENAI Taubaté · 2026 → 2027 (cursando)</div>
             <div class="timeline-desc">Análise e Desenvolvimento de Sistemas com foco em soluções empresariais e inovação tecnológica.</div>
           </div>
           <div class="timeline-item">
@@ -795,6 +1193,7 @@
             <div class="timeline-desc">Fundamentos de programação, banco de dados, redes e desenvolvimento web.</div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -865,6 +1264,126 @@
       </div>
     </section>
 
+    <!-- CONQUISTAS & EXPERIÊNCIAS -->
+    <section id="conquistas">
+      <div class="section-label">Reconhecimentos</div>
+      <h2 class="section-title reveal">Conquistas & Experiências</h2>
+      <p class="reveal" style="color:var(--text-secondary); margin-top:0.5rem;">Clique em qualquer card para ver as fotos do evento</p>
+
+      <div class="conquistas-grid">
+
+        <!-- PREMIAÇÕES -->
+        <div style="display:flex; flex-direction:column; gap:1.25rem;">
+
+          <div class="award-card reveal" data-modal="hackathon-api"
+            data-title="Hackathon API Edition"
+            data-subtitle="1º Lugar · Técnico · SENAI Cruzeiro"
+            data-photos='["fotos/hackathon-api/foto1.jpg","fotos/hackathon-api/foto2.jpg","fotos/hackathon-api/foto3.jpg"]'>
+            <div class="card-photo-hint">📷 Ver fotos</div>
+            <div class="award-medal">
+              <div class="medal-icon medal-gold">🥇</div>
+              <div class="award-position">
+                <div class="award-place">1º Lugar</div>
+                <div class="award-event-type">Hackathon</div>
+              </div>
+            </div>
+            <div class="award-name">Hackathon API Edition</div>
+            <div class="award-context">Competição de desenvolvimento realizada durante o curso técnico, com foco em integração de APIs e soluções práticas de software.</div>
+            <div class="award-year">Técnico · SENAI Cruzeiro</div>
+          </div>
+
+          <div class="award-card reveal" data-modal="hackathon-sb"
+            data-title="Hackathon Science & Business"
+            data-subtitle="3º Lugar · Graduação · SENAI Taubaté · 2026"
+            data-photos='["fotos/hackathon-sb/foto1.jpg","fotos/hackathon-sb/foto2.jpg","fotos/hackathon-sb/foto3.jpg"]'>
+            <div class="card-photo-hint">📷 Ver fotos</div>
+            <div class="award-medal">
+              <div class="medal-icon medal-bronze">🥉</div>
+              <div class="award-position">
+                <div class="award-place">3º Lugar</div>
+                <div class="award-event-type">Hackathon</div>
+              </div>
+            </div>
+            <div class="award-name">Hackathon Science & Business</div>
+            <div class="award-context">Competição realizada no PIT de São José dos Campos, com enfoque em soluções que conectam ciência de dados e estratégia de negócios.</div>
+            <div class="award-year">Graduação · SENAI Taubaté · 2026</div>
+          </div>
+
+        </div>
+
+        <!-- VISITAS & EVENTOS -->
+        <div class="events-col">
+
+          <div class="event-card reveal" data-modal="pit"
+            data-title="PIT — Parque Tecnológico de São José dos Campos"
+            data-subtitle="Visita Técnica"
+            data-photos='["fotos/pit/foto1.jpg","fotos/pit/foto2.jpg","fotos/pit/foto3.jpg"]'>
+            <div class="event-icon visit">🏢</div>
+            <div style="flex:1;">
+              <div class="event-name">PIT — Parque Tecnológico de SJC</div>
+              <div class="event-detail">Visita técnica ao polo de inovação e tecnologia, sede do Hackathon Science & Business.</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.4rem;">
+                <span class="event-tag tag-visit">Visita Técnica</span>
+                <span class="event-photo-hint">📷 fotos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card reveal" data-modal="feimec"
+            data-title="FEIMEC — Feira Internacional de Máquinas e Equipamentos"
+            data-subtitle="Visita Técnica · Osasco"
+            data-photos='["fotos/feimec/foto1.jpg","fotos/feimec/foto2.jpg","fotos/feimec/foto3.jpg"]'>
+            <div class="event-icon visit">🏭</div>
+            <div style="flex:1;">
+              <div class="event-name">FEIMEC — Feira Internacional</div>
+              <div class="event-detail">Maior feira de manufatura e tecnologia industrial da América Latina, em Osasco.</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.4rem;">
+                <span class="event-tag tag-visit">Visita Técnica · Osasco</span>
+                <span class="event-photo-hint">📷 fotos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-card reveal" data-modal="unisenai"
+            data-title="UniSENAI — Apresentação de Projeto de Extensão"
+            data-subtitle="Apresentação · SENAI Osasco"
+            data-photos='["fotos/unisenai/foto1.jpg","fotos/unisenai/foto2.jpg","fotos/unisenai/foto3.jpg"]'>
+            <div class="event-icon presentation">🎤</div>
+            <div style="flex:1;">
+              <div class="event-name">UniSENAI — Projeto de Extensão</div>
+              <div class="event-detail">Apresentação do projeto de extensão universitária no SENAI de Osasco.</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:0.4rem;">
+                <span class="event-tag tag-presentation">Apresentação · Osasco</span>
+                <span class="event-photo-hint">📷 fotos</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL LIGHTBOX -->
+    <div id="photoModal" class="photo-modal" role="dialog" aria-modal="true" aria-label="Galeria de fotos">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-box">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="modal-subtitle" id="modalSubtitle"></div>
+          </div>
+          <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
+        </div>
+        <div class="modal-gallery" id="modalGallery"></div>
+        <div class="modal-nav" id="modalNav">
+          <button class="modal-nav-btn" id="modalPrev" aria-label="Foto anterior">←</button>
+          <div class="modal-counter" id="modalCounter"></div>
+          <button class="modal-nav-btn" id="modalNext" aria-label="Próxima foto">→</button>
+        </div>
+        <div class="modal-thumbs" id="modalThumbs"></div>
+      </div>
+    </div>
+
     <!-- PROJETOS -->
     <section id="projetos">
       <div class="section-label">Portfólio</div>
@@ -872,8 +1391,6 @@
       <p class="reveal" style="color:var(--text-secondary); margin-top:0.5rem;">Clique em qualquer card para explorar detalhes e repositórios</p>
 
       <div class="projects-grid">
-
-        <!-- SQL Server -->
         <div class="project-card c-blue reveal" data-href="PROJETOS/SQLServer.html">
           <div class="project-thumb">
             <span class="project-badge">SQL</span>
@@ -886,7 +1403,6 @@
           </div>
         </div>
 
-        <!-- Plataformas Web -->
         <div class="project-card c-emerald reveal" data-href="PROJETOS/plataformasWEB.html">
           <div class="project-thumb">
             <span class="project-badge">WEB</span>
@@ -899,7 +1415,6 @@
           </div>
         </div>
 
-        <!-- Projeto Integrador -->
         <div class="project-card c-rose reveal" data-href="PROJETOS/projetoIntegrador.html">
           <div class="project-thumb">
             <span class="project-badge">PI</span>
@@ -912,7 +1427,6 @@
           </div>
         </div>
 
-        <!-- Análise de Dados -->
         <div class="project-card c-fuchsia reveal" data-href="PROJETOS/analiseDados.html" style="grid-column: span 2; cursor:pointer;">
           <div class="project-thumb" style="height:130px;">
             <span class="project-badge" style="font-size:2.8rem;">AD</span>
@@ -925,7 +1439,6 @@
           </div>
         </div>
 
-        <!-- Projeto Integrador placeholder 5 -->
         <div class="project-card c-indigo reveal" data-href="PROJETOS/SQLServer.html">
           <div class="project-thumb">
             <span class="project-badge">DB</span>
@@ -937,7 +1450,6 @@
             <div class="project-desc">Schemas, normalização e design de bases de dados corporativas.</div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -970,7 +1482,6 @@
   <script>
   (function () {
 
-    /* ── STARS ── */
     const starsC = document.getElementById('starsContainer');
     for (let i = 0; i < 120; i++) {
       const s = document.createElement('div');
@@ -989,7 +1500,6 @@
       starsC.appendChild(s);
     }
 
-    /* ── TYPED TEXT ── */
     const nameEl = document.getElementById('typedName');
     const titleEl = document.getElementById('typedTitle');
     const fullName = 'João Pedro Carvalho';
@@ -1014,7 +1524,6 @@
     }
     typeName();
 
-    /* ── REVEAL ON SCROLL ── */
     function startReveal() {
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((e, idx) => {
@@ -1029,13 +1538,11 @@
     }
     startReveal();
 
-    /* ── NAV SCROLL ── */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
-    /* ── SMOOTH SCROLL ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function (e) {
         const target = document.querySelector(this.getAttribute('href'));
@@ -1043,14 +1550,12 @@
       });
     });
 
-    /* ── PROJECT CARD CLICKS ── */
     document.querySelectorAll('.project-card[data-href]').forEach(card => {
       card.addEventListener('click', () => {
         window.location.href = card.getAttribute('data-href');
       });
     });
 
-    /* ── CURSOR MAGNETIC CARDS ── */
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -1062,6 +1567,147 @@
         card.style.transform = '';
       });
     });
+
+
+    /* ── MODAL LIGHTBOX ── */
+    (function () {
+      const modal    = document.getElementById('photoModal');
+      const backdrop = document.getElementById('modalBackdrop');
+      const closeBtn = document.getElementById('modalClose');
+      const gallery  = document.getElementById('modalGallery');
+      const titleEl  = document.getElementById('modalTitle');
+      const subtitleEl = document.getElementById('modalSubtitle');
+      const prevBtn  = document.getElementById('modalPrev');
+      const nextBtn  = document.getElementById('modalNext');
+      const counter  = document.getElementById('modalCounter');
+      const thumbsEl = document.getElementById('modalThumbs');
+
+      let photos = [];
+      let current = 0;
+
+      function openModal(card) {
+        const title    = card.dataset.title || '';
+        const subtitle = card.dataset.subtitle || '';
+        photos = JSON.parse(card.dataset.photos || '[]');
+        current = 0;
+
+        titleEl.textContent    = title;
+        subtitleEl.textContent = subtitle;
+
+        renderGallery();
+        renderThumbs();
+        updateNav();
+
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function renderGallery() {
+        gallery.innerHTML = '';
+
+        if (!photos.length) {
+          gallery.innerHTML = `
+            <div class="modal-placeholder">
+              <div class="modal-placeholder-icon">📷</div>
+              <div class="modal-placeholder-text">Nenhuma foto adicionada ainda.<br>Coloque as imagens na pasta indicada abaixo.</div>
+              <div class="modal-placeholder-path">fotos / [evento] / foto1.jpg</div>
+            </div>`;
+          return;
+        }
+
+        const img = document.createElement('img');
+        img.className = 'modal-img';
+        img.alt = titleEl.textContent;
+        img.src = photos[current];
+        img.onerror = () => {
+          // foto não encontrada — mostra placeholder com o caminho esperado
+          gallery.innerHTML = `
+            <div class="modal-placeholder">
+              <div class="modal-placeholder-icon">🖼️</div>
+              <div class="modal-placeholder-text">Foto não encontrada. Adicione o arquivo no caminho:</div>
+              <div class="modal-placeholder-path">${photos[current]}</div>
+            </div>`;
+        };
+        gallery.appendChild(img);
+      }
+
+      function renderThumbs() {
+        thumbsEl.innerHTML = '';
+        photos.forEach((src, i) => {
+          const thumb = document.createElement('img');
+          thumb.className = 'modal-thumb' + (i === current ? ' active' : '');
+          thumb.src = src;
+          thumb.alt = `Foto ${i + 1}`;
+          thumb.onerror = () => {
+            // thumb com erro: troca por emoji placeholder
+            const ph = document.createElement('div');
+            ph.className = 'modal-thumb-placeholder' + (i === current ? ' active' : '');
+            ph.textContent = '🖼️';
+            ph.addEventListener('click', () => goTo(i));
+            thumb.replaceWith(ph);
+          };
+          thumb.addEventListener('click', () => goTo(i));
+          thumbsEl.appendChild(thumb);
+        });
+      }
+
+      function goTo(idx) {
+        const img = gallery.querySelector('.modal-img');
+        if (img) {
+          img.classList.add('fading');
+          setTimeout(() => {
+            current = idx;
+            renderGallery();
+            updateNav();
+            updateThumbs();
+          }, 200);
+        } else {
+          current = idx;
+          renderGallery();
+          updateNav();
+          updateThumbs();
+        }
+      }
+
+      function updateNav() {
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === photos.length - 1;
+        counter.textContent = photos.length ? `${current + 1} / ${photos.length}` : '';
+
+        // Oculta nav se não há fotos
+        document.getElementById('modalNav').style.display = photos.length ? 'flex' : 'none';
+        thumbsEl.style.display = photos.length ? 'flex' : 'none';
+      }
+
+      function updateThumbs() {
+        thumbsEl.querySelectorAll('.modal-thumb, .modal-thumb-placeholder').forEach((el, i) => {
+          el.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => { if (current > 0) goTo(current - 1); });
+      nextBtn.addEventListener('click', () => { if (current < photos.length - 1) goTo(current + 1); });
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+
+      // Teclas: ← → Esc
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft'  && current > 0) goTo(current - 1);
+        if (e.key === 'ArrowRight' && current < photos.length - 1) goTo(current + 1);
+      });
+
+      // Ativa todos os cards com data-modal
+      document.querySelectorAll('[data-modal]').forEach(card => {
+        card.addEventListener('click', () => openModal(card));
+      });
+    })();
 
   })();
   </script>
