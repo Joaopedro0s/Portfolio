@@ -4,117 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Badges & Conquistas | João Pedro Carvalho</title>
-  
+
   <meta name="description" content="Badges, medalhas e conquistas de João Pedro Carvalho na área de tecnologia, programação e análise de dados.">
-  <meta name="theme-color" content="#0f172a">
-  
+  <meta name="theme-color" content="#05070D">
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/theme.css">
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at 0% 0%, #0a0f1e, #020617);
-      color: #eef2ff;
-    }
-
-    .animated-bg {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at 30% 40%, rgba(139, 92, 246, 0.12), transparent 60%),
-                  radial-gradient(ellipse at 80% 70%, rgba(79, 70, 229, 0.08), transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .floating-particle {
-      position: fixed;
-      background: rgba(139, 92, 246, 0.2);
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(4px);
-      animation: floatAnim 20s infinite alternate ease-in-out;
-      z-index: 0;
-    }
-
-    @keyframes floatAnim {
-      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.15; }
-      100% { transform: translateY(-50px) translateX(40px) scale(1.3); opacity: 0.4; }
-    }
-
-    .glass-nav {
-      background: rgba(10, 15, 30, 0.75);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
 
     .badge-card {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.85));
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(139, 92, 246, 0.25);
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      background: var(--deep);
+      border: 1px solid var(--wire);
+      transition: border-color .35s var(--ease), background .35s var(--ease);
       cursor: pointer;
     }
     .badge-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: #a78bfa;
-      box-shadow: 0 20px 30px -12px rgba(139, 92, 246, 0.3);
-    }
-
-    .btn-voltar {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(79, 70, 229, 0.2));
-      border: 1px solid rgba(139, 92, 246, 0.4);
-      transition: all 0.25s ease;
-    }
-    .btn-voltar:hover {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(79, 70, 229, 0.4));
-      border-color: #a78bfa;
-      transform: translateY(-2px);
-    }
-
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0f172a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #8b5cf6;
-      border-radius: 10px;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
+      border-color: var(--wire-2);
+      background: var(--raise);
     }
 
     .badge-icon {
       font-size: 2rem;
       font-weight: bold;
-      color: #a78bfa;
-      filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
-      transition: all 0.2s ease;
+      color: var(--signal-ink);
+      transition: transform .25s var(--ease);
     }
     .badge-card:hover .badge-icon {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.8));
+      transform: scale(1.08);
     }
-    
+
     .modal-badge {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(139, 92, 246, 0.4);
+      background: var(--deep);
+      border: 1px solid var(--wire);
       max-width: 500px;
       width: 90%;
     }
@@ -122,37 +52,34 @@
 </head>
 <body class="overflow-x-hidden">
 
-  <div class="animated-bg"></div>
-  <div id="particlesWrapper" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></div>
+  <div class="halo" aria-hidden="true"></div>
 
-  <nav class="glass-nav fixed w-full top-0 left-0 z-50 px-5 py-3">
-    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-3">
-      <a href="index.html" class="text-purple-300 font-semibold hover:text-purple-200 transition text-sm md:text-base">← Voltar ao Portfólio</a>
-      <div class="text-sm text-slate-400">João Pedro Carvalho</div>
+  <nav class="nav" id="nav">
+    <div style="display:flex;align-items:center;gap:1.4rem">
+      <a href="index.html" class="nav__mark">JPC<span>.</span></a>
+      <a href="index.html" class="nav__back"><i>←</i> Voltar ao portfólio</a>
     </div>
+    <span class="nav__tag">Badges &amp; Conquistas</span>
   </nav>
 
-  <main class="relative z-10 max-w-6xl mx-auto px-5 md:px-8 pt-28 pb-16">
-    
-    <div class="text-center mb-12 reveal">
-      <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-white via-purple-200 to-purple-300 bg-clip-text text-transparent mb-4">
-        Badges & Conquistas
-      </h1>
-      <p class="text-slate-300 max-w-2xl mx-auto">
-        Selos, distintivos e reconhecimentos que representam minha evolução e dedicação na área da tecnologia.
-      </p>
-      <div class="w-20 h-1 bg-purple-500 mx-auto mt-4 rounded-full"></div>
-    </div>
+  <main class="relative z-10 max-w-6xl mx-auto px-5 md:px-8 pb-16">
+
+    <header class="pagehero wrap">
+      <span class="eyebrow">Microsoft Learn · GitHub</span>
+      <h1>Badges &amp; Conquistas</h1>
+      <p>Selos, distintivos e reconhecimentos que representam minha evolução e dedicação na área da tecnologia.</p>
+      <div class="pagehero__rule"></div>
+    </header>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      
+
       <!-- Badge 1 -->
       <div class="badge-card rounded-2xl p-5 reveal" data-badge-name="Introdução ao SERVIDOR MCP">
         <div class="flex items-center gap-4">
           <div class="badge-icon">MCP</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução ao SERVIDOR MCP</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução ao SERVIDOR MCP</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 23/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -163,8 +90,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">GCA</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Acelerar o desenvolvimento com o GitHub Copilot Cloud Agent</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Acelerar o desenvolvimento com o GitHub Copilot Cloud Agent</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 23/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Certificado</div>
           </div>
         </div>
@@ -175,8 +102,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">AGT</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Criar aplicativos com o modo agente do GitHub Copilot</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Criar aplicativos com o modo agente do GitHub Copilot</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 23/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -187,8 +114,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">IAR</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">IA responsável com GitHub Copilot</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 23/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">IA responsável com GitHub Copilot</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 23/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -199,8 +126,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">PRM</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução à engenharia de prompts com o GitHub Copilot</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução à engenharia de prompts com o GitHub Copilot</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 15/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -211,8 +138,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">COP</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução ao GitHub Copilot</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução ao GitHub Copilot</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 15/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -223,8 +150,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">SEG</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Manter um repositório seguro com as melhores práticas do GitHub</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Manter um repositório seguro com as melhores práticas do GitHub</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 15/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -235,8 +162,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">INS</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Gerenciar um programa InnerSource usando o GitHub</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Gerenciar um programa InnerSource usando o GitHub</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 15/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -247,8 +174,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">OSS</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Contribuir para um projeto de software livre no GitHub</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 15/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Contribuir para um projeto de software livre no GitHub</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 15/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -259,8 +186,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">PRO</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução aos produtos do GitHub</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 14/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução aos produtos do GitHub</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 14/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -271,8 +198,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">GH</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução ao GitHub</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 14/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução ao GitHub</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 14/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -283,8 +210,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">GIT</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução ao Git</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 09/04/2026</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução ao Git</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 09/04/2026</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -295,8 +222,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">EXT</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução à extração de informações alimentadas por IA no Azure</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução à extração de informações alimentadas por IA no Azure</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -307,8 +234,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">CEI</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de extração de informações alimentados por IA</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução aos conceitos de extração de informações alimentados por IA</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -319,8 +246,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">VIS</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução à pesquisa visual computacional no Azure</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução à pesquisa visual computacional no Azure</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -331,8 +258,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">CV</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de computer vision</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução aos conceitos de computer vision</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -343,8 +270,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">SPE</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução à fala no Azure</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução à fala no Azure</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -355,8 +282,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">NLP</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução ao processamento de linguagem natural no Azure</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução ao processamento de linguagem natural no Azure</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -367,8 +294,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">PLN</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de processamento de linguagem natural</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução aos conceitos de processamento de linguagem natural</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -379,8 +306,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">GEN</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução à IA gerativa no Azure</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução à IA gerativa no Azure</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -391,8 +318,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">AGE</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução à IA gerativa e aos agentes</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 10/10/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução à IA gerativa e aos agentes</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 10/10/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -403,8 +330,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">ML</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução ao aprendizado de máquina no Azure</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 29/08/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução ao aprendizado de máquina no Azure</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 29/08/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -415,8 +342,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">MCL</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de machine learning</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 29/08/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução aos conceitos de machine learning</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 29/08/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Avaliação aprovada</div>
           </div>
         </div>
@@ -427,8 +354,8 @@
         <div class="flex items-center gap-4">
           <div class="badge-icon">IA</div>
           <div class="flex-1">
-            <h3 class="font-bold text-base text-purple-300">Introdução aos conceitos de IA</h3>
-            <p class="text-xs text-slate-400 mt-1">Concluído em 29/08/2025</p>
+            <h3 class="font-bold text-base text-[color:var(--chalk)]">Introdução aos conceitos de IA</h3>
+            <p class="text-xs text-[color:var(--fog)] mt-1">Concluído em 29/08/2025</p>
             <div class="mt-2 inline-block px-2 py-0.5 bg-emerald-900/40 rounded-full text-[10px] text-emerald-400">Certificado</div>
           </div>
         </div>
@@ -438,45 +365,43 @@
 
     <!-- Estatísticas -->
     <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
-      <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">24</div>
-        <div class="text-xs text-slate-400">Badges Conquistadas</div>
+      <div class="rounded-xl p-4 text-center" style="background:var(--deep);border:1px solid var(--wire)">
+        <div class="text-3xl font-bold text-[color:var(--signal-ink)]">24</div>
+        <div class="text-xs text-[color:var(--fog)]">Badges Conquistadas</div>
       </div>
-      <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">GitHub</div>
-        <div class="text-xs text-slate-400">Plataforma Principal</div>
+      <div class="rounded-xl p-4 text-center" style="background:var(--deep);border:1px solid var(--wire)">
+        <div class="text-3xl font-bold text-[color:var(--signal-ink)]">GitHub</div>
+        <div class="text-xs text-[color:var(--fog)]">Plataforma Principal</div>
       </div>
-      <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">Azure</div>
-        <div class="text-xs text-slate-400">IA & Machine Learning</div>
+      <div class="rounded-xl p-4 text-center" style="background:var(--deep);border:1px solid var(--wire)">
+        <div class="text-3xl font-bold text-[color:var(--signal-ink)]">Azure</div>
+        <div class="text-xs text-[color:var(--fog)]">IA & Machine Learning</div>
       </div>
-      <div class="bg-white/5 rounded-xl p-4 text-center border border-purple-500/20">
-        <div class="text-3xl font-bold text-purple-300">Microsoft</div>
-        <div class="text-xs text-slate-400">Learn Platform</div>
+      <div class="rounded-xl p-4 text-center" style="background:var(--deep);border:1px solid var(--wire)">
+        <div class="text-3xl font-bold text-[color:var(--signal-ink)]">Microsoft</div>
+        <div class="text-xs text-[color:var(--fog)]">Learn Platform</div>
       </div>
-    </div>
-
-    <!-- Botão Voltar -->
-    <div class="mt-10 text-center reveal">
-      <a href="index.html" class="btn-voltar inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition">
-        <span>←</span> Voltar para o Portfólio
-      </a>
     </div>
 
   </main>
 
+  <div class="foot wrap">
+    <span class="mono mono--fog">© 2026 João Pedro Carvalho — Lorena/SP</span>
+    <a class="btn btn--solid" href="index.html">Voltar ao portfólio <i>↑</i></a>
+  </div>
+
   <!-- Modal para exibir link da badge -->
-  <div id="badgeModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm transition-all duration-300" style="display: none;">
+  <div id="badgeModal" class="fixed inset-0 z-50 hidden items-center justify-center backdrop-blur-sm transition-all duration-300" style="display: none; background:rgba(3,5,9,.75)">
     <div class="modal-badge rounded-2xl p-6 transform transition-all duration-300 scale-95 opacity-0">
       <div class="flex justify-between items-center mb-4">
-        <h3 class="text-xl font-bold text-purple-300" id="modalTitle">Badge</h3>
-        <button id="closeModal" class="text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
+        <h3 class="text-xl font-bold text-[color:var(--chalk)]" id="modalTitle">Badge</h3>
+        <button id="closeModal" class="text-[color:var(--fog)] hover:text-[color:var(--chalk)] text-2xl leading-none">&times;</button>
       </div>
       <div class="mb-4">
-        <p class="text-slate-300 text-sm mb-2" id="modalDate"></p>
-        <div class="bg-slate-900/50 rounded-lg p-3">
-          <p class="text-xs text-slate-400 mb-2">Link de verificação:</p>
-          <a href="#" id="modalLink" target="_blank" class="text-purple-400 text-sm break-all hover:underline">Clique para verificar a badge</a>
+        <p class="text-[color:var(--fog)] text-sm mb-2" id="modalDate"></p>
+        <div class="rounded-lg p-3" style="background:var(--raise)">
+          <p class="text-xs text-[color:var(--fog)] mb-2">Link de verificação:</p>
+          <a href="#" id="modalLink" target="_blank" class="text-[color:var(--signal-ink)] text-sm break-all hover:underline">Clique para verificar a badge</a>
         </div>
       </div>
       <div class="mt-4">
@@ -485,44 +410,10 @@
     </div>
   </div>
 
+  <button class="totop" id="totop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
   <script>
     (function() {
-      // Partículas flutuantes
-      const wrapper = document.getElementById('particlesWrapper');
-      for(let i = 0; i < 40; i++) {
-        const p = document.createElement('div');
-        p.classList.add('floating-particle');
-        let size = Math.random() * 60 + 15;
-        p.style.width = size + 'px';
-        p.style.height = size + 'px';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animationDelay = Math.random() * 15 + 's';
-        p.style.animationDuration = Math.random() * 18 + 12 + 's';
-        wrapper.appendChild(p);
-      }
-      
-      // Reveal on scroll
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-          }
-        });
-      }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-      
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-      
-      // Ativa visíveis imediatamente
-      setTimeout(() => {
-        document.querySelectorAll('.reveal').forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if(rect.top < window.innerHeight - 50) {
-            el.classList.add('reveal-visible');
-          }
-        });
-      }, 100);
-
       // CONFIGURAÇÃO DOS LINKS DAS BADGES
       const badgeLinks = {
         "Introdução ao SERVIDOR MCP": "https://learn.microsoft.com/api/achievements/share/pt-br/JorginGamesPrayGamesPray-4528/7BA4SDNZ?sharingId=1CFF8B701923E29B",
@@ -563,7 +454,7 @@
         modalTitle.textContent = badgeName;
         modalDate.textContent = `Concluído em ${date}`;
         modalStatus.textContent = status;
-        
+
         const link = badgeLinks[badgeName];
         if (link && link !== "") {
           modalLink.href = link;
@@ -574,7 +465,7 @@
           modalLink.textContent = "Link não disponível ainda.";
           modalLink.style.opacity = "0.6";
         }
-        
+
         modal.style.display = 'flex';
         setTimeout(() => {
           modal.querySelector('.modal-badge').classList.remove('scale-95', 'opacity-0');
@@ -594,12 +485,12 @@
       document.querySelectorAll('.badge-card').forEach(card => {
         card.addEventListener('click', () => {
           const badgeName = card.getAttribute('data-badge-name');
-          const dateElement = card.querySelector('.text-slate-400');
+          const dateElement = card.querySelector('p');
           const statusElement = card.querySelector('.text-emerald-400');
-          
+
           let date = dateElement ? dateElement.textContent.replace('Concluído em ', '') : "";
           let status = statusElement ? statusElement.textContent : "Avaliação aprovada";
-          
+
           showModal(badgeName, date, status);
         });
       });
@@ -610,5 +501,7 @@
       });
     })();
   </script>
+
+  <script src="assets/theme.js"></script>
 </body>
 </html>

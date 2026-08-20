@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Banco de Dados | MySQL & SQL Server | Portfolio</title>
-  
+
   <meta name="description" content="Projetos de Banco de Dados - Modelagem relacional, consultas SQL avancadas e sistemas completos com MySQL.">
-  <meta name="theme-color" content="#0f172a">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#05070D">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <link rel="stylesheet" href="../assets/theme.css">
+
   <style>
     * {
       margin: 0;
@@ -18,123 +21,10 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: radial-gradient(circle at 0% 0%, #0a0f1e, #020617);
-      color: #eef2ff;
-      overflow-x: hidden;
-      line-height: 1.5;
-    }
-
-    .animated-bg {
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at 30% 40%, rgba(79, 70, 229, 0.08), transparent 60%),
-                  radial-gradient(ellipse at 80% 70%, rgba(129, 140, 248, 0.06), transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .floating-particle {
-      position: fixed;
-      background: rgba(79, 70, 229, 0.12);
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(4px);
-      animation: floatAnim 20s infinite alternate ease-in-out;
-      z-index: 0;
-    }
-
-    @keyframes floatAnim {
-      0% { transform: translateY(0px) translateX(0px) scale(1); opacity: 0.1; }
-      100% { transform: translateY(-60px) translateX(50px) scale(1.4); opacity: 0.25; }
-    }
-
-    .glass-nav {
-      background: rgba(10, 15, 30, 0.75);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(129, 140, 248, 0.15);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 50;
-      padding: 0.75rem 1.25rem;
-    }
-
-    .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .nav-link {
-      color: #a5b4fc;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-size: 0.875rem;
-    }
-
-    .nav-link:hover {
-      color: #c7d2fe;
-    }
-
-    .nav-badge {
-      font-size: 0.75rem;
-      color: #818cf8;
-    }
-
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 1.5rem;
-    }
-
-    .hero-section {
-      text-align: center;
-      padding: 4rem 0 2rem;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 0.25rem 1rem;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(129, 140, 248, 0.1));
-      border: 1px solid rgba(129, 140, 248, 0.4);
-      border-radius: 2rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      color: #a5b4fc;
-    }
-
-    h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #a5b4fc, #818cf8);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-    }
-
-    .subtitle {
-      color: #94a3b8;
-      font-size: 1.125rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .hero-divider {
-      width: 80px;
-      height: 2px;
-      background: linear-gradient(90deg, #4f46e5, #818cf8);
-      margin: 1.5rem auto 0;
-      border-radius: 2px;
     }
 
     .cards-grid {
@@ -145,74 +35,54 @@
     }
 
     .project-card {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(129, 140, 248, 0.2);
+      background: var(--deep);
+      border: 1px solid var(--wire);
       border-radius: 1.5rem;
       padding: 1.5rem;
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), background 0.3s var(--ease);
       cursor: pointer;
       position: relative;
       overflow: hidden;
     }
 
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(129, 140, 248, 0.02));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
     .project-card:hover {
-      border-color: rgba(129, 140, 248, 0.5);
+      border-color: var(--wire-2);
       transform: translateY(-4px);
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(129, 140, 248, 0.2);
-    }
-
-    .project-card:hover::before {
-      opacity: 1;
+      background: var(--raise);
     }
 
     .project-card.active {
-      border-color: #818cf8;
-      box-shadow: 0 0 20px rgba(129, 140, 248, 0.25), 0 0 0 1px #818cf8;
-      background: rgba(15, 23, 42, 0.75);
+      border-color: var(--signal);
+      background: var(--raise);
     }
 
     .card-icon {
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(129, 140, 248, 0.1));
+      background: var(--signal-veil);
       border-radius: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1rem;
-      border: 1px solid rgba(129, 140, 248, 0.3);
+      border: 1px solid var(--wire-2);
     }
 
     .card-icon i {
       font-size: 1.5rem;
-      background: linear-gradient(135deg, #a5b4fc, #818cf8);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--signal-ink);
     }
 
     .project-card h3 {
+      font-family: var(--ff-display);
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: #e2e8f0;
+      color: var(--chalk);
     }
 
     .project-card .description {
-      color: #94a3b8;
+      color: var(--fog);
       font-size: 0.875rem;
       line-height: 1.5;
       margin-bottom: 1rem;
@@ -226,29 +96,29 @@
     }
 
     .tech-tag {
-      background: rgba(79, 70, 229, 0.15);
-      border: 1px solid rgba(129, 140, 248, 0.3);
+      background: var(--raise);
+      border: 1px solid var(--wire);
       border-radius: 2rem;
       padding: 0.25rem 0.75rem;
       font-size: 0.7rem;
       font-weight: 500;
       transition: all 0.2s ease;
-      color: #a5b4fc;
+      color: var(--fog);
     }
 
     .tech-tag:hover {
-      background: rgba(79, 70, 229, 0.3);
-      border-color: #818cf8;
+      border-color: var(--signal);
+      color: var(--chalk);
     }
 
     .btn-view {
       background: transparent;
-      border: 1px solid rgba(129, 140, 248, 0.5);
+      border: 1px solid var(--wire-2);
       border-radius: 2rem;
       padding: 0.5rem 1rem;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #a5b4fc;
+      color: var(--fog);
       cursor: pointer;
       transition: all 0.2s ease;
       width: 100%;
@@ -259,16 +129,14 @@
     }
 
     .btn-view:hover {
-      background: rgba(79, 70, 229, 0.25);
-      border-color: #818cf8;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+      background: var(--signal-veil);
+      border-color: var(--signal);
+      color: var(--chalk);
     }
 
     .details-section {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(129, 140, 248, 0.25);
+      background: var(--deep);
+      border: 1px solid var(--wire);
       border-radius: 1.5rem;
       padding: 2rem;
       margin: 2rem 0;
@@ -283,38 +151,34 @@
       gap: 1rem;
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(129, 140, 248, 0.2);
+      border-bottom: 1px solid var(--wire);
     }
 
     .details-header h2 {
+      font-family: var(--ff-display);
       font-size: 1.75rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #a5b4fc, #818cf8);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--chalk);
     }
 
     .btn-github {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.2), rgba(129, 140, 248, 0.1));
-      border: 1px solid rgba(129, 140, 248, 0.5);
+      background: var(--raise);
+      border: 1px solid var(--wire-2);
       border-radius: 2rem;
       padding: 0.5rem 1.25rem;
       font-size: 0.875rem;
       font-weight: 600;
-      color: #a5b4fc;
+      color: var(--chalk);
       text-decoration: none;
       transition: all 0.2s ease;
     }
 
     .btn-github:hover {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.35), rgba(129, 140, 248, 0.2));
-      border-color: #818cf8;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+      background: var(--signal-veil);
+      border-color: var(--signal);
     }
 
     .details-content {
@@ -333,13 +197,14 @@
       background: rgba(0, 0, 0, 0.25);
       border-radius: 1rem;
       padding: 1.25rem;
-      border: 1px solid rgba(129, 140, 248, 0.15);
+      border: 1px solid var(--wire);
     }
 
     .info-box h3 {
+      font-family: var(--ff-display);
       font-size: 1rem;
       font-weight: 600;
-      color: #a5b4fc;
+      color: var(--signal-ink);
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
@@ -348,11 +213,11 @@
 
     .info-box h3 i {
       font-size: 1rem;
-      color: #818cf8;
+      color: var(--signal-ink);
     }
 
     .info-box p {
-      color: #cbd5e1;
+      color: var(--fog);
       font-size: 0.875rem;
       line-height: 1.6;
     }
@@ -364,10 +229,10 @@
 
     .tables-list li {
       padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(129, 140, 248, 0.1);
-      color: #94a3b8;
+      border-bottom: 1px solid var(--wire);
+      color: var(--fog);
       font-size: 0.875rem;
-      font-family: monospace;
+      font-family: var(--ff-mono);
     }
 
     .tables-list li:last-child {
@@ -375,17 +240,17 @@
     }
 
     .sql-example {
-      background: #0a0f1e;
+      background: var(--void);
       border-radius: 0.75rem;
       padding: 1rem;
       overflow-x: auto;
-      border: 1px solid rgba(129, 140, 248, 0.2);
+      border: 1px solid var(--wire);
     }
 
     .sql-example pre {
-      font-family: 'Fira Code', monospace;
+      font-family: var(--ff-mono);
       font-size: 0.75rem;
-      color: #a5b4fc;
+      color: var(--chalk);
       white-space: pre-wrap;
       word-break: break-word;
     }
@@ -395,20 +260,44 @@
       border-radius: 0.75rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      border: 1px solid rgba(129, 140, 248, 0.3);
+      border: 1px solid var(--wire);
     }
 
     .project-image:hover {
       transform: scale(1.02);
-      border-color: #818cf8;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border-color: var(--signal);
     }
 
     .image-caption {
       font-size: 0.75rem;
-      color: #64748b;
+      color: var(--dim);
       text-align: center;
       margin-top: 0.5rem;
+    }
+
+    .img-fallback {
+      background: var(--raise);
+      border: 1px dashed var(--wire-2);
+      border-radius: 1rem;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dim);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    .img-fallback i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--dim);
+      display: block;
+    }
+    .img-fallback p {
+      margin: 0;
+    }
+    .img-fallback__path {
+      font-size: 0.7rem;
     }
 
     /* Modal for full screen image */
@@ -449,39 +338,10 @@
     }
 
     .close-modal:hover {
-      color: #818cf8;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0f172a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #4f46e5;
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #818cf8;
+      color: var(--signal);
     }
 
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
       .container {
         padding: 0 1rem;
       }
@@ -498,29 +358,25 @@
 </head>
 <body>
 
-  <div class="animated-bg"></div>
-  <div id="particlesWrapper" style="position:fixed; inset:0; pointer-events:none; z-index:0;"></div>
+  <div class="halo" aria-hidden="true"></div>
 
-  <nav class="glass-nav">
-    <div class="nav-container">
-      <a href="../index.html" class="nav-link">← Voltar ao Portfolio</a>
-      <div class="nav-badge">Banco de Dados</div>
+  <nav class="nav" id="nav">
+    <div style="display:flex;align-items:center;gap:1.4rem">
+      <a href="../index.html" class="nav__mark">JPC<span>.</span></a>
+      <a href="../index.html" class="nav__back"><i>←</i> Voltar ao portfólio</a>
     </div>
+    <span class="nav__tag">Banco de Dados</span>
   </nav>
 
   <main style="position: relative; z-index: 10; padding-top: 7rem; padding-bottom: 4rem;">
     <div class="container">
-      
-      <div class="hero-section reveal">
-        <div class="badge">
-          <i class="fas fa-database"></i> MySQL & SQL Server
-        </div>
+
+      <header class="pagehero wrap">
+        <span class="eyebrow"><i class="fas fa-database"></i> MySQL &amp; SQL Server</span>
         <h1>Bancos de Dados</h1>
-        <p class="subtitle">
-          Projetos de modelagem relacional, consultas avancadas e sistemas completos
-        </p>
-        <div class="hero-divider"></div>
-      </div>
+        <p>Projetos de modelagem relacional, consultas avançadas e sistemas completos</p>
+        <div class="pagehero__rule"></div>
+      </header>
 
       <div class="cards-grid reveal">
         
@@ -573,6 +429,11 @@
       <div id="projectDetails" class="details-section reveal">
       </div>
 
+      <div class="foot wrap">
+        <span class="mono mono--fog">© 2026 João Pedro Carvalho — Lorena/SP</span>
+        <a class="btn" href="../index.html">Voltar ao portfólio <i>↑</i></a>
+      </div>
+
     </div>
   </main>
 
@@ -581,38 +442,9 @@
     <img class="modal-content" id="modalImage">
   </div>
 
+  <button class="totop" id="totop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
   <script>
-    (function() {
-      const wrapper = document.getElementById('particlesWrapper');
-      if (wrapper) {
-        for(let i = 0; i < 40; i++) {
-          const p = document.createElement('div');
-          p.classList.add('floating-particle');
-          let size = Math.random() * 60 + 20;
-          p.style.width = size + 'px';
-          p.style.height = size + 'px';
-          p.style.left = Math.random() * 100 + '%';
-          p.style.top = Math.random() * 100 + '%';
-          p.style.animationDelay = Math.random() * 20 + 's';
-          p.style.animationDuration = Math.random() * 25 + 15 + 's';
-          wrapper.appendChild(p);
-        }
-      }
-    })();
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('reveal-visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    setTimeout(() => {
-      document.querySelectorAll('.reveal').forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('reveal-visible');
-      });
-    }, 100);
-
     const projectsData = {
       educash: {
         name: 'EduCash',
@@ -681,6 +513,20 @@ ORDER BY total_gasto DESC;`,
 
     let currentProject = 'educash';
 
+    function imgFallback(el, path) {
+      const wrap = document.createElement('div');
+      wrap.className = 'img-fallback';
+      const icon = document.createElement('i');
+      icon.className = 'fas fa-database';
+      const msg = document.createElement('p');
+      msg.textContent = 'Imagem não encontrada';
+      const pathEl = document.createElement('p');
+      pathEl.className = 'img-fallback__path';
+      pathEl.textContent = path;
+      wrap.append(icon, msg, pathEl);
+      el.replaceWith(wrap);
+    }
+
     function openModal(imgSrc) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
@@ -733,7 +579,7 @@ ORDER BY total_gasto DESC;`,
             <div class="info-box">
               <h3><i class="fas fa-table"></i> Estrutura (Tabelas principais)</h3>
               <ul class="tables-list">
-                ${project.tables.map(table => `<li><i class="fas fa-database" style="color:#818cf8; width:20px;"></i> ${table}</li>`).join('')}
+                ${project.tables.map(table => `<li><i class="fas fa-database" style="color:var(--signal-ink); width:20px;"></i> ${table}</li>`).join('')}
               </ul>
             </div>
             <div class="info-box">
@@ -744,7 +590,7 @@ ORDER BY total_gasto DESC;`,
             </div>
             <div class="info-box">
               <h3><i class="fas fa-image"></i> Preview do Projeto</h3>
-              <img src="${project.imagePath}" alt="Preview do ${project.name}" class="project-image" onclick="openModal('${project.imagePath}')" onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.05)); border: 1px dashed rgba(129, 140, 248, 0.3); border-radius: 1rem; height: 200px; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 0.875rem;\'><div style=\'text-align:center;\'><i class=\'fas fa-database\' style=\'font-size: 2rem; margin-bottom: 0.5rem; color:#475569;\'></i><p>Imagem nao encontrada</p><p style=\'font-size:0.7rem;\'>${project.imagePath}</p></div></div>'">
+              <img src="${project.imagePath}" alt="Preview do ${project.name}" class="project-image" onclick="openModal('${project.imagePath}')" onerror="imgFallback(this, '${project.imagePath}')">
               <div class="image-caption">Clique na imagem para ampliar</div>
             </div>
           </div>
@@ -784,5 +630,6 @@ ORDER BY total_gasto DESC;`,
       });
     });
   </script>
+  <script src="../assets/theme.js"></script>
 </body>
 </html>
