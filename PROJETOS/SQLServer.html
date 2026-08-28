@@ -430,7 +430,7 @@
       </div>
 
       <div class="foot wrap">
-        <span class="mono mono--fog">© 2026 João Pedro Carvalho — Lorena/SP</span>
+        <span class="mono mono--fog">© 2026 João Pedro Carvalho — São Paulo, Brazil</span>
         <a class="btn" href="../index.html">Voltar ao portfólio <i>↑</i></a>
       </div>
 
@@ -464,7 +464,7 @@ LEFT JOIN cofrinho_deposits d ON c.id = d.cofrinho_id
 GROUP BY c.id, c.name
 ORDER BY total_saved DESC;`,
         github: 'https://github.com/Joaopedro0s/Portfolio/blob/main/BANCOS%20DE%20DADOS/educash%20(1).sql',
-        imagePath: 'imagens/educash.png'
+        imagePath: 'imagens/educash.svg'
       },
       k4math: {
         name: 'K4Math',
@@ -485,7 +485,7 @@ LEFT JOIN user_progress up ON a.id = up.activity_id AND up.status = 'completed'
 GROUP BY a.id, a.title
 ORDER BY completions DESC;`,
         github: 'https://github.com/Joaopedro0s/Portfolio/blob/main/BANCOS%20DE%20DADOS/k4math.sql',
-        imagePath: 'imagens/k4math.png'
+        imagePath: 'imagens/k4math_erd.svg'
       },
       lojareal: {
         name: 'Loja Real',
@@ -507,7 +507,7 @@ LEFT JOIN pedidos p ON c.id = p.cliente_id
 GROUP BY c.id, c.nome
 ORDER BY total_gasto DESC;`,
         github: 'https://github.com/Joaopedro0s/Portfolio/blob/main/BANCOS%20DE%20DADOS/loja_real.sql',
-        imagePath: 'imagens/loja_real.png'
+        imagePath: 'imagens/loja_real.svg'
       }
     };
 
