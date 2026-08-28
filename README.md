@@ -16,35 +16,36 @@ Sou estudante de **Análise e Desenvolvimento de Sistemas** no SENAI Taubaté (p
 
 ## 🗂️ Estrutura do Repositório
 
+Migrado para **Vite + React + TypeScript + React Router** (as antigas páginas `.html` continuam funcionando como aliases de rota, então links e favoritos antigos não quebram):
+
 ```
 Portfolio/
-├── index.html                   # Página principal do portfólio
-├── badges.html                  # Página com todas as badges Microsoft Learn
-├── certificacoes.html           # Página com todas as certificações
-├── Curriculo_Joao_Pedro.pdf     # Currículo em PDF
+├── index.html                   # Shell HTML do Vite (entry point)
+├── package.json / vite.config.ts / tsconfig*.json
+├── vercel.json                  # Deploy no Vercel (framework: vite)
 │
-├── PROJETOS/
-│   ├── SQLServer.html           # Projeto: Sistema com SQL Server
-│   ├── plataformasWEB.html      # Projeto: Plataformas Web
-│   ├── projetoIntegrador.html   # Projeto: Projeto Integrador (Full Stack)
-│   ├── analiseDados.html        # Projeto: Análise de Dados — Sample Superstore
-│   └── imagens/                 # Capturas de tela dos projetos
+├── src/
+│   ├── main.tsx, App.tsx        # Bootstrap + rotas
+│   ├── i18n/                    # Dicionário EN/PT + LocaleContext (useLocale)
+│   ├── types.ts, data/          # Tipos + conteúdo tipado (projetos, certs, badges, timeline, prêmios)
+│   ├── components/               # layout/, home/, shared/
+│   ├── pages/                    # Home.tsx, projects/*, Badges.tsx, Certifications.tsx
+│   └── styles/                   # global.css (design tokens) + subpages.css
 │
-├── BANCOS DE DADOS/
-│   ├── educash (1).sql          # Schema do sistema Educash
-│   ├── k4math.sql               # Schema do sistema K4Math
-│   └── loja_real.sql            # Schema do sistema Loja Real
+├── public/                      # Assets estáticos servidos como estão
+│   ├── PROJETOS/imagens/        # Capturas de tela dos projetos
+│   ├── certificados/            # PDFs dos certificados
+│   ├── fotos/                   # Registro fotográfico de eventos e conquistas
+│   ├── EXCEL/SampleSuperstore.csv
+│   └── Curriculo_Joao_Pedro_EN.pdf / _PT.pdf
 │
-├── EXCEL/
-│   └── SampleSuperstore.csv     # Dataset utilizado na análise de dados
-│
-└── fotos/                       # Registro fotográfico de eventos e conquistas
-    ├── hackathon-api/
-    ├── hackathon-sb/
-    ├── feimec/
-    ├── pit/
-    └── unisenai/
+└── BANCOS DE DADOS/
+    ├── educash (1).sql          # Schema do sistema Educash
+    ├── k4math.sql               # Schema do sistema K4Math
+    └── loja_real.sql            # Schema do sistema Loja Real
 ```
+
+Rotas: `/` (Home), `/projects/k4math`, `/projects/web-platforms`, `/projects/data-analysis`, `/projects/database`, `/badges`, `/certifications` — cada uma com um alias no caminho `.html` antigo.
 
 ---
 
