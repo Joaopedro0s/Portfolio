@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title id="pageTitle">João Pedro Carvalho — Developer &amp; Data Analyst</title>
-<meta id="metaDesc" name="description" content="I build full-stack web systems and turn the data they generate into decisions. Portfolio of João Pedro Carvalho — Lorena/SP, Brazil.">
+<meta id="metaDesc" name="description" content="I build full-stack web systems and turn the data they generate into decisions. Portfolio of João Pedro Carvalho — São Paulo, Brazil.">
 <meta name="theme-color" content="#05070D">
 
 <meta property="og:type" content="website">
@@ -132,11 +132,15 @@ h1,h2,h3,h4{font-family:var(--ff-display);font-weight:700;line-height:.94;letter
 html:not(.js) .boot{display:none}
 
 /* ═══ RAIL DE PROGRESSO ═══════════════════════════════════ */
+.topbar{position:fixed;top:0;left:0;right:0;height:2px;z-index:80;background:var(--wire);pointer-events:none}
+.topbar__fill{height:100%;width:100%;background:var(--signal);transform:scaleX(0);transform-origin:left;box-shadow:0 0 10px rgba(255,93,46,.65)}
+
 .spine{
   position:fixed;left:clamp(14px,2.4vw,34px);top:0;bottom:0;width:1px;
   background:var(--wire);z-index:60;pointer-events:none;display:none;
 }
 .spine__fill{position:absolute;top:0;left:0;width:2px;height:100%;background:var(--signal);transform:scaleY(0);transform-origin:top}
+.spine__dot{position:absolute;left:50%;top:0;width:9px;height:9px;margin-left:-1px;border-radius:50%;background:var(--signal);box-shadow:0 0 12px 2px rgba(255,93,46,.55);transform:translate(-50%,-50%)}
 .readout{
   position:fixed;left:0;bottom:clamp(1.4rem,4vh,3rem);
   width:clamp(14px,2.4vw,34px);z-index:61;display:none;pointer-events:none;
@@ -499,7 +503,7 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
 <div class="boot" id="boot" aria-hidden="true">
   <div class="boot__row">
     <div class="boot__num" id="bootNum">000</div>
-    <div class="boot__label mono mono--fog" data-i18n-html="boot.label">João Pedro Carvalho<br>Development · Data · AI<br>Lorena — SP, Brazil</div>
+    <div class="boot__label mono mono--fog" data-i18n-html="boot.label">João Pedro Carvalho<br>Development · Data · AI<br>São Paulo, Brazil</div>
   </div>
   <div class="boot__track"><div class="boot__fill" id="bootFill"></div></div>
 </div>
@@ -509,7 +513,8 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
 <div class="cur-ring" id="curRing" aria-hidden="true"></div>
 
 <!-- ░░ RAIL DE PROGRESSO ░░ -->
-<div class="spine" aria-hidden="true"><div class="spine__fill" id="spineFill"></div></div>
+<div class="topbar" aria-hidden="true"><div class="topbar__fill" id="topbarFill"></div></div>
+<div class="spine" aria-hidden="true"><div class="spine__fill" id="spineFill"></div><div class="spine__dot" id="spineDot"></div></div>
 <div class="readout mono" aria-hidden="true"><span class="readout__idx" id="roIdx">01</span> — <span id="roName">Home</span></div>
 
 <!-- ░░ NAV ░░ -->
@@ -536,7 +541,7 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
 <!-- ░░ 01 — HERO ░░ -->
 <section class="hero wrap" id="home" data-sec="hero">
   <div class="hero__top">
-    <span class="mono fade" data-i18n="hero.loc">Lorena · SP — Brazil</span>
+    <span class="mono fade" data-i18n="hero.loc">São Paulo — Brazil</span>
     <span class="mono fade" data-i18n="hero.tag">Portfolio ’26 — v2</span>
   </div>
 
@@ -552,7 +557,7 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
     </p>
     <div class="hero__acts up">
       <a href="#work" class="btn btn--solid btn--down"><span data-i18n="hero.ctaWork">View the work</span> <i>↓</i></a>
-      <a href="Curriculo_Joao_Pedro.pdf" download class="btn"><span data-i18n="hero.ctaCv">Résumé</span> <i>↗</i></a>
+      <a href="Curriculo_Joao_Pedro_EN.pdf" download id="ctaResumeHero" class="btn"><span data-i18n="hero.ctaCv">Résumé</span> <i>↗</i></a>
     </div>
   </div>
 
@@ -625,8 +630,7 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
     </article>
 
     <article class="card">
-      <div class="card__media">
-        <img src="PROJETOS/imagens/k4math.png" alt="Relational modeling" loading="lazy">
+      <div class="card__media" id="nicheDbMedia">
         <span class="card__idx">03</span>
         <div class="card__mask"></div>
       </div>
@@ -797,7 +801,7 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
         <div class="tl__item up">
           <div class="tl__when mono mono--fog">12/2023 → 02/2024</div>
           <div class="tl__what" data-i18n="timeline.job2.what">IT Intern</div>
-          <div class="tl__where">UNISAL — Lorena/SP</div>
+          <div class="tl__where">UNISAL — SP</div>
           <p class="tl__note" data-i18n="timeline.job2.note">Lab support, environment setup and maintenance of the machine fleet.</p>
         </div>
         <div class="tl__item up">
@@ -882,19 +886,19 @@ noscript .nojs{display:block;padding:1rem var(--gut);background:var(--signal);co
         <a class="btn" id="ctaWhatsapp" href="https://wa.me/5512991026455?text=Hi%20Jo%C3%A3o%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noopener">WhatsApp <i>↗</i></a>
         <a class="btn" href="https://linkedin.com/in/joaopedro2007" target="_blank" rel="noopener">LinkedIn <i>↗</i></a>
         <a class="btn" href="https://github.com/Joaopedro0s" target="_blank" rel="noopener">GitHub <i>↗</i></a>
-        <a class="btn" href="Curriculo_Joao_Pedro.pdf" download><span data-i18n="contact.resume">Résumé</span> <i>↓</i></a>
+        <a class="btn" href="Curriculo_Joao_Pedro_EN.pdf" download id="ctaResumeContact"><span data-i18n="contact.resume">Résumé</span> <i>↓</i></a>
       </div>
     </div>
     <div class="contact__card">
       <span class="live"><i></i> <span data-i18n="contact.available">Available for internships and projects</span></span>
       <div class="contact__row"><span class="mono mono--fog" data-i18n="contact.emailLabel">Email</span><span>jpfonsecaalves2007@gmail.com</span></div>
       <div class="contact__row"><span class="mono mono--fog" data-i18n="contact.phoneLabel">Phone</span><span>(12) 99102-6455</span></div>
-      <div class="contact__row"><span class="mono mono--fog" data-i18n="contact.locationLabel">Location</span><span data-i18n="contact.location">Lorena — SP, Brazil</span></div>
+      <div class="contact__row"><span class="mono mono--fog" data-i18n="contact.locationLabel">Location</span><span data-i18n="contact.location">São Paulo, Brazil</span></div>
     </div>
   </div>
 
   <div class="foot">
-    <span class="mono mono--fog">© 2026 João Pedro Carvalho — Lorena/SP</span>
+    <span class="mono mono--fog">© 2026 João Pedro Carvalho — São Paulo, Brazil</span>
     <span class="mono mono--fog">jpfonsecaalves2007@gmail.com · (12) 99102-6455</span>
   </div>
 </section>
@@ -956,11 +960,11 @@ const STATUS = {
 
 const I18N = { ui: {
   'nojs':'This portfolio uses animation to navigate. Without JavaScript the content stays readable — see also <a href="PROJETOS/plataformasWEB.html" style="text-decoration:underline">the projects</a> and <a href="certificacoes.html" style="text-decoration:underline">the certifications</a>.',
-  'boot.label': bi('João Pedro Carvalho<br>Development · Data · AI<br>Lorena — SP, Brazil','João Pedro Carvalho<br>Desenvolvimento · Dados · IA<br>Lorena — SP'),
+  'boot.label': bi('João Pedro Carvalho<br>Development · Data · AI<br>São Paulo, Brazil','João Pedro Carvalho<br>Desenvolvimento · Dados · IA<br>São Paulo'),
   'nav.work': bi('Work','Trabalho'), 'nav.awards': bi('Awards','Prêmios'),
   'nav.timeline': bi('Timeline','Trajetória'), 'nav.credentials': bi('Credentials','Credenciais'),
   'nav.contact': bi('Contact','Contato'), 'nav.available': bi('Available','Disponível'),
-  'hero.loc': bi('Lorena · SP — Brazil','Lorena · SP — Brasil'),
+  'hero.loc': bi('São Paulo — Brazil','São Paulo — Brasil'),
   'hero.tag': bi('Portfolio ’26 — v2','Portfólio ’26 — v2'),
   'hero.lede': bi('I build <b>full-stack web systems</b> and turn the data they generate into <u>decisions</u>. Two hackathon wins, four platforms live, and a notebook that never closes.',
                    'Desenvolvo <b>sistemas web full-stack</b> e transformo os dados que eles geram em <u>decisão</u>. Dois hackathons premiados, quatro plataformas no ar e um caderno de anotações que nunca fecha.'),
@@ -1037,7 +1041,7 @@ const I18N = { ui: {
   'contact.email': bi('Email','E-mail'), 'contact.resume': bi('Résumé','Currículo'),
   'contact.available': bi('Available for internships and projects','Disponível para estágio e projetos'),
   'contact.emailLabel': bi('Email','E-mail'), 'contact.phoneLabel': bi('Phone','Telefone'), 'contact.locationLabel': bi('Location','Local'),
-  'contact.location': bi('Lorena — SP, Brazil','Lorena — SP, Brasil')
+  'contact.location': bi('São Paulo, Brazil','São Paulo, Brasil')
 } };
 
 const SEC_LABELS = {
@@ -1063,7 +1067,7 @@ const PROJETOS = [
     href:'PROJETOS/projetoIntegrador.html', cta: bi('Open the case','Abrir o case')
   },
   {
-    nome:'Plataformas Web', ano:'2024–2026', status:'live',
+    nome: bi('Web Platforms','Plataformas Web'), ano:'2024–2026', status:'live',
     stacks:['FULLSTACK'],
     desc: bi('Four published interfaces: <b>JML Phones</b> (Bootstrap 5 e-commerce), <b>StudyFlow</b> (a study portal built with Scrum), <b>Velocidade Premium</b> (a conversion landing page with DOM events) and this portfolio.',
              'Quatro interfaces publicadas: <b>JML Phones</b> (e-commerce em Bootstrap 5), <b>StudyFlow</b> (portal de estudos feito em SCRUM), <b>Velocidade Premium</b> (landing de conversão com eventos DOM) e este portfólio.'),
@@ -1072,7 +1076,7 @@ const PROJETOS = [
     href:'PROJETOS/plataformasWEB.html', cta: bi('See all four','Ver as quatro')
   },
   {
-    nome:'Modelo de risco FPD', ano:'2026', status:'proto',
+    nome: bi('FPD Risk Model','Modelo de risco FPD'), ano:'2026', status:'proto',
     stacks:['DATA'],
     desc: bi('A <b>First Payment Default</b> prediction pipeline built in a 48-hour hackathon: feature engineering, SMOTE balancing, LightGBM tuned with Optuna and SHAP interpretation, delivering a scored base with risk tiers.',
              'Pipeline de previsão de <b>First Payment Default</b> construído em 48 h de hackathon: engenharia de atributos, balanceamento com SMOTE, LightGBM ajustado no Optuna e interpretação por SHAP, entregando a base pontuada com faixas de risco.'),
@@ -1082,7 +1086,7 @@ const PROJETOS = [
     href:'#awards', cta: bi('See the hackathon','Ver o hackathon')
   },
   {
-    nome:'Dashboard Superstore', ano:'2026', destaque:true, status:'acad',
+    nome: bi('Superstore Dashboard','Dashboard Superstore'), ano:'2026', destaque:true, status:'acad',
     stacks:['DATA'],
     desc: bi('Exploratory analysis of a US retail chain: data cleaning, pivot tables and a read on profit by category, segment and region. The finding that sparked the most discussion — discounts above 30% wipe out the margin.',
              'Análise exploratória de uma rede varejista americana: limpeza, tabelas dinâmicas e leitura de lucro por categoria, segmento e região. O achado que mais rendeu discussão — descontos acima de 30% derrubam a margem.'),
@@ -1092,23 +1096,13 @@ const PROJETOS = [
     href:'PROJETOS/analiseDados.html', cta: bi('See the insights','Ver os insights')
   },
   {
-    nome:'Chatbot de vendas', ano:'2026', status:'proto',
-    stacks:['DATA','FULLSTACK'],
-    desc: bi('A Telegram sales agent built in <b>n8n</b>: looks up the catalog in Supabase, builds a cart, logs the order and uses an LLM to chat in natural language. Zero servers of its own — all visual flow and webhooks.',
-             'Atendente de Telegram montado em <b>n8n</b>: consulta catálogo no Supabase, monta carrinho, registra pedido e usa um LLM para conversar em linguagem natural. Zero servidor próprio, tudo em fluxo visual e webhook.'),
-    tags:['n8n','Supabase','Telegram API','LLM'],
-    metrics:[ {v:'3', l:bi('Integrations','Integrações')}, {v:'0', l:bi('Servers','Servidores')} ],
-    motif:'nodes',
-    href:'https://github.com/Joaopedro0s', cta:'GitHub'
-  },
-  {
-    nome:'Modelagem relacional', ano:'2024–2025', status:'acad',
+    nome: bi('Relational Modeling','Modelagem relacional'), ano:'2024–2025', status:'acad',
     stacks:['DB'],
     desc: bi('Three databases designed from scratch: <b>EduCash</b> (financial education), <b>K4Math</b> (progression and inventory) and <b>Loja Real</b> (orders and stock). Normalization, stored procedures, triggers and reporting queries.',
              'Três bases desenhadas do zero: <b>EduCash</b> (educação financeira), <b>K4Math</b> (progressão e inventário) e <b>Loja Real</b> (pedidos e estoque). Normalização, procedures, triggers e consultas de relatório.'),
     tags:['MySQL','SQL Server','T-SQL', bi('Modeling','Modelagem')],
     metrics:[ {v:'3', l:bi('Complete schemas','Schemas completos')} ],
-    img:'PROJETOS/imagens/k4math.png',
+    motif:'schema',
     href:'PROJETOS/SQLServer.html', cta: bi('See the schemas','Ver os schemas')
   }
 ];
@@ -1165,6 +1159,31 @@ const BADGES = [
 const $  = (s,r)=> (r||document).querySelector(s);
 const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
 
+function schemaCluster(colX,header,hub,children,grandchildren){
+  const hubX=colX+10, hubW=92, hubY=28, hubH=22, hubCx=colX+56;
+  const rowBY=92, rowCY=156, boxH=22;
+  const leftX=colX, rightX=colX+58, boxW=54;
+  const leftCx=colX+27, rightCx=colX+85;
+  const esc = s => s.replace(/&/g,'&amp;');
+  const box = (x,y,w,h,label,isHub) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="${isHub?'rgba(255,93,46,.07)':'none'}" stroke="${isHub?'#FF5D2E':'rgba(233,238,247,.32)'}" stroke-width="1.1"/>
+    <circle cx="${x+7}" cy="${y+h/2}" r="1.6" fill="${isHub?'#FF5D2E':'rgba(233,238,247,.45)'}"/>
+    <text x="${x+w/2}" y="${y+h/2+2.6}" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, monospace" font-size="${isHub?7.4:5.9}" font-weight="${isHub?700:500}" fill="${isHub?'#EEF2F9':'rgba(233,238,247,.78)'}">${esc(label)}</text>`;
+  const line = (x1,y1,x2,y2) => `<path d="M${x1} ${y1}L${x2} ${y2}" stroke="rgba(233,238,247,.28)" stroke-width="1.1"/>`;
+  return `
+    <text x="${colX}" y="15" font-family="JetBrains Mono, ui-monospace, monospace" font-size="9.5" font-weight="700" letter-spacing="1" fill="#FF5D2E">${esc(header)}</text>
+    ${line(hubCx,hubY+hubH,leftCx,rowBY)}
+    ${children[1] ? line(hubCx,hubY+hubH,rightCx,rowBY) : ''}
+    ${children[0] && grandchildren[0] ? line(leftCx,rowBY+boxH,leftCx,rowCY) : ''}
+    ${children[1] && grandchildren[1] ? line(rightCx,rowBY+boxH,rightCx,rowCY) : ''}
+    ${grandchildren.extra ? line(rightX-4,rowCY+boxH/2,leftX+boxW+4,rowCY+boxH/2) : ''}
+    ${box(hubX,hubY,hubW,hubH,hub,true)}
+    ${children[0] ? box(leftX,rowBY,boxW,boxH,children[0],false) : ''}
+    ${children[1] ? box(rightX,rowBY,boxW,boxH,children[1],false) : ''}
+    ${grandchildren[0] ? box(leftX,rowCY,boxW,boxH,grandchildren[0],false) : ''}
+    ${grandchildren[1] ? box(rightX,rowCY,boxW,boxH,grandchildren[1],false) : ''}
+  `;
+}
+
 function motifSVG(kind){
   if(kind==='curve') return `<svg class="card__motif" viewBox="0 0 400 225" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g stroke="rgba(233,238,247,.07)"><path d="M0 56h400M0 112h400M0 168h400"/><path d="M100 0v225M200 0v225M300 0v225"/></g>
@@ -1172,6 +1191,15 @@ function motifSVG(kind){
     <path class="dash" d="M12 210C74 208 108 190 148 168s72-58 128-62 84 22 112 30" stroke="rgba(233,238,247,.28)" stroke-width="1.5" stroke-linecap="round"/>
     <g fill="#FF5D2E"><circle cx="128" cy="128" r="3.5"/><circle cx="232" cy="40" r="3.5"/></g>
   </svg>`;
+  if(kind==='schema'){
+    const eduCash = schemaCluster(8,'EDUCASH','users',['user_cofrinhos','user_planilhas'],['cofrinho_deposits','planilha_despesas']);
+    const k4math  = schemaCluster(144,'K4MATH','users',['user_progress','user_achievements'],['activities','achievements']);
+    const lojaReal= schemaCluster(280,'LOJA REAL','clientes',['pedidos'],Object.assign(['itens_pedido','produtos'],{extra:true}));
+    return `<svg class="card__motif" viewBox="0 0 400 225" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="rgba(233,238,247,.06)"><path d="M132 6v213M268 6v213"/></g>
+    ${eduCash}${k4math}${lojaReal}
+  </svg>`;
+  }
   return `<svg class="card__motif" viewBox="0 0 400 225" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g stroke="rgba(233,238,247,.22)" stroke-width="1.4" class="dash">
       <path d="M74 112h72M182 112h64M246 112c26 0 26-46 52-46M246 112c26 0 26 46 52 46"/>
@@ -1183,8 +1211,9 @@ function motifSVG(kind){
 }
 
 function cardHTML(p,i){
+  const nome = T(p.nome);
   const media = p.img
-    ? `<img src="${p.img}" alt="${p.nome}" loading="lazy">`
+    ? `<img src="${p.img}" alt="${nome}" loading="lazy">`
     : motifSVG(p.motif);
   const metrics = (p.metrics||[]).map(m=>`<div class="card__metric"><b>${T(m.v)}</b><span>${T(m.l)}</span></div>`).join('');
   const ext = /^https?:/.test(p.href) ? ' target="_blank" rel="noopener"' : '';
@@ -1199,7 +1228,7 @@ function cardHTML(p,i){
     </div>
     <div class="card__body">
       <div class="card__kicker"><span class="mono mono--fog">${stackLabel}</span><span class="mono">${p.ano}</span></div>
-      <h3 class="card__title">${p.nome}</h3>
+      <h3 class="card__title">${nome}</h3>
       <p class="card__desc">${T(p.desc)}</p>
       ${metrics?`<div class="card__metrics">${metrics}</div>`:''}
       <div class="card__foot">
@@ -1207,7 +1236,7 @@ function cardHTML(p,i){
         <span class="card__go">${cta} <i>↗</i></span>
       </div>
     </div>
-    <a class="card__link" href="${p.href}"${ext} aria-label="${p.nome} — ${cta}"></a>
+    <a class="card__link" href="${p.href}"${ext} aria-label="${nome} — ${cta}"></a>
   </article>`;
 }
 
@@ -1253,13 +1282,16 @@ function updateContactLinks(){
   if(wa) wa.href = LOCALE==='pt'
     ? 'https://wa.me/5512991026455?text=Oi%20Jo%C3%A3o%2C%20vi%20seu%20portf%C3%B3lio.'
     : 'https://wa.me/5512991026455?text=Hi%20Jo%C3%A3o%2C%20I%20saw%20your%20portfolio.';
+  const resumeFile = LOCALE==='pt' ? 'Curriculo_Joao_Pedro_PT.pdf' : 'Curriculo_Joao_Pedro_EN.pdf';
+  $('#ctaResumeHero') && ($('#ctaResumeHero').href = resumeFile);
+  $('#ctaResumeContact') && ($('#ctaResumeContact').href = resumeFile);
 }
 
 const PAGE_META = {
   en:{ title:'João Pedro Carvalho — Developer & Data Analyst',
-       desc:'I build full-stack web systems and turn the data they generate into decisions. Portfolio of João Pedro Carvalho — Lorena/SP, Brazil.', locale:'en_US' },
+       desc:'I build full-stack web systems and turn the data they generate into decisions. Portfolio of João Pedro Carvalho — São Paulo, Brazil.', locale:'en_US' },
   pt:{ title:'João Pedro Carvalho — Desenvolvedor & Analista de Dados',
-       desc:'Desenvolvo sistemas web full-stack e transformo os dados que eles geram em decisão. Portfólio de João Pedro Carvalho — Lorena/SP.', locale:'pt_BR' }
+       desc:'Desenvolvo sistemas web full-stack e transformo os dados que eles geram em decisão. Portfólio de João Pedro Carvalho — São Paulo.', locale:'pt_BR' }
 };
 
 function applyI18n(){
@@ -1308,6 +1340,7 @@ render();
 applyI18n();
 updateContactLinks();
 localeToggleInit();
+$('#nicheDbMedia')?.insertAdjacentHTML('afterbegin', motifSVG('schema'));
 
 /* ═══════════════════════════════════════════════════════════
    3. MOTOR
@@ -1546,17 +1579,23 @@ function filters(){
 /* ── Nav + rail de progresso ─────────────────────────────── */
 function chrome(){
   const nav = $('#nav'); let last = 0;
+  const spineFill = $('#spineFill'), spineDot = $('#spineDot'), topbarFill = $('#topbarFill');
   const onScroll = () => {
     const y = window.scrollY;
     nav.classList.toggle('is-stuck', y > 40);
     nav.classList.toggle('is-hidden', y > 300 && y > last);
     last = y;
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const p = max>0 ? Math.min(1, Math.max(0, y/max)) : 0;
+    if(topbarFill) topbarFill.style.transform = `scaleX(${p})`;
+    if(spineFill)  spineFill.style.transform  = `scaleY(${p})`;
+    if(spineDot)   spineDot.style.top = (p*100)+'%';
   };
   window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 
   if(!HAS_GSAP) return;
-  gsap.to('#spineFill',{ scaleY:1, ease:'none',
-    scrollTrigger:{ trigger:document.body, start:'top top', end:'bottom bottom', scrub:.3 } });
 
   const secs = $$('[data-sec]');
   secs.forEach((s,i)=>{
