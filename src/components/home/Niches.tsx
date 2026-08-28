@@ -1,10 +1,49 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useGSAP } from '@gsap/react';
+import { gsap, REDUCED } from '../../lib/motion';
 import { useLocale } from '../../i18n/LocaleContext';
 import MotifSVG from './MotifSVG';
 
 /** Port of the "02 — Nichos em destaque" section from index.html. */
 export default function Niches() {
   const { ui } = useLocale();
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  // Reveal the .card__mask overlay + subtle image parallax — same wiring as Work.tsx's grid.
+  // Without this the mask (opaque by default, no CSS transform) never animates away and the
+  // media stays hidden behind it forever.
+  useGSAP(
+    () => {
+      if (REDUCED) return;
+      const grid = gridRef.current;
+      if (!grid) return;
+      const kills: (() => void)[] = [];
+
+      grid.querySelectorAll<HTMLElement>('.card__mask').forEach((m) => {
+        const tw = gsap.to(m, {
+          scaleY: 0,
+          transformOrigin: 'bottom',
+          duration: 1.1,
+          ease: 'expo.inOut',
+          scrollTrigger: { trigger: m.closest('.card'), start: 'top 82%', once: true },
+        });
+        kills.push(() => tw.scrollTrigger?.kill());
+      });
+
+      grid.querySelectorAll<HTMLElement>('.card__media img').forEach((img) => {
+        const tw = gsap.fromTo(
+          img,
+          { yPercent: -4 },
+          { yPercent: 4, ease: 'none', scrollTrigger: { trigger: img.closest('.card'), start: 'top bottom', end: 'bottom top', scrub: true } },
+        );
+        kills.push(() => tw.scrollTrigger?.kill());
+      });
+
+      return () => kills.forEach((fn) => fn());
+    },
+    { scope: gridRef },
+  );
 
   return (
     <section className="sec wrap sec--tight" id="niches" data-sec="niches">
@@ -13,7 +52,7 @@ export default function Niches() {
         <p className="shead__meta up">{ui('niches.meta')}</p>
       </div>
 
-      <div className="work work--niches" id="niches-grid">
+      <div className="work work--niches" id="niches-grid" ref={gridRef}>
         <article className="card">
           <div className="card__media">
             <img src="/PROJETOS/imagens/mathduo-tela-inicial.jpeg" alt="K4Math" loading="lazy" />
