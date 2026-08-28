@@ -1,120 +1,120 @@
-# 👨‍💻 Portfólio — João Pedro Carvalho
+# 👨‍💻 Portfolio — João Pedro Carvalho
 
-Bem-vindo ao meu portfólio pessoal! Este repositório reúne minha trajetória acadêmica, experiências profissionais, projetos desenvolvidos e certificações conquistadas na área de tecnologia.
+Welcome to my personal portfolio! This repository brings together my academic path, professional experience, projects, and certifications in technology.
 
-🔗 **[Acesse o portfólio online](https://portfolio-indol-pi-1l1a9cpnxi.vercel.app/index.html)**
-
----
-
-## 🚀 Sobre
-
-Sou estudante de **Análise e Desenvolvimento de Sistemas** no SENAI Taubaté (previsão de conclusão: 2027), com técnico em Desenvolvimento de Sistemas concluído em 2025. Tenho interesse em desenvolvimento de software, análise de dados e soluções tecnológicas inovadoras. Apaixonado por tecnologia e inteligência artificial, sempre buscando aprender e evoluir.
-
-📍 Lorena — São Paulo
+🔗 **[Visit the portfolio online](https://portfolio-indol-pi-1l1a9cpnxi.vercel.app)**
 
 ---
 
-## 🗂️ Estrutura do Repositório
+## 🚀 About
 
-Migrado para **Vite + React + TypeScript + React Router** (as antigas páginas `.html` continuam funcionando como aliases de rota, então links e favoritos antigos não quebram):
+I'm a **Systems Analysis and Development** student at SENAI Taubaté (expected graduation: 2027), with a Technical Degree in Systems Development completed in 2025. I'm interested in software development, data analysis, and innovative technology solutions. Passionate about technology and artificial intelligence, always looking to learn and grow.
+
+📍 São Paulo, Brazil
+
+---
+
+## 🗂️ Repository Structure
+
+Migrated to **Vite + React + TypeScript + React Router** (the old `.html` pages still work as route aliases, so old links and bookmarks don't break):
 
 ```
 Portfolio/
-├── index.html                   # Shell HTML do Vite (entry point)
+├── index.html                   # Vite HTML shell (entry point)
 ├── package.json / vite.config.ts / tsconfig*.json
-├── vercel.json                  # Deploy no Vercel (framework: vite)
+├── vercel.json                  # Vercel deploy config (framework: vite)
 │
 ├── src/
-│   ├── main.tsx, App.tsx        # Bootstrap + rotas
-│   ├── i18n/                    # Dicionário EN/PT + LocaleContext (useLocale)
-│   ├── types.ts, data/          # Tipos + conteúdo tipado (projetos, certs, badges, timeline, prêmios)
+│   ├── main.tsx, App.tsx        # Bootstrap + routes
+│   ├── i18n/                    # EN/PT dictionary + LocaleContext (useLocale)
+│   ├── types.ts, data/          # Types + typed content (projects, certs, badges, timeline, awards)
 │   ├── components/               # layout/, home/, shared/
 │   ├── pages/                    # Home.tsx, projects/*, Badges.tsx, Certifications.tsx
 │   └── styles/                   # global.css (design tokens) + subpages.css
 │
-├── public/                      # Assets estáticos servidos como estão
-│   ├── PROJETOS/imagens/        # Capturas de tela dos projetos
-│   ├── certificados/            # PDFs dos certificados
-│   ├── fotos/                   # Registro fotográfico de eventos e conquistas
+├── public/                      # Static assets served as-is
+│   ├── PROJETOS/imagens/        # Project screenshots
+│   ├── certificados/            # Certificate PDFs
+│   ├── fotos/                   # Photos from events and achievements
 │   ├── EXCEL/SampleSuperstore.csv
 │   └── Curriculo_Joao_Pedro_EN.pdf / _PT.pdf
 │
 └── BANCOS DE DADOS/
-    ├── educash (1).sql          # Schema do sistema Educash
-    ├── k4math.sql               # Schema do sistema K4Math
-    └── loja_real.sql            # Schema do sistema Loja Real
+    ├── educash (1).sql          # EduCash system schema
+    ├── k4math.sql               # K4Math system schema
+    └── loja_real.sql            # Loja Real system schema
 ```
 
-Rotas: `/` (Home), `/projects/k4math`, `/projects/web-platforms`, `/projects/data-analysis`, `/projects/database`, `/badges`, `/certifications` — cada uma com um alias no caminho `.html` antigo.
+Routes: `/` (Home), `/projects/k4math`, `/projects/web-platforms`, `/projects/data-analysis`, `/projects/database`, `/badges`, `/certifications` — each with an alias at the old `.html` path.
 
 ---
 
-## 💼 Experiência Profissional
+## 💼 Professional Experience
 
-| Cargo | Empresa | Período |
+| Role | Company | Period |
 |---|---|---|
-| Aprendiz em Desenvolvimento | IOCHPE MAXION | 02/2024 → 12/2025 |
-| Estagiário de TI | UNISAL | 12/2023 → 02/2024 |
-| Auxiliar Administrativo | Ascontec | 03/2023 → 12/2023 |
+| Systems Development Apprentice | IOCHPE MAXION | 02/2024 → 12/2025 |
+| IT Intern | UNISAL | 12/2023 → 02/2024 |
+| Administrative Assistant | Ascontec | 03/2023 → 12/2023 |
 
 ---
 
-## 🎓 Formação
+## 🎓 Education
 
-- **Tecnólogo em Análise e Desenvolvimento de Sistemas** — SENAI Taubaté (2026 → 2027, cursando)
-- **Técnico em Desenvolvimento de Sistemas** — SENAI Cruzeiro (conclusão 2025)
-
----
-
-## 🛠️ Projetos
-
-### 🗄️ Sistema com SQL Server
-Procedures armazenadas, consultas SQL avançadas e estrutura relacional completa. Inclui os schemas dos sistemas **Educash**, **K4Math** e **Loja Real**.
-
-### 🌐 Plataformas Web
-Sites modernos com animações sofisticadas e experiência de usuário refinada.
-
-### 🔗 Projeto Integrador (Full Stack)
-Junção de conceitos visuais, interativos e lógicos em uma solução completa.
-
-### 📊 Análise de Dados — Sample Superstore
-Dashboard completo de vendas com o dataset Sample Superstore. Análise de lucro por categoria, segmento de clientes e região com insights estratégicos, utilizando Excel e Power Query.
-
-### 🗃️ Modelagem Relacional
-Schemas, normalização e design de bases de dados corporativas.
+- **Associate Degree in Systems Analysis and Development** — SENAI Taubaté (2026 → 2027, in progress)
+- **Technical Degree in Systems Development** — SENAI Cruzeiro (completed 2025)
 
 ---
 
-## 🏆 Conquistas
+## 🛠️ Projects
 
-- 🥇 **1º Lugar** — Hackathon API Edition · SENAI Cruzeiro
-- 🥉 **3º Lugar** — Hackathon Science & Business · SENAI Taubaté (2026) · PIT São José dos Campos
-- 🏭 Visita Técnica à **FEIMEC** — Maior feira de manufatura industrial da América Latina
-- 🏢 Visita Técnica ao **PIT** — Parque Tecnológico de São José dos Campos
-- 🎤 Apresentação de projeto de extensão na **UniSENAI** — Osasco
+### 🗄️ SQL Server System
+Stored procedures, advanced SQL queries, and a complete relational structure. Includes the schemas for the **EduCash**, **K4Math**, and **Loja Real** systems.
 
----
+### 🌐 Web Platforms
+Modern sites with sophisticated animations and a refined user experience.
 
-## 📜 Certificações em Destaque
+### 🔗 Capstone Project (Full Stack)
+Bringing together visual, interactive, and logic concepts into one complete solution.
 
-- **Dashboards com Excel e Cognos** — IBM (2026)
-- **Análise de Dados com Power BI** — Fundação Bradesco (2026)
-- **Introdução à Análise de Dados** — IBM (2026)
-- **24 Badges** — Microsoft Learn (incluindo MCP, GitHub Copilot, IA Generativa no Azure)
+### 📊 Data Analysis — Sample Superstore
+A complete sales dashboard built with the Sample Superstore dataset. Profit analysis by category, customer segment, and region with strategic insights, using Excel and Power Query.
 
-> 17+ certificações no total. [Ver todas →](certificacoes.html)
+### 🗃️ Relational Modeling
+Schemas, normalization, and database design for corporate systems.
 
 ---
 
-## 🛠️ Tecnologias & Ferramentas
+## 🏆 Achievements
+
+- 🥇 **1st Place** — Hackathon API Edition · SENAI Cruzeiro
+- 🥉 **3rd Place** — Hackathon Science & Business · SENAI Taubaté (2026) · PIT São José dos Campos
+- 🏭 Technical Visit to **FEIMEC** — the largest industrial manufacturing trade fair in Latin America
+- 🏢 Technical Visit to **PIT** — São José dos Campos Technology Park
+- 🎤 University extension project presentation at **UniSENAI** — Osasco
+
+---
+
+## 📜 Featured Certifications
+
+- **Dashboards with Excel and Cognos** — IBM (2026)
+- **Data Analysis with Power BI** — Fundação Bradesco (2026)
+- **Introduction to Data Analysis** — IBM (2026)
+- **24 Badges** — Microsoft Learn (including MCP, GitHub Copilot, Generative AI on Azure)
+
+> 17+ certifications in total. [See all →](https://portfolio-indol-pi-1l1a9cpnxi.vercel.app/certifications)
+
+---
+
+## 🛠️ Technologies & Tools
 
 `SQL Server` `Power BI` `Excel` `Power Query` `HTML` `CSS` `JavaScript` `GitHub` `Azure` `IBM Cognos`
 
 ---
 
-## 📬 Contato
+## 📬 Contact
 
-Estou aberto a oportunidades, estágios e projetos colaborativos!
+I'm open to opportunities, internships, and collaborative projects!
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/joaopedro2007/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Joaopedro0s)
@@ -123,4 +123,4 @@ Estou aberto a oportunidades, estágios e projetos colaborativos!
 
 ---
 
-*© 2026 João Pedro Carvalho · Em constante evolução*
+*© 2026 João Pedro Carvalho · Constantly evolving*
